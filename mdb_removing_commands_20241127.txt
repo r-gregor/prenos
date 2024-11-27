@@ -1,0 +1,54 @@
+  cp ~/Downloads/fsplit_en.sh.txt ~/majstaf/majbin/
+  cd ~/majstaf/majbin/
+  mv fsplit{_en.sh.txt,}
+  chmod 755 fsplit
+  rm b-find-lnx-executables_v1
+  rm b_find_*
+  rm b-convert-txt-to-pdf-en
+  mv b-convert-txt-to-pdf{_v2,}
+  rm dclean-movie-dname.V5.backup
+  rm get_mdbdiffs_backup
+  rm check_if_mvs_in_both_dirs_backup.txt
+  rm contains.backup.txt
+  rm logout_menu_dmn.backup
+  rm unedrscores-to-hypens-d
+  rm underscores-to-hypens-d
+  rm spaces-to-dots
+  rm convert-fname-to-lower-with-hypens
+  for FFF in $(find * -maxdepth 0 -type f); do stat $FFF --printf="%s"; echo " $FFF"; done | sort -hr | clm
+  rm cnk*
+  rm dbk dm
+  rm fndb_*
+  rm go-project-env-d.bekap
+  rm -i kodi1
+  rm mRUN-d-cdng
+  rm -r NEW_git-commands/
+  rm -r novo/ NOVO/
+  rm -r OLD_git-commands/
+  rm -r RUN-d-cdng
+  rm TODO.txt
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do echo $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do echo diff -q /home/rgregor/majstaf/mdbgit/majbin_mdb/$(echo $FFF | sed 's:mdbgit/::') $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do echo diff -q $(echo $FFF | sed 's:mdbgit/::') $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed 's:mdbgit/::') $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' 's:_mdb::') $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do echo "diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF"; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF; done | grep -v Brth | cut -d':' -f2
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF; done | grep -v Brth
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF | grep -v Brth; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF; done
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF; done > BRISI_LIST_20241127
+ 1for FFF in $(find ~/majstaf/mdbgit/majbin_mdb/* -type f); do diff -q $(echo $FFF | sed -e 's:mdbgit/::' -e 's:_mdb::') $FFF; done &> BRISI_LIST_20241127
+ 1cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo $basename $FFF; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do cut -d'/' -f5-
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do cut -d'/' -f5- ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo $FFF | cut -d'/' -f5- ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo $FFF | cut -d'/' -f6- ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo "~/majstaf/mdngit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo rm -v "~/majstaf/mdngit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo rm -v "~/majstaf/mdbgit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do echo rm -i "~/majstaf/mdbgit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do rm -i "~/majstaf/mdbgit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1for FFF in $(cat BRISI_LIST_20241127 | grep -v "Brth\|w3" | cut -d':' -f2); do rm -i "$HOME/majstaf/mdbgit/majbin_mdb/$(echo $FFF | cut -d'/' -f6-)" ; done
+ 1rm fndb_* mRUN-d-cdng RUN-d-cdng
