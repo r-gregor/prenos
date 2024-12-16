@@ -1,0 +1,25 @@
+  315  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  316  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  327  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  328  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  358  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  359  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  367  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  368  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  432  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  433  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  441  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  442  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  463  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  464  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  472  2024-12-08 17:46:57 grepc -r pdftk ~/majstaf/seznami/*
+  473  2024-12-08 17:49:09 pdftk "IZVID_smpl_(MAIL)_(1)__05122024_Avtorizirana_verzija.PDF" input_pw PROMPT output Tadeja-Redelonghi_izvid-po-kontroli_20241205.pdf
+  635  2024-12-13 19:13:31 pdftk "ARTROS_fizioterapija_Zakljucno_porocilo_20241212.pdf" input_pw PROMPT output ARTROS_fizioterapija_Zakljucno_porocilo_odkl_20241212.pdf 
+  641  2024-12-13 19:13:31 pdftk "ARTROS_fizioterapija_Zakljucno_porocilo_20241212.pdf" input_pw PROMPT output ARTROS_fizioterapija_Zakljucno_porocilo_odkl_20241212.pdf 
+  885  2024-12-13 19:13:31 pdftk "ARTROS_fizioterapija_Zakljucno_porocilo_20241212.pdf" input_pw PROMPT output ARTROS_fizioterapija_Zakljucno_porocilo_odkl_20241212.pdf 
+  889  2024-12-13 19:13:31 pdftk "ARTROS_fizioterapija_Zakljucno_porocilo_20241212.pdf" input_pw PROMPT output ARTROS_fizioterapija_Zakljucno_porocilo_odkl_20241212.pdf 
+ 1001  2024-12-16 18:20:40 history | grep pdftk
+ 1002  2024-12-16 18:21:13 history | grep pdftk >> pdf_remove_lock_commands_mdb_20241216.txt
+
+15298
+
