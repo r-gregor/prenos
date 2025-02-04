@@ -4,5 +4,7 @@ Making Memory Safer in my C | https://www.youtube.com/watch?v=X-lsquJq5yU
 - proccess manipulations
 - mmap / getpagesize() / getpid() ...
 
+getc(stdin) ??
+
 === ===
 
