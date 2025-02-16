@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+#v1
 
 unset usbs
 usbs=()
