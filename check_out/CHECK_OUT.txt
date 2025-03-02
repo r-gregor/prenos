@@ -1,0 +1,10 @@
+=== 20250204 ===
+Making Memory Safer in my C | https://www.youtube.com/watch?v=X-lsquJq5yU
+- proc/
+- proccess manipulations
+- mmap / getpagesize() / getpid() ...
+
+getc(stdin) ??
+
+=== ===
+
