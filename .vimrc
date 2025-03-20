@@ -112,11 +112,11 @@ nnoremap <space>, :set listchars-=space:⋅ <CR>
 let g:lightline = {'colorscheme': 'catppuccin_mocha'}
 
 " ----------------- ABBREVIATIONS 01 ---------------------------
-ab sbng #! /usr/bin/env bash<cr><cr>### Name:<tab>Scriptname ...<cr>### Author:<tab>Author ... <cr>### Date:<tab> <cr>### Decription:<cr>### <cr>### <cr>### <cr> 
+ab sbng #! /usr/bin/env bash<cr><cr>### Name:<tab>Scriptname ...<cr>### Author:<tab>Author ... <cr>### Date:<tab> <cr>### Decription:<cr>### <cr>### <cr>### <cr><esc>:so ~/.vimrc | :set syntax=bash
 " ab grv ${gr_} 
-ab pt3 #! /usr/bin/env python3<cr># -*- coding: utf-8 -*-<cr><cr>
+ab pt3 #! /usr/bin/env python3<cr># -*- coding: utf-8 -*-<cr><cr><esc>:so ~/.vimrc | :set syntax=python
 ab sout System.out.println(
-ab zst const std = @import("std");<cr><cr>pub fn main() !void {<cr>const stdout = std.io.getStdOut().writer();<cr>const stdin  = std.io.getStdiIn().reader();<cr><cr>try stdout.print("I'm Alive!\n", .{});<cr><cr>}
+ab zst const std = @import("std");<cr><cr>pub fn main() !void {<cr>const out = std.io.getStdOut().writer();<cr>const in = std.io.getStdiIn().reader();<cr><cr>try out.print("I'm Alive!\n", .{});<cr><cr>}<cr><esc>:so ~/.vimrc | :set syntax=zig
 
 " ----------------- ENCLOSING BRACKETS/SQUARE/CURLY ------------
 "inoremap ${ ${}<Left>
@@ -401,10 +401,6 @@ noremap <Space>s :%s/\/\/\(\w.*\)/\/\/ \1/<CR>
 " " vim-move plugin
 let g:move_key_modifier = 'C'            " *** 20221121 (d)
 let g:move_key_modifier_visualmode = 'S' " *** 20221121 (d)
-
-" added 20231006
-" removes lagging when editing .h files
-nnoremap <leader>st :syntax off<CR>:syntax on<CR>
 
 " added 20231110
 source ~/.vim/my-vimrc-includes/align.vim
