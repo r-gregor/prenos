@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+	
+while read LINE; do
+	alias_name=$(echo $LINE | cut -d'=' -f1)
+	alias_value=$(echo $LINE | cut -d'=' -f2-)
+	printf "%-15s%s\n" "$alias_name" "$alias_value"
+done < <(cat ~/majstaf/majrcs/aliases-gredelonghi-en | \grep '^alias' | sed -e '/^#/d' -e '/^$/d' | sed 's/^alias //')
