@@ -1,0 +1,6 @@
+# find-duplicates-in-file-onl-20250514.txt
+# ---
+cat _DOWNLOADED_MOVIES.txt | sort -r | uniq -c
+cat _DOWNLOADED_MOVIES.txt | sort -r | uniq -c | grep -e '^ *[234]'
+# ---
+
