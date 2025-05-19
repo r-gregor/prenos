@@ -1,0 +1,2815 @@
+filename: debian12_bookworm-scripts_20241016.txt
+from: https://github.com/drewgrif/bookworm-scripts/tree/main
+
+drewgrif/bookworm-scripts
+bookworm-scripts (updated June 28, 2024)
+
+X11 Window Managers
+   Assuming you have already installed a [**1]minimal Debian 12 install. The series of shell scripts are
+   intended to facilitate installing popular window managers.
+
+   Within the install.sh file, you can choose to install the following window managers:
+     * awesome
+     * bspwm
+     * dk
+     * dwm
+     * fluxbox
+     * i3
+     * icewm
+     * openbox
+     * qtile
+
+   User can select between vanilla(non-customized) and completely customized (my personal customization)
+
+Installation
+$> wget https://github.com/drewgrif/bookworm-scripts/raw/main/install.sh
+$> chmod +x install.sh
+$> ./install.sh
+$> rm install.sh
+
+
+HELP keybinding: Super + h
+   If you installed a custom script above (ex. dwm), a new directory will be located at ${HOME}/scripts
+
+With regard to other scripts:
+     * changevolume.sh - used by all custom window managers
+     * discord-install.sh - installs the newest discord quickly from the current binary files.
+     * discord-update.sh - updates the discord application if you used the discord-install.sh
+     * neovim.sh - neovim in the Debian packages is somewhat dated. This installs the newest from
+       github.
+     * redshift-on/off - used as a keybinding for turning redshift on or off.
+     * thunderbird_install.sh - installs the newest thunderbird on Debian.
+     * thunderbird_remove.sh - removes the above thunderbird_install.sh application.
+
+
+---
+Directory structures used:
+
+ debian12_bookworm-scripts_20241016.txt
+ Debian-Xfce4-Minimal-Install/
+ +-- debian12-installer.jpg
+ +-- debian-xfce.jpg
+ +-- README.md
+ +-- xfce-install.sh
+ +-- xsessionrc
+ grewgrif/
+ +-- bookworm-scripts/
+ |   +-- colorschemes/
+ |   |   +-- blue.sh
+ |   |   +-- update_gtk_settings.sh
+ |   +-- documentation/
+ |   |   +-- dwm.md
+ |   +-- install.sh
+ |   +-- install_scripts/
+ |   |   +-- add_bashrc.sh
+ |   |   +-- base_packages.txt
+ |   |   +-- bluetooth.sh
+ |   |   +-- common_packages.txt
+ |   |   +-- custom_awesome.sh
+ |   |   +-- custom_bspwm.sh
+ |   |   +-- custom_dk.sh
+ |   |   +-- custom_dwm.sh
+ |   |   +-- custom_fluxbox.sh
+ |   |   +-- custom_i3.sh
+ |   |   +-- custom_icewm.sh
+ |   |   +-- custom_openbox.sh
+ |   |   +-- custom_qtile.sh
+ |   |   +-- fbmenugen.sh
+ |   |   +-- lightdm.sh
+ |   |   +-- nerdfonts.sh
+ |   |   +-- obmenu.sh
+ |   |   +-- packages.sh
+ |   |   +-- picom.sh
+ |   |   +-- printers.sh
+ |   |   +-- setup.sh
+ |   |   +-- vanilla_awesome.sh
+ |   |   +-- vanilla_bspwm.sh
+ |   |   +-- vanilla_dk.sh
+ |   |   +-- vanilla_dwm.sh
+ |   |   +-- vanilla_fluxbox.sh
+ |   |   +-- vanilla_i3.sh
+ |   |   +-- vanilla_icewm.sh
+ |   |   +-- vanilla_openbox.sh
+ |   |   +-- vanilla_qtile.sh
+ |   +-- myprinter.sh
+ |   +-- README.md
+ +-- debian-installers/
+     +-- bspwm.sh
+     +-- budgie.sh
+     +-- budgie2.sh
+     +-- nerdfonts.sh
+     +-- README.md
+     +-- resources/
+     |   +-- nvim/
+     |       +-- init.vim
+     +-- xfce.sh
+
+
+---
+[**1] [Debian-Xfce4-Minimal-Install/README.md]
+
+## Debian Xfce4 Minimal Install Guide
+The standard Debian installation process for Xfce desktop includes additional packages that may not be
+necessary for many users. This guide will allow you to install a minimal Xfce desktop, adding additional
+packages as needed.
+
+## Requirements
+* A debian installation (hardware or virtual machine) with appropriate video drivers.
+* sudo privileges to install packages and run optional install script.
+* Installation of 'git' to clone this repo 'sudo pkg install git'
+* Installation of 'bash' to run install script 'sudo pkg install bash'
+## ISO for Installing Debian
+
+* [debian-12.4.0-amd64-netinst.iso](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.4.0-amd64-netinst.iso)
+* [Installing Debian 12](https://www.debian.org/releases/bookworm/debian-installer/)
+* [Debian "bookworm" Release Information](https://www.debian.org/releases/bookworm/)
+
+## Installing Debian without a desktop environment
+As you progress through the debian installation, towards the end you will be presented with the following
+screen for Software selection:
+Uncheck **Debian desktop environment** to install a minimal debian system.
+
+## Update sources to testing or unstable (optional)
+Update sources to 'trixie'. The current testing branch.
+
+$> sudo nano /etc/apt/sources
+
+	deb http://deb.debian.org/debian/ trixie main
+	#deb-src http://deb.debian.org/debian/ trixie main
+
+	deb http://security.debian.org/debian-security trixie-security main
+	#deb-src http://security.debian.org/debian-security trixie-security main
+
+	deb http://deb.debian.org/debian/ trixie-updates main
+	#deb-src http://deb.debian.org/debian/ trixie-updates main
+
+Add 'contrib non-free-firmware' after each 'main' entry if you need special drivers or additional firmware.
+
+The other option would be debian sid. Update 'sources' as follows:
+	deb http://deb.debian.org/debian/ unstable main
+	#deb-src http://deb.debian.org/debian/ unstable main
+
+Upgrade your system:
+$> sudo apt update && apt upgrade
+
+Reboot to load updated kernel and services.
+
+## Quick install Xfce and required packages
+$> git clone https://github.com/coonrad/Debian-Xfce4-Minimal-Install.git
+$> cd Debian-Xfce4-Minimal-Install
+$> sudo ./xfce-install.sh
+
+## Manually install Xfce and required packages
+If you've read this far, and you're getting impatient:
+$> sudo apt install xfce4
+
+This will give you a basic Xfce desktop with lightdm greeter. For additional plugins and ''goodies', add:
+
+$> sudo apt install xfce4-goodies
+
+This still may include too much 'stuff' for the minimalists among us. In that case, strip it down further and
+start with:
+
+$> apt install \
+libxfce4ui-utils \
+thunar \
+xfce4-appfinder \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfce4-terminal \
+xfconf \
+xfdesktop4 \
+xfwm4
+
+From this point you should have a working Xfce desktop environment. You can reboot, and add only what you need
+going forward. If you plan to start xfce4 without lightdm, you may need to install xinit.
+$> sudo apt install xinit
+
+## Additional packages and configuration
+Add a browser, password manager, document viewer, image viewer and office apps:
+$> sudo apt install firefox-esr \
+keepassxc \
+atril \
+ristretto \
+libreoffice-gtk3 \
+libreoffice-calc \
+libreoffice-writer
+
+Add NetworkManager and openvpn:
+$> sudo apt install network-manager-openvpn network-manager-gnome network-manager-openvpn-gnome
+
+Add a few nice icon themes to choose from:
+$> sudo apt install paper-icon-theme moka-icon-theme papirus-icon-theme
+
+Keep the default Adwaita theme as scientists have proven it is the best theme. Xfce comes with Lightdm for the
+display manager. It sources '.xessionrc' on login. Here are a few useful additions:
+# source the system profile
+# if [ -f /etc/profile ]; then
+#     . /etc/profile
+# fi
+
+# QT5 qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# QT5 scaling
+# Uncomment for hidpi display
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# export QT_SCREEN_SCALE_FACTORS=2
+
+Install 'qt5ct' and 'adwaita-qt' to have your QT apps match the default GTK theme.
+$> sudo apt install qt5ct adwaita-qt
+
+Launch 'qt5ct' and configure the theme and fonts.
+
+---
+[Debian-Xfce4-Minimal-Install/xfce-install.sh]
+#!/usr/bin/env bash
+
+## configure and install minimal xfce desktop environment
+
+## check for sudo/root
+if ! [ $(id -u) = 0 ]; then
+	echo "This script must run with sudo, try again..."
+	exit 1
+fi
+
+cat ./xsessionrc >> /home/$SUDO_USER/.xsessionrc
+chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xsessionrc
+
+apt install -y \
+	libxfce4ui-utils \
+	thunar \
+	xfce4-appfinder \
+	xfce4-panel \
+	xfce4-pulseaudio-plugin \
+	xfce4-whiskermenu-plugin \
+	xfce4-session \
+	xfce4-settings \
+	xfce4-terminal \
+	xfconf \
+	xfdesktop4 \
+	xfwm4 \
+	adwaita-qt \
+	qt5ct
+
+echo 
+echo xfce install complete, please reboot and issue 'startx'
+echo
+
+
+---
+[Debian-Xfce4-Minimal-Install/xsessionrc]
+# Lightdm sources .xsessionrc
+# Add env variables here
+
+# source the system profile
+# if [ -f /etc/profile ]; then
+#     . /etc/profile
+# fi
+
+# QT5 qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# QT5 scaling
+# Uncomment for hidpi display
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# export QT_SCREEN_SCALE_FACTORS=2
+
+
+---
+[grewgrif/bookworm-scripts/install.sh]
+
+#!/bin/bash
+
+# Check if git is installed
+if ! command -v git &> /dev/null; then
+	echo "Git is not installed. Attempting to install Git..."
+	
+	# Use apt to install git
+	if command -v apt &> /dev/null; then
+		sudo apt update
+		sudo apt install git -y
+	else
+		echo "Cannot install Git automatically using apt. Please install Git manually and run this script again."
+		exit 1
+	fi
+	
+	# Check again if git is installed after attempting to install
+	if ! command -v git &> /dev/null; then
+		echo "Git installation failed. Please install Git manually and run this script again."
+		exit 1
+	fi
+fi
+
+echo "Git is installed. Continuing with the script..."
+
+# Add further commands here after ensuring Git is installed
+
+# Clone the repository into the home directory
+git clone https://github.com/drewgrif/bookworm-scripts ${HOME}/bookworm-scripts
+git clone https://github.com/drewgrif/jag_dots ${HOME}/bookworm-scripts/jag_dots
+
+
+clear
+echo "
++-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+|j|u|s|t|a|g|u|y|l|i|n|u|x| 
++-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+|c|u|s|t|o|m| |s|c|r|i|p|t| 
++-+-+-+-+-+-+ +-+-+-+-+-+-+ 
+"
+
+# Make setup.sh executable (if needed, though it's typically already executable)
+chmod +x setup.sh packages.sh
+
+# Run the setup script
+bash ${HOME}/bookworm-scripts/install_scripts/setup.sh
+clear
+
+# Run the extra packages
+bash ${HOME}/bookworm-scripts/install_scripts/packages.sh
+clear
+echo "Make sure a Display Manager is installed"
+
+# make sure lightdm is installed
+bash ${HOME}/bookworm-scripts/install_scripts/lightdm.sh
+clear
+
+# add bashrc question
+bash ${HOME}/bookworm-scripts/install_scripts/add_bashrc.sh
+clear
+
+bash ${HOME}/bookworm-scripts/install_scripts/printers.sh
+clear
+
+bash ${HOME}/bookworm-scripts/install_scripts/bluetooth.sh
+sudo apt autoremove
+clear
+printf "\e[1;32mYou can now reboot! Thanks you.\e[0m\n"
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/setup.sh]
+
+#!/bin/bash
+
+# Function to install vanilla AwesomeWM
+install_vanilla_awesome() {
+	echo "Installing vanilla AwesomeWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_awesome.sh
+}
+
+# Function to install customized AwesomeWM
+install_custom_awesome() {
+	echo "Installing JUSTAGUYLINUX customized AwesomeWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_awesome.sh
+}
+
+# Function to install vanilla BSPWM
+install_vanilla_bspwm() {
+	echo "Installing vanilla BSPWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_bspwm.sh
+}
+
+# Function to install customized BSPWM
+install_custom_bspwm() {
+	echo "Installing JUSTAGUYLINUX customized BSPWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_bspwm.sh
+}
+
+# Function to install vanilla DK Window Manager 
+install_vanilla_dk() {
+	echo "Installing vanilla DK Window Manager..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_dk.sh
+}
+
+# Function to install customized DK Window Manager 
+install_custom_dk() {
+	echo "Installing JUSTAGUYLINUX customized DK Window Manager..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_dk.sh
+}
+
+# Function to install vanilla DWM
+install_vanilla_dwm() {
+	echo "Installing vanilla DWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_dwm.sh
+}
+
+# Function to install customized DWM
+install_custom_dwm() {
+	echo "Installing JUSTAGUYLINUX customized DWM with picom animations..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_dwm.sh
+}
+
+# Function to install vanilla Fluxbox
+install_vanilla_fluxbox() {
+	echo "Installing vanilla Fluxbox..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_fluxbox.sh
+}
+
+# Function to install customized Fluxbox
+install_custom_fluxbox() {
+	echo "Installing JUSTAGUYLINUX customized Fluxbox..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_fluxbox.sh
+}
+
+# Function to install vanilla IceWM
+install_vanilla_icewm() {
+	echo "Installing vanilla IceWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_icewm.sh
+}
+
+# Function to install customized IceWM
+install_custom_icewm() {
+	echo "Installing JUSTAGUYLINUX customized IceWM..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_icewm.sh
+}
+
+# Function to install vanilla i3
+install_vanilla_i3() {
+	echo "Installing vanilla i3..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_i3.sh
+}
+
+# Function to install customized i3
+install_custom_i3() {
+	echo "Installing JUSTAGUYLINUX customized i3..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_i3.sh
+}
+
+# Function to install vanilla Openbox
+install_vanilla_openbox() {
+	echo "Installing vanilla Openbox..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_openbox.sh
+}
+
+# Function to install customized Openbox
+install_custom_openbox() {
+	echo "Installing JUSTAGUYLINUX customized Openbox..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_openbox.sh
+}
+
+# Function to install vanilla Qtile
+install_vanilla_qtile() {
+	echo "Installing vanilla Qtile..."
+	bash ${HOME}/bookworm-scripts/install_scripts/vanilla_qtile.sh
+}
+
+# Function to install customized Qtile
+install_custom_qtile() {
+	echo "Installing JUSTAGUYLINUX customized Qtile..."
+	bash ${HOME}/bookworm-scripts/install_scripts/custom_qtile.sh
+}
+
+# Function to prompt user for installation choice (vanilla or customized)
+prompt_installation_choice() {
+	local wm_name="$1"
+	echo "$wm_name Installation"
+	echo "1. Install $wm_name with no customization"
+	echo "2. Install $wm_name with JUSTAGUYLINUX customized"
+	echo "Or ENTER to skip"
+	read -r choice
+
+case "$choice" in
+		1)
+			echo "Installing $wm_name with no customization..."
+			;;
+		2)
+			echo "Installing $wm_name with JUSTAGUYLINUX customized..."
+			;;
+		*)
+			echo "Skipping installation of $wm_name."
+			;;
+	esac
+	
+	# Adding a couple of line returns
+	echo -e "\n\n"
+}
+
+# Main script starts here
+
+# Array to store user choices
+declare -A choices
+
+# Prompt for each window manager and store choices in the array
+prompt_and_store_choice() {
+	local wm_name="$1"
+	prompt_installation_choice "$wm_name"
+	choices["$wm_name"]=$choice
+}
+
+# Prompt for AwesomeWM installation
+prompt_and_store_choice "AwesomeWM"
+
+# Prompt for BSPWM installation
+prompt_and_store_choice "BSPWM"
+
+# Prompt for DK Window Manager installation
+prompt_and_store_choice "DK Window Manager"
+
+# Prompt for DWM installation
+prompt_and_store_choice "DWM"
+
+# Prompt for Fluxbox installation
+prompt_and_store_choice "Fluxbox"
+
+# Prompt for i3 installation
+prompt_and_store_choice "i3"
+
+# Prompt for IceWM installation
+prompt_and_store_choice "IceWM"
+
+# Prompt for Openbox installation
+prompt_and_store_choice "Openbox"
+
+# Prompt for Qtile installation
+prompt_and_store_choice "Qtile"
+
+# Install based on user choices stored in the array
+for wm_name in "${!choices[@]}"; do
+	case "${choices[$wm_name]}" in
+		1)
+			case "$wm_name" in
+				"AwesomeWM")
+					install_vanilla_awesome
+					;;
+				"BSPWM")
+					install_vanilla_bspwm
+					;;
+				"DK Window Manager")
+					install_vanilla_dk
+					;;
+				"DWM")
+					install_vanilla_dwm
+					;;
+				"Fluxbox")
+					install_vanilla_fluxbox
+					;;
+				"IceWM")
+					install_vanilla_icewm
+					;;
+				"i3")
+					install_vanilla_i3
+					;;
+				"Openbox")
+					install_vanilla_openbox
+					;;
+				"Qtile")
+					install_vanilla_qtile
+					;;
+				*)
+					echo "Installation function not defined for $wm_name"
+					;;
+			esac
+			;;
+		2)
+			case "$wm_name" in
+				"AwesomeWM")
+					install_custom_awesome
+					;;
+				"BSPWM")
+					install_custom_bspwm
+					;;
+				"DK Window Manager")
+					install_custom_dk
+					;;
+				"DWM")
+					install_custom_dwm
+					;;
+				"Fluxbox")
+					install_custom_fluxbox
+					;;
+				"IceWM")
+					install_custom_icewm
+					;;
+				"i3")
+					install_custom_i3
+					;;
+				"Openbox")
+					install_custom_openbox
+					;;
+				"Qtile")
+					install_custom_qtile
+					;;
+				*)
+					echo "Installation function not defined for $wm_name"
+					;;
+			esac
+			;;
+		*)
+			echo "Skipping $wm_name installation..."
+			;;
+	esac
+done
+
+echo "All installations completed."
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/add_bashrc.sh]
+
+#!/bin/bash
+
+echo "Would you like to overwrite your current .bashrc with the justaguylinux .bashrc? (y/n)"
+read response
+
+if [[ "$response" =${HOME} ^[Yy]$ ]]; then
+	if [[ -f ${HOME}/.bashrc ]]; then
+		mv ${HOME}/.bashrc ${HOME}/.bashrc.bak
+		echo "Your current .bashrc has been moved to .bashrc.bak"
+	fi
+	wget -O ${HOME}/.bashrc https://raw.githubusercontent.com/drewgrif/jag_dots/main/.bashrc
+	source ${HOME}/.bashrc
+	if [[ $? -eq 0 ]]; then
+		echo "justaguylinux .bashrc has been copied to ${HOME}/.bashrc"
+	else
+		echo "Failed to download justaguylinux .bashrc"
+	fi
+elif [[ "$response" =${HOME} ^[Nn]$ ]]; then
+	echo "No changes have been made to ${HOME}/.bashrc"
+else
+	echo "Invalid input. Please enter 'y' or 'n'."
+fi
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/bluetooth.sh]
+
+#!/bin/bash
+
+echo "Would you like to install Bluetooth services? (y/n)"
+read response
+
+if [[ "$response" =${HOME} ^[Yy]$ ]]; then
+	echo "Installing Bluetooth services..."
+	sudo apt install -y bluez blueman
+	sudo systemctl enable bluetooth
+	# sudo systemctl enable bluetooth
+	echo "Bluetooth services installed."
+elif [[ "$response" =${HOME} ^[Nn]$ ]]; then
+	echo "Bluetooth services will not be installed."
+else
+	echo "Invalid input. Please enter 'y' or 'n'."
+fi
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_awesome.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"awesome"
+	"awesome-extra"
+	"awesome-doc"
+	"tilix"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/awesome/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+# FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+# add settings.ini to config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/gtk-3.0/ ${HOME}/.config/
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_bspwm.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"bspwm"
+	"sxhkd"
+	"suckless-tools"
+	"polybar"
+	"tilix"
+	"kitty"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/bspwm/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/polybar/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+chmod +x ${HOME}/.config/bspwm/bspwmrc
+chmod +x ${HOME}/.config/bspwm/polybar-bspwm
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_dk.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"libxcb-randr0-dev"
+	"libxcb-util-dev"
+	"libxcb-icccm4-dev"
+	"libxcb-cursor-dev"
+	"libxcb-keysyms1-dev"
+	"libxcb-res0-dev"
+	"sxhkd"
+	"suckless-tools"
+	"polybar"
+	"tilix"
+	"kitty"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages "${HOME}/bookworm-scripts/install_scripts/common_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+cd ${HOME}/Downloads
+
+git clone https://bitbucket.org/natemaia/dk.git
+cd dk
+make
+sudo make install
+mkdir -p ${HOME}/.config/dk
+rm -rf ${HOME}/Downloads/dk
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dk/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/polybar/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+
+chmod +x ${HOME}/.config/dk/dkrc
+chmod +x ${HOME}/.config/dk/polybar-dk
+
+# FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_dwm.sh]
+
+#!/bin/bash
+
+# Function to check and rename ${HOME}/.config/suckless if it exists
+check_and_rename_suckless_dir() {
+	local suckless_dir="${HOME}/.config/suckless"
+	local backup_dir="${HOME}/.config/suckless.orig"
+
+	if [ -d "$suckless_dir" ]; then
+		echo "Found existing $suckless_dir directory. Renaming to $backup_dir."
+		mv "$suckless_dir" "$backup_dir"
+		if [ $? -ne 0 ]; then
+			echo "Failed to rename $suckless_dir to $backup_dir. Exiting."
+			exit 1
+		fi
+	fi
+}
+
+# Call function to check and rename ${HOME}/.config/suckless if necessary
+check_and_rename_suckless_dir
+
+# Main list of packages
+packages=(
+	"xorg-dev"
+	"sxhkd"
+	"firefox-esr"
+	"tilix"
+	"kitty"
+	"flameshot"
+	"ranger"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages "${HOME}/bookworm-scripts/install_scripts/common_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+# Enable services
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+# Update user directories
+xdg-user-dirs-update
+mkdir -p ${HOME}/Screenshots/
+
+# Ensure /usr/share/xsessions directory exists
+if [ ! -d /usr/share/xsessions ]; then
+	sudo mkdir -p /usr/share/xsessions
+	if [ $? -ne 0 ]; then
+		echo "Failed to create /usr/share/xsessions directory. Exiting."
+		exit 1
+	fi
+fi
+
+# Write dwm.desktop file
+cat > ./temp << "EOF"
+[Desktop Entry]
+Encoding=UTF-8
+Name=dwm
+Comment=Dynamic window manager
+Exec=dwm
+Icon=dwm
+Type=XSession
+EOF
+sudo cp ./temp /usr/share/xsessions/dwm.desktop
+rm ./temp
+
+# Clone or check existing jag_dots repository
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	echo "Cloning jag_dots repository..."
+	git clone "$REPO_URL" "$SCRIPT_DIR/jag_dots"
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# Copy configuration files
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+# Move autostart script
+mkdir -p ${HOME}/.local/share/dwm
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.local/share/dwm/autostart.sh ${HOME}/.local/share/dwm/
+chmod +x ${HOME}/.local/share/dwm/autostart.sh
+
+# Move patched dwm, slstatus, and st
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/suckless/ ${HOME}/.config/
+
+# Install custom dwm
+cd ${HOME}/.config/suckless/dwm
+make
+sudo make clean install
+
+# Install custom slstatus
+cd ${HOME}/.config/suckless/slstatus
+make
+sudo make clean install
+
+# Install custom st
+cd ${HOME}/.config/suckless/st
+make
+sudo make clean install
+
+# Install additional scripts and themes
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_fluxbox.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"fluxbox"
+	"fbpager"
+	"fbautostart"
+	"tilix"
+	"firefox-esr"
+	"xfce4-appfinder"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.fluxbox/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+bash ${HOME}/bookworm-scripts/install_scripts/fbmenugen.sh
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_i3.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"i3"
+	"sxhkd"
+	"suckless-tools"
+	"polybar"
+	"tilix"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/i3/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/polybar/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+chmod +x ${HOME}/.config/i3/autostart.sh
+chmod +x ${HOME}/.config/i3/polybar-i3
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_icewm.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"icewm"
+	"tilix"
+	"firefox-esr"
+	"xfce4-appfinder"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.icewm/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_openbox.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"openbox"
+	"tint2"
+	"terminator"
+	"firefox-esr"
+	"xfce4-appfinder"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+
+xdg-user-dirs-update
+mkdir ${HOME}/Screenshots/
+
+
+SCRIPT_DIR=${HOME}/bookworm-scripts
+REPO_URL=https://github.com/drewgrif/jag_dots.git
+
+# Check if the directory already exists
+if [ -d "$SCRIPT_DIR/jag_dots" ]; then
+	echo "Directory $SCRIPT_DIR/jag_dots already exists."
+else
+	# Clone the repository
+	echo "Cloning jag_dots repository..."
+	git clone $REPO_URL $SCRIPT_DIR/jag_dots
+	if [ $? -eq 0 ]; then
+		echo "Repository cloned successfully."
+	else
+		echo "Error: Failed to clone repository."
+		exit 1
+	fi
+fi
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/openbox/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/tint2/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+bash ${HOME}/bookworm-scripts/install_scripts/obmenu.sh
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+mv ${HOME}/.config/openbox/Simply_Circles_Dark ${HOME}/.themes
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/custom_qtile.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"python3"
+	"python3-pip"
+	"python3-venv"
+	"python3-v-sim"
+	"python-dbus-dev"
+	"libpangocairo-1.0-0"
+	"python3-cairocffi"
+	"python3-xcffib"
+	"libxkbcommon-dev"
+	"libxkbcommon-x11-dev"
+	"alsa-utils"
+	"tilix"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_common_packages() {
+	local common_file="$1"
+	if [ -f "$common_file" ]; then
+		packages+=( $(< "$common_file") )
+	else
+		echo "Common packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_common_packages ${HOME}/bookworm-scripts/install_scripts/common_packages.txt
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+xdg-user-dirs-update
+
+# set location of virtual directory
+qtilevenv="${HOME}/.local/src/qtile_venv"
+
+# Setting up virtual environment for qtile.
+python3 -m venv $qtilevenv 
+mkdir ${HOME}/.local/bin/
+
+# Git clone into virtual environment
+git clone https://github.com/qtile/qtile.git $qtilevenv/qtile
+
+# Install Qtile
+$qtilevenv/bin/pip install $qtilevenv/qtile/.
+
+# Install psutil
+$qtilevenv/bin/pip install psutil
+
+# Adding venv to correct path ${HOME}/.local/bin/qtile
+
+ln -sf $qtilevenv/bin/qtile ${HOME}/.local/bin/
+
+# Ensure /usr/share/xsessions directory exists
+if [ ! -d /usr/share/xsessions ]; then
+	sudo mkdir -p /usr/share/xsessions
+	if [ $? -ne 0 ]; then
+		echo "Failed to create /usr/share/xsessions directory. Exiting."
+		exit 1
+	fi
+fi
+
+
+# Adding qtile.desktop to Lightdm xsessions directory
+cat > ./temp << "EOF"
+[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Type=Application
+Keywords=wm;tiling
+EOF
+sudo cp ./temp /usr/share/xsessions/qtile.desktop;rm ./temp
+u=$USER
+sudo echo "Exec=/home/$u/.local/bin/qtile start" | sudo tee -a /usr/share/xsessions/qtile.desktop
+
+# moving custom config
+\cp -r ${HOME}/bookworm-scripts/jag_dots/scripts/ ${HOME}
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/qtile/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/dunst/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/rofi/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/picom/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/kitty/ ${HOME}/.config/
+\cp -r ${HOME}/bookworm-scripts/jag_dots/.config/backgrounds/ ${HOME}/.config/
+
+chmod +x ${HOME}/.config/qtile/autostart.sh
+
+# check FT-Labs picom and nerdfonts are installed
+bash ${HOME}/bookworm-scripts/install_scripts/picom.sh
+bash ${HOME}/bookworm-scripts/install_scripts/nerdfonts.sh
+
+# adding gtk theme and icon theme
+bash ${HOME}/bookworm-scripts/colorschemes/blue.sh
+---
+[grewgrif/bookworm-scripts/install_scripts/fbmenugen.sh]
+
+#!/usr/bin/env bash
+
+sudo apt install -y libgtk3-perl
+sudo apt install -y libmodule-build-perl
+
+## install LinuxDesktopFile
+cd ${HOME}/Downloads
+git clone https://github.com/trizen/Linux-DesktopFiles.git
+cd Linux-DesktopFiles
+perl Build.PL
+	 ./Build
+	 ./Build test
+sudo   ./Build install
+	 
+mkdir -p ${HOME}/.local/bin/
+mkdir -p ${HOME}/.config/fbmenugen
+
+cd ${HOME}/Downloads
+git clone https://github.com/trizen/fbmenugen.git
+cd fbmenugen
+cp fbmenugen ${HOME}/.local/bin/
+cp schema.pl ${HOME}/.config/fbmenugen
+
+sudo rm -r ${HOME}/Downloads/Linux-DesktopFiles
+sudo rm -rf ${HOME}/Downloads/fbmenugen
+
+fbmenugen	  # dynamic menu with icons
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/lightdm.sh]
+
+#!/bin/bash
+
+# Function to check if a service is active and enabled
+service_active_and_enabled() {
+	local service="$1"
+	# Check if service is active and enabled
+	sudo systemctl is-active --quiet "$service" && sudo systemctl is-enabled --quiet "$service"
+}
+
+# Check if GDM is installed and enabled
+check_gdm() {
+	service_active_and_enabled gdm
+}
+
+# Check if SDDM is installed and enabled
+check_sddm() {
+	service_active_and_enabled sddm
+}
+
+# Check if LightDM is installed and enabled
+check_lightdm() {
+	service_active_and_enabled lightdm
+}
+
+# Check if LXDM is installed and enabled
+check_lxdm() {
+	service_active_and_enabled lxdm
+}
+
+# Check if Ly is installed and enabled
+check_ly() {
+	service_active_and_enabled ly
+}
+
+# Check if SLiM is installed and enabled
+check_slim() {
+	service_active_and_enabled slim
+}
+
+# Function to install and enable LightDM
+install_lightdm() {
+	echo "Installing LightDM (recommended)..."
+	sudo apt update
+	sudo apt install -y lightdm
+	sudo systemctl enable lightdm
+	echo "LightDM has been installed and enabled."
+}
+
+# Function to install and enable GDM3
+install_gdm() {
+	echo "Installing minimal GDM3..."
+	sudo apt update
+	sudo apt install -y --no-install-recommends gdm3
+	sudo systemctl enable gdm3
+	echo "GDM3 has been installed and enabled."
+}
+
+# Function to install and enable SDDM
+install_sddm() {
+	echo "Installing minimal SDDM..."
+	sudo apt update
+	sudo apt install -y --no-install-recommends sddm
+	sudo systemctl enable sddm
+	echo "SDDM has been installed and enabled."
+}
+
+# Function to install and enable LXDM
+install_lxdm() {
+	echo "Installing LXDM..."
+	sudo apt update
+	sudo apt install -y --no-install-recommends lxdm
+	sudo systemctl enable lxdm
+	echo "LXDM has been installed and enabled."
+}
+
+# Function to install and enable LXDM
+install_slim() {
+	echo "Installing SLiM..."
+	sudo apt update
+	sudo apt install -y slim
+	sudo systemctl enable slim
+	echo "SLiM has been installed and enabled."
+}
+
+# Check which display managers are installed and enabled
+if check_lightdm; then
+	echo "LightDM is already installed and enabled (recommended)."
+	exit 0
+elif check_gdm; then
+	echo "GDM3 is already installed and enabled."
+	exit 0
+elif check_sddm; then
+	echo "SDDM is already installed and enabled."
+	exit 0
+elif check_lxdm; then
+	echo "LXDM is already installed and enabled."
+	exit 0
+elif check_ly; then
+	echo "Ly is already installed and enabled."
+	exit 0
+elif check_slim; then
+	echo "SLiM is already installed and enabled."
+	exit 0
+fi
+
+# If none of the above are installed, offer a choice to the user
+echo "No supported display manager found."
+
+# Menu for user choice
+echo "Choose an option (or '0' to skip):"
+echo "1. Install LightDM (recommended)"
+echo "2. Install minimal GDM3"
+echo "3. Install minimal SDDM"
+echo "4. Install LXDM"
+echo "5. Install SLiM"
+
+read -p "Enter your choice (0/1/2/3/4/5): " choice
+
+case $choice in
+	0)
+		echo "Skipping installation."
+		exit 0
+		;;
+	1)
+		install_lightdm
+		;;
+	2)
+		install_gdm
+		;;
+	3)
+		install_sddm
+		;;
+	4)
+		install_lxdm
+		;;
+	5)
+		install_slim
+		;;
+	*)
+		echo "Invalid choice. Exiting."
+		exit 1
+		;;
+esac
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/nerdfonts.sh]
+
+#!/bin/bash
+
+# Function to check if a command exists
+command_exists() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+# Check if unzip is installed; if not, install it
+if ! command_exists unzip; then
+	echo "Installing unzip..."
+	sudo apt install unzip -y
+fi
+
+# Create directory for fonts if it doesn't exist
+mkdir -p ${HOME}/.local/share/fonts
+
+# Array of font names
+fonts=( 
+	"CascadiaCode"
+	"FiraCode"	
+	"Hack"	
+	"Inconsolata"
+	"JetBrainsMono" 
+	"Meslo"
+	"Mononoki" 
+	"RobotoMono" 
+	"SourceCodePro" 
+	"UbuntuMono"
+	# Add additional fonts here if needed
+)
+
+# Function to check if font directory exists
+check_font_installed() {
+	font_name=$1
+	if [ -d ${HOME}/.local/share/fonts/$font_name ]; then
+		echo "Font $font_name is already installed. Skipping."
+		return 0  # Font already installed
+	else
+		return 1  # Font not installed
+	fi
+}
+
+# Loop through each font, check if installed, and install if not
+for font in "${fonts[@]}"
+do
+	if check_font_installed "$font"; then
+		echo "Skipping installation of font: $font"
+		continue  # Skip installation if font is already installed
+	fi
+	
+	echo "Installing font: $font"
+	wget -q --show-progress "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.zip" -P /tmp
+	if [ $? -ne 0 ]; then
+		echo "Failed to download font: $font"
+		continue
+	fi
+	
+	unzip -q /tmp/$font.zip -d ${HOME}/.local/share/fonts/$font/
+	if [ $? -ne 0 ]; then
+		echo "Failed to extract font: $font"
+		continue
+	fi
+	
+	rm /tmp/$font.zip
+done
+
+# Update font cache
+fc-cache -f
+
+echo "Fonts installation completed."
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/obmenu.sh]
+
+#!/bin/sh
+
+sudo apt install -y libgtk3-perl
+sudo apt install -y libmodule-build-perl
+
+## install LinuxDesktopFile
+cd ${HOME}/Downloads
+git clone https://github.com/trizen/Linux-DesktopFiles.git
+cd Linux-DesktopFiles
+perl Build.PL
+	 ./Build
+	 ./Build test
+sudo   ./Build install
+	 
+mkdir ${HOME}/.local/bin/
+mkdir ${HOME}/.config/obmenu-generator
+
+cd ${HOME}/Downloads
+git clone https://github.com/trizen/obmenu-generator.git
+cd obmenu-generator
+cp obmenu-generator ${HOME}/.local/bin/
+cp schema.pl ${HOME}/.config/obmenu-generator
+
+sudo rm -r ${HOME}/Downloads/Linux-DesktopFiles
+sudo rm -rf ${HOME}/Downloads/obmenu-generator
+
+obmenu-generator -p -i	   # dynamic menu with icons
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/packages.sh]
+
+#!/bin/bash
+
+# Function to install selected packages
+install_packages() {
+	sudo apt install -y "$@"
+}
+
+# File Managers
+file_managers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+
+echo "Choose File Managers to install (space-separated list, e.g., 1 3 5):"
+for i in "${!file_managers[@]}"; do
+	echo "$((i+1)). ${file_managers[i]}"
+done
+read -rp "Selection: " file_manager_selection
+
+selected_file_managers=()
+for index in $file_manager_selection; do
+	selected_file_managers+=("${file_managers[index-1]}")
+done
+
+# Graphics
+graphics=("gimp" "flameshot" "eog" "sxiv" "qimgv" "inkscape" "scrot")
+
+echo "Choose graphics applications to install (space-separated list, e.g., 1 3 5):"
+for i in "${!graphics[@]}"; do
+	echo "$((i+1)). ${graphics[i]}"
+done
+read -rp "Selection: " graphics_selection
+
+selected_graphics=()
+for index in $graphics_selection; do
+	selected_graphics+=("${graphics[index-1]}")
+done
+
+# Terminals
+terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal" )
+
+echo "Choose Terminals to install (space-separated list, e.g., 1 3):"
+for i in "${!terminals[@]}"; do
+	echo "$((i+1)). ${terminals[i]}"
+done
+read -rp "Selection: " terminal_selection
+
+selected_terminals=()
+for index in $terminal_selection; do
+	selected_terminals+=("${terminals[index-1]}")
+done
+
+# Text Editors
+text_editors=("geany" "kate" "gedit" "l3afpad" "mousepad" "pluma")
+
+echo "Choose Text Editors to install (space-separated list, e.g., 1 3 5):"
+for i in "${!text_editors[@]}"; do
+	echo "$((i+1)). ${text_editors[i]}"
+done
+read -rp "Selection: " text_editor_selection
+
+selected_text_editors=()
+for index in $text_editor_selection; do
+	selected_text_editors+=("${text_editors[index-1]}")
+done
+
+# Multimedia
+multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui")
+
+echo "Choose Multimedia applications to install (space-separated list, e.g., 1 3 5):"
+for i in "${!multimedia[@]}"; do
+	echo "$((i+1)). ${multimedia[i]}"
+done
+read -rp "Selection: " multimedia_selection
+
+selected_multimedia=()
+for index in $multimedia_selection; do
+	selected_multimedia+=("${multimedia[index-1]}")
+done
+
+# utilities
+utilities=( "gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" \
+"udns-utils" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" )
+
+echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5):"
+for i in "${!utilities[@]}"; do
+	echo "$((i+1)). ${utilities[i]}"
+done
+read -rp "Selection: " utilities_selection
+
+selected_utilities=()
+for index in $utilities_selection; do
+	selected_utilities+=("${utilities[index-1]}")
+done
+
+# Install selected packages
+install_packages "${selected_file_managers[@]}" "${selected_graphics[@]}" "${selected_terminals[@]}" \
+"${selected_text_editors[@]}" "${selected_multimedia[@]}" "${selected_utilities[@]}"
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/picom.sh]
+
+#!/bin/bash
+
+# Check if picom is already installed
+if picom --version >/dev/null 2>&1; then
+	echo "Picom is already installed. Skipping installation."
+	exit 0
+fi
+
+# If picom is not installed, proceed with installation steps here
+echo "Picom is not installed. Installing..."
+
+# Add your installation commands here
+# For example, if installing via apt (for Debian-based systems):
+# sudo apt update
+# sudo apt install -y picom
+
+# Or if installing via another method, adjust accordingly
+
+sudo apt install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev libpcre2-dev \
+libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-dpms0-dev \
+libxcb-glx0-dev libxcb-image0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev \
+libxcb-render-util0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev libxext-dev meson ninja-build \
+uthash-dev
+
+git clone https://github.com/FT-Labs/picom ${HOME}/bookworm-scripts/picom
+cd ${HOME}/bookworm-scripts/picom
+meson setup --buildtype=release build
+ninja -C build
+sudo ninja -C build install
+
+echo "Installation complete."
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/printers.sh]
+
+#!/bin/bash
+
+echo "Would you like to install printing services? (y/n)"
+read response
+
+if [[ "$response" =${HOME} ^[Yy]$ ]]; then
+	echo "Installing printing services..."
+		sudo apt install -y cups system-config-printer simple-scan
+		sudo systemctl enable cups.service
+	echo "Printing services installed."
+elif [[ "$response" =${HOME} ^[Nn]$ ]]; then
+	echo "Printing services will not be installed."
+else
+	echo "Invalid input. Please enter 'y' or 'n'."
+fi
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_awesome.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"awesome"
+	"awesome-extra"
+	"awesome-doc"
+	"tilix"
+	"firefox-esr"
+)
+
+# Function to read base packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $base_file"
+		exit 1
+	fi
+}
+
+# Read base packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+mkdir -p ${HOME}/.config/awesome
+
+cp /etc/xdg/awesome/rc.lua ${HOME}/.config/awesome/
+cp /usr/share/awesome/themes/default/theme.lua ${HOME}/.config/awesome/
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_bspwm.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"bspwm"
+	"sxhkd"
+	"polybar"
+	"suckless-tools"
+	"rxvt-unicode"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+xdg-user-dirs-update
+
+mkdir -p ${HOME}/.config/{bspwm,sxhkd,dunst}
+
+install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ${HOME}/.config/bspwm/bspwmrc
+install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ${HOME}/.config/sxhkd/sxhkdrc
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_dk.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"libxcb-randr0-dev"
+	"libxcb-util-dev"
+	"libxcb-icccm4-dev"
+	"libxcb-cursor-dev"
+	"libxcb-keysyms1-dev"
+	"libxcb-res0-dev"
+	"sxhkd"
+	"suckless-tools"
+	"polybar"
+	"stterm"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+xdg-user-dirs-update
+
+cd ${HOME}/Downloads
+
+git clone https://bitbucket.org/natemaia/dk.git
+cd dk
+make
+sudo make install
+mkdir -p ${HOME}/.config/dk
+cp /usr/local/share/doc/dk/dkrc ${HOME}/.config/dk/
+cp /usr/local/share/doc/dk/sxhkdrc ${HOME}/.config/dk/
+
+rm -rf ${HOME}/Downloads/dk
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_dwm.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"xorg-dev"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+xdg-user-dirs-update
+# XSessions and dwm.desktop
+if [[ ! -d /usr/share/xsessions ]]; then
+	sudo mkdir /usr/share/xsessions
+fi
+
+cat > ./temp << "EOF"
+[Desktop Entry]
+Encoding=UTF-8
+Name=dwm
+Comment=Dynamic window manager
+Exec=dwm
+Icon=dwm
+Type=XSession
+EOF
+sudo cp ./temp /usr/share/xsessions/dwm.desktop;rm ./temp
+
+
+# Creating directories
+mkdir ${HOME}/.config/suckless
+
+# Move install directory, make, and install
+cd ${HOME}/.config/suckless
+tools=( "dwm" "st" "slstatus" "dmenu" "slock" )
+for tool in ${tools[@]}
+do 
+	git clone git://git.suckless.org/$tool
+	cd ${HOME}/.config/suckless/$tool;make;sudo make clean install;cd ..
+done
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_fluxbox.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"fluxbox"
+	"fbpager"
+	"fbautostart"
+	"terminator"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_i3.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"i3"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_icewm.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"icewm"
+	"terminator"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+# Copy the config files to user directory
+cp -r /usr/share/icewm ${HOME}/.icewm
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_openbox.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"openbox"
+	"tint2"
+	"terminator"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/vanilla_qtile.sh]
+
+#!/bin/bash
+
+# Main list of packages
+packages=(
+	"python3"
+	"python3-pip"
+	"python3-venv"
+	"python3-v-sim"
+	"python-dbus-dev"
+	"libpangocairo-1.0-0"
+	"python3-cairocffi"
+	"python3-xcffib"
+	"libxkbcommon-dev"
+	"libxkbcommon-x11-dev"
+	"alsa-utils"
+	"tilix"
+	"firefox-esr"
+)
+
+# Function to read common packages from a file
+read_base_packages() {
+	local base_file="$1"
+	if [ -f "$base_file" ]; then
+		packages+=( $(< "$base_file") )
+	else
+		echo "Base packages file not found: $common_file"
+		exit 1
+	fi
+}
+
+# Read common packages from file
+read_base_packages "${HOME}/bookworm-scripts/install_scripts/base_packages.txt"
+
+# Function to install packages if they are not already installed
+install_packages() {
+	local pkgs=("$@")
+	local missing_pkgs=()
+
+	# Check if each package is installed
+	for pkg in "${pkgs[@]}"; do
+		if ! dpkg -l | grep -q " $pkg "; then
+			missing_pkgs+=("$pkg")
+		fi
+	done
+
+	# Install missing packages
+	if [ ${#missing_pkgs[@]} -gt 0 ]; then
+		echo "Installing missing packages: ${missing_pkgs[@]}"
+		sudo apt update
+		sudo apt install -y "${missing_pkgs[@]}"
+		if [ $? -ne 0 ]; then
+			echo "Failed to install some packages. Exiting."
+			exit 1
+		fi
+	else
+		echo "All required packages are already installed."
+	fi
+}
+
+# Call function to install packages
+install_packages "${packages[@]}"
+
+xdg-user-dirs-update
+
+# set location of virtual directory
+qtilevenv="${HOME}/.local/src/qtile_venv"
+
+# Setting up virtual environment for qtile.
+python3 -m venv $qtilevenv 
+mkdir ${HOME}/.local/bin/
+
+# Git clone into virtual environment
+git clone https://github.com/qtile/qtile.git $qtilevenv/qtile
+
+# Install Qtile
+$qtilevenv/bin/pip install $qtilevenv/qtile/.
+
+# Install psutil
+$qtilevenv/bin/pip install psutil
+
+# Adding venv to correct path ${HOME}/.local/bin/qtile
+
+ln -sf $qtilevenv/bin/qtile ${HOME}/.local/bin/
+
+# Ensure /usr/share/xsessions directory exists
+if [ ! -d /usr/share/xsessions ]; then
+	sudo mkdir -p /usr/share/xsessions
+	if [ $? -ne 0 ]; then
+		echo "Failed to create /usr/share/xsessions directory. Exiting."
+		exit 1
+	fi
+fi
+
+# Adding qtile.desktop to Lightdm xsessions directory
+cat > ./temp << "EOF"
+[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Type=Application
+Keywords=wm;tiling
+EOF
+sudo cp ./temp /usr/share/xsessions/qtile.desktop;rm ./temp
+u=$USER
+sudo echo "Exec=/home/$u/.local/bin/qtile start" | sudo tee -a /usr/share/xsessions/qtile.desktop
+
+
+
+[grewgrif/bookworm-scripts/install_scripts/base_packages.txt]
+
+xorg
+xserver-xorg
+xbacklight
+xbindkeys
+xvkbd
+xinput
+build-essential
+git
+
+
+
+---
+[grewgrif/bookworm-scripts/install_scripts/common_packages.txt]
+
+xorg
+xserver-xorg
+xbacklight
+xbindkeys
+xvkbd
+xinput
+build-essential
+git
+policykit-1-gnome 
+network-manager 
+network-manager-gnome
+pamixer
+thunar
+thunar-archive-plugin
+thunar-volman
+file-roller
+lxappearance
+dialog
+mtools 
+dosfstools 
+avahi-daemon 
+acpi
+acpid 
+gvfs-backends 
+xfce4-power-manager
+pulseaudio
+pavucontrol
+pamixer
+pulsemixer
+feh
+fonts-recommended 
+fonts-font-awesome
+fonts-terminus 
+papirus-icon-theme
+exa
+scrot
+rofi
+dunst
+libnotify-bin
+xdotool
+unzip
+libnotify-dev
+micro
+geany
+geany-plugin-addons 
+geany-plugin-git-changebar 
+geany-plugin-spellcheck 
+geany-plugin-treebrowser
+geany-plugin-markdown
+geany-plugin-insertnum
+geany-plugin-lineoperations
+geany-plugin-automark
+redshift
+
+
+---
+
