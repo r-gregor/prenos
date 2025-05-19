@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+# from: bash_auto_install_scripts_20241016.txt
 
 cmd=(dialog --title "DasGeek Installer" --separate-output --checklist "Please Select Software You Want To Install:" 22 80 16)
 options=(
