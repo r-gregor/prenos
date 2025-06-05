@@ -1,0 +1,7 @@
+https://nullprogram.com/                     -- c programming
+https://newatlas.com/                        -- tech news
+https://linuxiac.com/                        -- linux stuf
+https://vimhelp.org/usr_toc.txt.html         -- vim users manual (txt)
+https://learnbyexample.github.io/            -- programming stuf
+https://pedropark99.github.io/zig-book/      -- Zig manual
+
