@@ -3,6 +3,35 @@ alien-movies-chronologically-and-by-releases-20250617.txt
 Alien movies in order: chronological and release
 June 12, 2025
 
++--------------------------------------+
+| Alien movies in chronological order  |
++--------------------------------------+
+| 01 - Alien vs. Predator              |
+| 03 - Aliens vs. Predator: Requiem    |
+| 04 - Prometheus                      |
+| 05 - Alien: Covenant                 |
+| 06 - Alien                           |
+| 07 - Alien: Romulus                  |
+| 10 - Aliens                          |
+| 11 - Alien 3                         |
+| 12 - Alien: Resurrection             |
++--------------------------------------+
+
++--------------------------------------------+
+| Alien movies in release order              |
++--------------------------------------------+
+| 01 - Alien (1979)                          |
+| 02 - Aliens (1986)                         |
+| 03 - Alien 3 (1992)                        |
+| 04 - Alien: Resurrection (1997)            |
+| 05 - Alien vs. Predator (2004)             |
+| 06 - Aliens vs. Predator: Requiem (2007)   |
+| 07 - Prometheus (2012)                     |
+| 10 - Alien: Covenant (2017)                |
+| 11 - Alien: Romulus (2024)                 |
++--------------------------------------------+
+
+---
 Watch all Alien movies in order with our comprehensive list, from the 1979
 original to Alien: Romulus, and including the Alien vs. Predator crossovers.
 
