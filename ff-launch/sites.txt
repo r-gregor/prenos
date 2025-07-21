@@ -1,4 +1,4 @@
---- 20250612-1604-en ---
+--- 20250721-1459-en ---
 https://nullprogram.com/                                  -- c programming: blog (5+)
 https://justcode.me/category/c/                           -- c programming: blog
 https://c-for-dummies.com/blog/                           -- c programming: blog (5+)
@@ -26,6 +26,7 @@ https://learnbyexample.github.io/                         -- programming stuf
 https://eli.thegreenplace.net/                            -- programming stuf
 https://johnnysswlab.com/                                 -- programming stuf
 https://biriukov.dev/                                     -- linux/system stuf
+https://linuxhandbook.com/                                -- linux/system: tutorials
 ---
 https://www.youtube.com/c/TsodingDaily                    -- ytb channel
 https://www.youtube.com/@TheCodingTrain                   -- ytb channel
