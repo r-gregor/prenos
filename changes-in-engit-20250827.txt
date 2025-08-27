@@ -1,0 +1,12 @@
+./dotfiles_en/.bashrc
+./majbin_en/geslo-spremeni-en
+./majbin_en/git-commands/engt-check-reports
+./majbin_en/git-commands/engt-empty-reports
+./majbin_en/git-commands/engt-status
+./majbin_en/git-commands/engt-testpush
+./majbin_en/git-commands/testing-gtgh-status-en
+./majbin_en/git-commands/testing-gtgh-testpush-en
+./majbin_en/lsth
+./majrcs_en/aliases-gredelonghi-en
+./metsys_en/updating-git-commands-20250827.txt
+./prenos/updating-git-commands-20250827.txt
