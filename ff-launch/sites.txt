@@ -56,6 +56,7 @@ https://www.youtube.com/@JustAGuyLinux                    -- ytb channel
 https://www.youtube.com/@AlexTheRealDev                   -- ytb channel (c mostly)
 https://www.youtube.com/@eom-dev                          -- ytb channel (Eric O Meehan)
 https://www.youtube.com/@aliawan6245                      -- ytb channel (c mostly, 5+)
+https://www.youtube.com/@yousuckatprogramming             -- ytb channel (BASH mostly, 5+)
 ---
 https://www.youtube.com/playlist?list=PL98qAXLA6aftD9ZlnjpLhdQAOFI8xIB6e     -- C Programming for Beginners
 https://www.youtube.com/playlist?list=PL2B6OzTsMUrz3RBEhYGb-0wtH9SqFpcDj     -- Productive Workstation with Linux (Debian)
