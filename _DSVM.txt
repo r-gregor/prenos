@@ -417,7 +417,6 @@ The Edge (2025)
 --- 20250821 ---
 F1 The Movie (2025)
 Karate Kid Legends (2025)
-Appaloosa (2008)
 My Cousin Vinny (1992)
 The Assessment (2024)
 Thunderbolts (2025)
@@ -437,5 +436,11 @@ The Salt Path (2024)
 The Naked Gun (2025)
 The Graduate (1967)
 Nobody 2 (2025)
+She Rides Shotgun (2025)
+Tornado (2025)
+--- 20250905 ---
+Atonement (2007)
+Heat (1995)
+Highest 2 Lowest (2025)
 --- ---
 
