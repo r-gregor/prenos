@@ -42,9 +42,10 @@ if [ $# -ne 0 ]; then
 		crtc
 	else
 		long=0
-		tms; echo "Directories by size (at least 10 MB):"
-		crtc
 	fi
+else
+	tms; echo "Directories by size (at least 10 MB):"
+	crtc
 fi
 
 if [ $long -eq 0 ]; then
