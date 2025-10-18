@@ -1,0 +1,54 @@
+#! /usr/bin/env bash
+# filename: majapps-launch
+# 20250917 (d)
+# last: 20250917 (d)
+
+declare -A apps=(["Firefox"]="/usr/bin/firefox" \
+                 ["Google Chrome"]="/usr/bin/google-chrome" \
+                 ["Mate calculator"]="/usr/bin/mate-calculator" \
+                 ["Mousepad"]="/usr/bin/mousepad" \
+                 ["Thunar FM"]="/usr/bin/thunar" \
+                 # ["Double Commander"]="/usr/bin/doublecmd" \
+                 ["Transmission"]="/usr/bin/transmission-gtk" \
+                 ["ArandR"]="/usr/bin/arandr" \
+                 ["VLC"]="/usr/bin/vlc")
+
+declare -a keys=("Firefox" \
+	             "Google Chrome" \
+				 "Mate calculator" \
+				 "Mousepad" \
+				 "Thunar FM" \
+				 # "Double Commander" \
+                 "Transmission" \
+				 "ArandR" \
+				 "VLC" \
+				 "q (quit)")
+
+# TEST
+# echo "apps values only: ${apps[@]}"
+# echo "apps keys only:   ${!apps[@]}"
+# echo "apps length:      ${#apps[@]}"
+
+# selection=$(for app in "${!apps[@]}"; do echo "$app"; done | fzf --reverse +c --info=hidden --prompt="launch: ")
+
+selection=$(for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | \
+			fzf \
+			--reverse \
+			--border=rounded \
+			--info=hidden \
+			--height=15 \
+			+c \
+			--prompt="launch: ")
+
+# TEST 2
+# echo "selection: $selection"
+# echo "app: ${apps["${selection}"]}"
+
+# RUN
+# eval "${apps["${selection}"]} &"
+if [ "x${selection}" == "x" ]; then
+	echo "[ERROR] no aplication selected"
+	exit
+fi
+eval "nohup ${apps["${selection}"]} >&/dev/null &"
+
