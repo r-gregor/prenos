@@ -1,7 +1,9 @@
 #! /usr/bin/env bash
 # filename: majapps-launch
 # 20250917 (d)
-# last: 20250917 (d)
+# 20251020 (d) -- run inside infinite loop and added 'q' to quit
+#              -- keys in separate index-ed array to keep display order
+# last: 20251020 (d)
 
 declare -A apps=(["Firefox"]="/usr/bin/firefox" \
                  ["Google Chrome"]="/usr/bin/google-chrome" \
@@ -24,31 +26,28 @@ declare -a keys=("Firefox" \
 				 "VLC" \
 				 "q (quit)")
 
-# TEST
-# echo "apps values only: ${apps[@]}"
-# echo "apps keys only:   ${!apps[@]}"
-# echo "apps length:      ${#apps[@]}"
+while true; do
 
-# selection=$(for app in "${!apps[@]}"; do echo "$app"; done | fzf --reverse +c --info=hidden --prompt="launch: ")
+	selection=$(for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | \
+				fzf \
+				--reverse \
+				--border=rounded \
+				--info=hidden \
+				--height=15 \
+				+c \
+				--prompt="launch: ")
 
-selection=$(for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | \
-			fzf \
-			--reverse \
-			--border=rounded \
-			--info=hidden \
-			--height=15 \
-			+c \
-			--prompt="launch: ")
+	if [ "x${selection}" == "x" ]; then
+		echo "[ERROR] no aplication selected"
+		exit
+	fi
 
-# TEST 2
-# echo "selection: $selection"
-# echo "app: ${apps["${selection}"]}"
+		# RUN
+		if [ "${selection}" == "q (quit)" ]; then
+			exit
+		fi
 
-# RUN
-# eval "${apps["${selection}"]} &"
-if [ "x${selection}" == "x" ]; then
-	echo "[ERROR] no aplication selected"
-	exit
-fi
-eval "nohup ${apps["${selection}"]} >&/dev/null &"
+		eval "nohup ${apps["${selection}"]} >&/dev/null &"
+
+done
 
