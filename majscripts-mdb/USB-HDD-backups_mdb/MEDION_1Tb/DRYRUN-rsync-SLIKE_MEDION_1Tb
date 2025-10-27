@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+gDest="/media/rgregor/eb8aea4b-d092-4b4e-9b83-f6b48ccc170e/backup_jbez0rg"
+
+sudo rsync -av -n --delete --progress /home/SLIKE/ ${gDest}/home/SLIKE/
+

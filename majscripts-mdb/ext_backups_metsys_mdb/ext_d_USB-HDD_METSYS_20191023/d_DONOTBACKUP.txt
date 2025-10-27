@@ -1,0 +1,16 @@
+rgregor/KRZ_Movies
+rgregor/KRZ_TV_shows
+rgregor/KRZ_Videos
+rgregor/SLIKE
+rgregor/Dropbox
+rgregor/majfajls/coding
+rgregor/majfajls/bckps_all
+rgregor/majfajls/FILMCKI/iz_KORUZE
+rgregor/DBOT
+rgregor/pandas_test
+rgregor/CPP_d_testing
+rgregor/GO_d_testing
+rgregor/JAVA_d_testing
+rgregor/PYTHON_d_testing
+rgregor/.cache
+SLIKE

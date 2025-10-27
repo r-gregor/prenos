@@ -1,0 +1,24 @@
+﻿---
+$> gregor.redelonghi@cygwin-en [/home/gregor.redelonghi/bin]
+$> for DDD in ~/METSYS-en/ ~/majfajls/coding/; do grep -lr "/En/gr.03/" $DDD; done > ~/majfajls/coding/datoteke-z-geslom.dat
+
+
+---
+$> gregor.redelonghi@cygwin-en [/home/gregor.redelonghi/bin]
+$> cat datoteke-z-geslom.dat
+/home/gregor.redelonghi/majfajls/coding/PYTHON/sendmymail-en.py
+/home/gregor.redelonghi/majfajls/coding/sendfiles-msg.sh
+/home/gregor.redelonghi/majfajls/coding/sendfiles.sh
+/home/gregor.redelonghi/majfajls/coding/sendhome2filelist.sh
+/home/gregor.redelonghi/majfajls/coding/sendmymail-en.py
+/home/gregor.redelonghi/majfajls/coding/snd.mm.hm.sh
+/home/gregor.redelonghi/majfajls/coding/sndhm.sh
+
+
+---
+cp ~/majfajls/coding/datoteke-z-geslom.dat ~/METSYS-en/
+
+
+---
+$> gregor.redelonghi@cygwin-en [/home/gregor.redelonghi/bin]
+$> while read FFF; do sed -n 's/gr.03/gr.04/p' $FFF; done < ~/majfajls/coding/datoteke-z-geslom.dat 

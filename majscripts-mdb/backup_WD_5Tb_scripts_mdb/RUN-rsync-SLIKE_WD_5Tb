@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+gDest="/media/rgregor/EKSFAT/backup_muadib"
+
+sudo rsync -rtLDv --delete --progress $HOME/majstaf/SLIKE/ ${gDest}/home/SLIKE/
+

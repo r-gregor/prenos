@@ -1,0 +1,247 @@
+timedelta_20180111
+timedelta_20180111
+
+args_20180907
+args_20180907
+
+Stack_20190111
+Stack_20190111
+
+sort-by-field_20171130
+sort-by-field_20171130
+
+subs_20171122
+subs_20171122
+
+rename_movie_fnames_20180322
+rename_movie_fnames_20180322
+
+beri_20160616
+beri_20160616
+
+OOP_20180907
+OOP_20180907
+
+dec_to_bin_20180907
+dec_to_bin_20180907
+
+obesenec_20180907
+obesenec_20180907
+
+API-tests_20190916
+API-tests_20190916
+
+20170614
+20170614
+
+sorting_20180907
+sorting_20180907
+
+rename_and_clean_fname_20190130
+rename_and_clean_fname_20190130
+
+find_files_by_name_20180907
+find_files_by_name_20180907
+
+file-manipulations_20171025
+file-manipulations_20171025
+
+20170518
+20170518
+
+rsync-backup_20161020
+rsync-backup_20161020
+
+serialization_20181106
+serialization_20181106
+
+test_20170321
+test_20170321
+
+timing-algorithms_20170608
+timing-algorithms_20170608
+
+Packaging_Test_1_20181211
+Packaging_Test_1_20181211
+
+renaming-cleaning-fnames-dirnames_20190902
+renaming-cleaning-fnames-dirnames_20190902
+
+heap_20171206
+heap_20171206
+
+clean_movies_dirname_20180105
+clean_movies_dirname_20180105
+
+class_test_20190304
+class_test_20190304
+
+JSON_20180907
+JSON_20180907
+
+from_Mark__alterniraj_20181203
+from_Mark__alterniraj_20181203
+
+data_prety_print_20180423
+data_prety_print_20180423
+
+ponjave_2018_20180907
+ponjave_2018_20180907
+
+project_20181010
+project_20181010
+
+test_20190306
+test_20190306
+
+PRACTICE-PYTHON_20170523
+PRACTICE-PYTHON_20170523
+
+day_of_week_20190924
+day_of_week_20190924
+
+find_dup_filenames_20190507
+find_dup_filenames_20190507
+
+LList_20180426
+LList_20180426
+
+dates_20180131
+dates_20180131
+
+bankovci_centi_20190913
+bankovci_centi_20190913
+
+st-delovnih-ur-v-mesecu_20181013
+st-delovnih-ur-v-mesecu_20181013
+
+copying_20161014
+copying_20161014
+
+elektrika_V1_en_20180925
+elektrika_V1_en_20180925
+
+faktorji-istocasnosti-ptn_20190306
+faktorji-istocasnosti-ptn_20190306
+
+mymath_20161013
+mymath_20161013
+
+20161025
+20161025
+
+hvar_izracun_en_V3_20180830
+hvar_izracun_en_V3_20180830
+
+golden-r_20190307
+golden-r_20190307
+
+filedelta_20180111
+filedelta_20180111
+
+softlinking_automatic_20190131
+softlinking_automatic_20190131
+
+st-delovnih-ur-v-mesecu_20181014
+st-delovnih-ur-v-mesecu_20181014
+
+psswd_check_20190110
+psswd_check_20190110
+
+path_20161013
+path_20161013
+
+merge_sorted_arrays_20190515
+merge_sorted_arrays_20190515
+
+test_20160506
+test_20160506
+
+hvar_izracun_en_V4_20180917
+hvar_izracun_en_V4_20180917
+
+repl_blanks-and-punct_with-dashes-or_undsc_20180104
+repl_blanks-and-punct_with-dashes-or_undsc_20180104
+
+subscript_for_movies_20180907
+subscript_for_movies_20180907
+
+movie_stream_rate_20200206
+movie_stream_rate_20200206
+
+LowestCommonMultiplicator_20201019
+LowestCommonMultiplicator_20201019
+
+MPika_20210121
+MPika_20210121
+
+gui-simple-calculator-with-tkinter_20210610
+gui-simple-calculator-with-tkinter_20210610
+
+imdbpy_test_20210911
+imdbpy_test_20210911
+
+pysimplequi_test_20210901
+pysimplequi_test_20210901
+
+matplotlib-test_20210907
+matplotlib-test_20210907
+
+tuples_as_dict_keys_test_20210922
+tuples_as_dict_keys_test_20210922
+
+sum-of-digits_20220204
+sum-of-digits_20220204
+
+sort_movies_by_year_20220218
+sort_movies_by_year_20220218
+
+PI2_20211220
+PI2_20211220
+
+matplotlib_3d_plotting
+matplotlib_3d_plotting
+
+cpu-ram-realtime-usage_20220627
+cpu-ram-realtime-usage_20220627
+
+webscrapping-with-mechanicalsoup_20220728
+webscrapping-with-mechanicalsoup_20220728
+
+imdb_scrapping_20220823
+imdb_scrapping_20220823
+
+simple-tcp-chat_20221014
+simple-tcp-chat_20221014
+
+permutations_of_bikelock_4_by_10_numbers_20230404
+permutations_of_bikelock_4_by_10_numbers_20230404
+
+imdb_cinemagoer_20230806
+imdb_cinemagoer_20230806
+=====================================================
+copy_dir_tree_20191028 -- SINGLE
+rojstni_dnevi_d_20191106 -- SINGLE
+zp-dolocitev-cevi-pretok-hitrost_20200328 -- SINGLE
+g-ga-predpone-imena_20201126 -- SINGLE
+sqlite_test_20210323 -- SINGLE
+KRZMovies_db_20210320 -- SINGLE
+hashlib_sha256_20210418 -- SINGLE
+folium_test_20230818 -- SINGLE
+PTS -- SINGLE
+=====================================================
+rojstni_dnevi_20191106 -- SINGLE
+json-covid19-API_20210317 -- SINGLE
+movies_database_sqlite_20210319 -- SINGLE
+sqlite_test_20210319 -- SINGLE
+oop_20210413 -- SINGLE
+oop2_20210830 -- SINGLE
+socket_programming_20210902 -- SINGLE
+typing-and-protocol-class-testing_20210917 -- SINGLE
+regex_rsort_files_by_datestamp -- SINGLE
+predpone_20211118 -- SINGLE
+sum-of-convergent-series_20220203 -- SINGLE
+tqdm-progress-bar_20220803 -- SINGLE
+simple_hash_table_20221017 -- SINGLE
+kivy-test -- SINGLE
+typer_test_20230511 -- SINGLE

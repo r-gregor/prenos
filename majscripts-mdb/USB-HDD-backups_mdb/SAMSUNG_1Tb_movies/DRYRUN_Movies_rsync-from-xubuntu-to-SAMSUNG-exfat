@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+### Name:	Scriptname ...
+### Author:	Author ... 
+### Date:	 
+### Decription:
+### 
+### 
+### 
+ 
+gSrc="/home/rgregor/majstaf/FILMCKI/iz_KORUZE/Movies"
+gDest="/media/rgregor/5AC9-6D5E/iz_KORUZE/Movies"
+
+rsync -rltDv -n --progress  ${gSrc}/ ${gDest}/
+

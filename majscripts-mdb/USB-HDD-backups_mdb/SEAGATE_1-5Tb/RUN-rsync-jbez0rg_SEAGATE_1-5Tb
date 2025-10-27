@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+gDest="/media/rgregor/B1_2_EXT4/backup_jbez0rg"
+
+sudo rsync -av --exclude SLIKE/ --delete --progress --exclude=".cache/" --exclude=".thumbnails/" /home/ ${gDest}/home/
+
