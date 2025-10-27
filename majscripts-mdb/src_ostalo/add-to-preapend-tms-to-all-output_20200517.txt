@@ -1,1 +1,0 @@
-| grep -v '^[[:space:]]*$' | while read line; do (tms; echo $line); done

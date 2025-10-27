@@ -1,3 +1,0 @@
-/home/rgregor/majfajls/coding/00_ukazi/convert-filename-to-lowercase-with-hypens.sh [rm: convert]
-/home/rgregor/majfajls/coding/00_ukazi/subtitles/correct-subs.py	[--> subs-corrext]
-/home/rgregor/majfajls/coding/fnd/find-file-by-word.sh	[find --> fnd]

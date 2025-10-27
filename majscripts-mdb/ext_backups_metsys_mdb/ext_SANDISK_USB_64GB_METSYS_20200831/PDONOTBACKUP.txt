@@ -1,4 +1,0 @@
-DWGTrueView_2017
-cygwin64
-staro_cygwin64
-cygwin_LPD
