@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 # v1 20251023 en
 # v2 20251024 en
-# last 20251024
-	
+# v3 20251027 en
+# last 20251027
+
 function draw_num() {
 	echo "-----------------------------------------------"
 	echo "number: ${1}"
