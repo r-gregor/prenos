@@ -28,17 +28,17 @@ declare -a keys=("Firefox" \
 
 while true; do
 
-selection=$(for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | \
-			fzf \
-			--reverse \
-			--border=rounded \
-			--info=hidden \
-			--height=15 \
-			+c \
-			--prompt="launch: ")
+	selection=$(for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | \
+				fzf \
+				--reverse \
+				--border=rounded \
+				--info=hidden \
+				--height=15 \
+				+c \
+				--prompt="launch: ")
 
 	if [ "x${selection}" == "x" ]; then
-		echo "[ERROR] no selection"
+		echo "[ERROR] no aplication selected"
 		exit
 	fi
 

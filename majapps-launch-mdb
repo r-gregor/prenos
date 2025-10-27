@@ -16,15 +16,15 @@ declare -A apps=(["Firefox"]="/usr/bin/firefox" \
                  ["VLC"]="/usr/bin/vlc")
 
 declare -a keys=("Firefox" \
-	             "Google Chrome" \
-				 "Mate calculator" \
-				 "Mousepad" \
-				 "Thunar FM" \
-				 # "Double Commander" \
+                 "Google Chrome" \
+                 "Mate calculator" \
+                 "Mousepad" \
+                 "Thunar FM" \
+                 # "Double Commander" \
                  "Transmission" \
-				 "ArandR" \
-				 "VLC" \
-				 "q (quit)")
+                 "ArandR" \
+                 "VLC" \
+                 "q (quit)")
 
 while true; do
 
@@ -42,12 +42,12 @@ while true; do
 		exit
 	fi
 
-		# RUN
-		if [ "${selection}" == "q (quit)" ]; then
-			exit
-		fi
+	# RUN
+	if [ "${selection}" == "q (quit)" ]; then
+		exit
+	fi
 
-		eval "nohup ${apps["${selection}"]} >&/dev/null &"
+	eval "nohup ${apps["${selection}"]} >&/dev/null &"
 
 done
 
