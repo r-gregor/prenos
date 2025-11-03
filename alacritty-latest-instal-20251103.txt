@@ -1,0 +1,26 @@
+# from: https://github.com/alacritty/alacritty/blob/master/INSTALL.md
+# ---
+rustup override set stable
+rustup update stable
+sudo apt install cmake g++ pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+cd majstaf/majprogs/
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty/
+cd majstaf/majprogs/alacritty/
+cargo build --release
+infocmp alacritty
+cd target/
+cd release/
+./alacritty
+alacritty migrate
+sudo mv /usr/local/bin/alacritty{,.old}
+sudo cp alacritty /usr/local/bin/
+/usr/local/bin/alacritty.old --version
+alacritty --version
+alacritty
+# change import to general.import in alacritty.toml (remove config error)
+vim ~/.config/alacritty/alacritty.toml
+	# #import = ["/home/rgregor/.config/alacritty/dracula_custom-1.toml"]
+	# general.import = ["/home/rgregor/.config/alacritty/dracula.toml"]
+# ---
+
