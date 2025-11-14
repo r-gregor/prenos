@@ -1,6 +1,0 @@
-./majbin/show-aliases-mdb
-./majbin/jarxrun-en
-./majbin/check-git-diffs-mdb
-./majrcs/aliases-muadib-backup
-./majrcs/aliases-muadib
-./majrcs/funclist

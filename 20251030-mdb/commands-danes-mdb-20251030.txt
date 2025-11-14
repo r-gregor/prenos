@@ -1,4 +1,0 @@
-grep -rl ERROR * | grep -v "ext-backup\|Brth"
-grep -rl ERROR * | grep -v "ext-backup\|Brth" | xargs -ro vim
-grep -rl ERROR * | grep -v "ext-backup\|Brth" | xargs -I{} echo "cp -rv {} $MMJBN/{}"
-grep -rl ERROR * | grep -v "ext-backup\|Brth" | xargs -I{} cp -rv {} $MMJBN/{}
