@@ -59,9 +59,12 @@ if [ "${selected}" == "08 - q (quit)" ]; then
 fi
 
 if [ "${selected}" == "07 - ALL" ]; then
-	ff_launch "all"
-	exit
+	go="all"
+else
+	go="${directions[${selected}]}
+"
 fi
 
-ff_launch ${directions[${selected}]}
+# ff_launch ${directions[${selected}]}
+ff_launch ${go}
 
