@@ -15,10 +15,10 @@ SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
 ff_launch() {
 	local SRC
 	if [ $1 == "all" ]; then
-		SRC="${SRCDIR}/*.txt"
+		SRC="$(dirname $(realpath ${BASH_SOURCE[0]}))/*.txt"
 	else
 		local site=$1
-		SRC="${SRCDIR}/${site}"
+		SRC="$(dirname $(realpath ${BASH_SOURCE[0]}))/${site}"
 	fi
 
 	local URLs
