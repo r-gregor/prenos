@@ -24,12 +24,12 @@ ff_launch() {
 	selection=$(for URL in "${URLS[@]}"; do echo "$URL"; done 2>/dev/null | fzf -e --reverse)
 
 	if [ "x${selection}" == "x" ]; then
-		echo -e "[INFO] nothing selected - 2\n"
+		echo -e "[INFO] nothing selected\n"
 		exit
 	fi
 
 	if [[ ${selection} =~ ^(---) ]]; then
-		echo -e "[INFO] nothing selected - 3\n"
+		echo -e "[INFO] nothing selected\n"
 		exit
 	fi
 
@@ -50,7 +50,7 @@ declare -A directions=(["01 - c programming"]="cprogramming.txt" \
 selected=$(for WAY in "${!directions[@]}"; do echo $WAY; done | sort | fzf +c --reverse)
 
 if [ "x${selected}" == "x" ]; then
-	echo -e "[INFO] nothing selected - 1\n"
+	echo -e "[INFO] nothing selected\n"
 	exit
 fi
 
