@@ -47,7 +47,7 @@ ff_launch() {
 }
 
 # v5
-readarray -t categories < <(sed -n "/\[.*\]/p" sites.txt | sed -e 's/\[//' -e 's/\]//')
+readarray -t categories < <(sed -n "/\[.*\]/p" "${SITES}" | sed -e 's/\[//' -e 's/\]//')
 categories+=("ALL")
 categories+=("q (quit)")
 
