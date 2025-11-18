@@ -19,7 +19,7 @@ fi
 
 CATEGORY=$(ls -1 ${DEST} | fzf -e --reverse)
 
-echo -n "Move \"${fname}\" to .../${CATEGORY}? [y/n]:  "
+echo -n "Copy \"${fname}\" to .../${CATEGORY}? [y/n]:  "
 read -r ans
 
 if [ "${ans}" == "y" ] || [ "${ans}" == "Y" ]; then
