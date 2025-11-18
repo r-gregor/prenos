@@ -5,6 +5,7 @@
 # 20251117 v3 en: ALL --> cat all txt files into process subst ...
 #                 no 'all.txt' needed
 # 20251118 v4 en: single "sites.txt" with "[section name]" headers parsing
+# 20251118 v5 en: get 'categories' from 'sites.txt' file directly
 # last: 20251118 en
 
 clear
@@ -19,11 +20,10 @@ ff_launch() {
 		readarray -t URLS < <(cat ${SITES})
 	else
 		site=$1
+		# v4
 		# readarray -t URLS < <(sed -n "/\[${site}\]/,/^$/p" ${SITES} | sed -n '2,$'p)
 		readarray -t URLS < <(sed -n "/\[${site}\]/,/^$/p" ${SITES})
 	fi
-
-
 
 	selection=$(for URL in "${URLS[@]}"; do echo "$URL"; done 2>/dev/null | fzf -e --reverse)
 
@@ -46,16 +46,12 @@ ff_launch() {
 	cygstart ${FFCMD} "${path}"
 }
 
-directions=("c programming" \
-            "programming portals" \
-            "ytb channels" \
-            "ytb playlists" \
-            "linux stuff" \
-            "technews.txt" \
-            "ALL" \
-            "q (quit)")
+# v5
+readarray -t categories < <(sed -n "/\[.*\]/p" sites.txt | sed -e 's/\[//' -e 's/\]//')
+categories+=("ALL")
+categories+=("q (quit)")
 
-selected=$(for WAY in "${directions[@]}"; do echo $WAY; done | fzf +c --reverse)
+selected=$(for WAY in "${categories[@]}"; do echo $WAY; done | fzf +c --reverse)
 
 if [ "x${selected}" == "x" ]; then
 	echo -e "[INFO] nothing selected\n"
@@ -73,3 +69,4 @@ else
 fi
 
 ff_launch "${dest}"
+
