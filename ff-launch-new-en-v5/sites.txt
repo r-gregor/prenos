@@ -1,4 +1,5 @@
 --- 2025118-0950-en ---
+--- 2025118-1048-en ---
 
 [c programming]
 https://nullprogram.com/                                  -- c programming: blog (5+)
@@ -19,6 +20,7 @@ https://linuxiac.com/                                     -- linux stuf
 https://vimhelp.org/usr_toc.txt.html                      -- vim users manual (txt)
 https://biriukov.dev/                                     -- linux/system stuf
 https://linuxhandbook.com/                                -- linux/system: tutorials
+https://distrowatch.com/                                  -- linux distros rating/info
 
 [programming portals]
 https://pedropark99.github.io/zig-book/                   -- Zig manual
