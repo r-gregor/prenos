@@ -1,0 +1,4 @@
+./gradient
+./gradient -w 200 -h 600
+./gradient -w 100
+
