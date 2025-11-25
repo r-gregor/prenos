@@ -39,27 +39,36 @@ elif
 	exit
 fi
 
+unset DAYS
 declare -a DAYS
 
-for selectd in $(seq ${day} ${month_days[${mnth}]}); do
-	DAYS+=($( printf "%d%02d%02d" ${curryr} ${mnth} ${selectd}))
-done
-
-let mnth+=1
-
-while [ ${mnth} -lt ${currmn} ]; do
-	for selectd in $(seq 1 ${month_days[${mnth}]}); do
-		DAYS+=($( printf "%d%02d%02d" ${curryr} ${mnth} ${selectd}))
+if [ ${mnth} -lt ${currmn} ]; then
+	for selectd1 in $(seq ${day} ${month_days[${mnth}]}); do
+		DAYS+=($( printf "%d%02d%02d" ${curryr} ${mnth} ${selectd1}))
 	done
-	let mnth+=1
-done
 
-for selectd in $(seq 1 ${currdy}); do
-	DAYS+=($( printf "%d%02d%02d" ${curryr} ${currmn} ${selectd}))
-done
+	let mnth+=1
+
+	while [ ${mnth} -lt ${currmn} ]; do
+		for selectd2 in $(seq 1 ${month_days[${mnth}]}); do
+			DAYS+=($( printf "%d%02d%02d" ${curryr} ${mnth} ${selectd2}))
+		done
+		let mnth+=1
+	done
+
+	for selectd3 in $(seq 1 ${currdy}); do
+		DAYS+=($( printf "%d%02d%02d" ${curryr} ${currmn} ${selectd3}))
+	done
+else 
+	for selectd3 in $(seq ${day} ${currdy}); do
+		DAYS+=($( printf "%d%02d%02d" ${curryr} ${currmn} ${selectd3}))
+	done
+fi
 
 # echo ${DAYS[@]}
+# exit
 
+unset RESULT
 readarray -t RESULT < <(for DYS in ${DAYS[@]}; do find ${SRCDIR} -iname "*${DYS}.txt"; done)
 
 if [ "x${RESULT[0]}" == "x" ]; then
@@ -67,6 +76,7 @@ if [ "x${RESULT[0]}" == "x" ]; then
 	exit
 fi
 
+unset fljs
 readarray -t fjls < <(for FJL in $(echo ${RESULT[@]}); do echo "$FJL"; done | fzf -m -e --reverse)
 
 if [ "x${fjls[0]}" == "x" ]; then
