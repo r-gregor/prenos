@@ -41,6 +41,7 @@ elif [ ${mnth} -eq ${currmn} ] && [ ${day} -gt ${currdy} ]; then
 	exit
 fi
 
+unset RESULT
 # readarray -t RESULT < <(for DYS in $(seq ${day} ${month_days[${mnth}]}); do find ${SRCDIR} -iname "*${curryr}${mnth}${DYS}.txt"; done)
 readarray -t RESULT < <(for DYS in $(seq ${day} ${month_days[${mnth}]}); do find ${SRCDIR} \
 	-iname $(printf "*%d%02d%02d.txt" ${curryr} ${mnth} ${DYS}); done)
@@ -50,7 +51,8 @@ if [ "x${RESULT[0]}" == "x" ]; then
 	exit
 fi
 
-readarray -t fjls < <(for FJL in $(echo ${RESULT[@]}); do echo "$FJL"; done | fzf -m --reverse)
+unset fjls
+readarray -t fjls < <(for FJL in $(echo ${RESULT[@]}); do echo "$FJL"; done | fzf -m -e --reverse)
 
 if [ "x${fjls[0]}" == "x" ]; then
 	echo -e "[INFO] No files selected\n"
