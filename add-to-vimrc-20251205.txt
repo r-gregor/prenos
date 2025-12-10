@@ -1,5 +1,0 @@
-" 20251205
-" move '{' after 'func() '
-noremap <space>f jddkA {<ESC>j
-
-
