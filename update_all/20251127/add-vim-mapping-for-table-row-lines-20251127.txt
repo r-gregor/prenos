@@ -1,4 +1,0 @@
-" 20251127
-" table row dividers
-noremap ,tr 0yyjp}P<ESC>j
-
