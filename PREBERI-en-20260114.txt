@@ -6,4 +6,4 @@ c-pointers-and-structs-basics-to-advanced-multif-20260109.txt
 c-pointers-as-structure-member-multif-20220513.txt
 c-structs-building-up-to-full-dynamic-example-multif-20230828.txt
 c-structures-Vs-structure-pointers-how-which-why-20211201.txt
-
+c-pointer-to-array-5ppp-20260112.txt
