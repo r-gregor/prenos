@@ -1,0 +1,9 @@
+c-dynamic-allocations-and-structs-5pp-20220304.txt
+c-free-pointer-to-struct-inside-a-struct-20220524.txt
+c-howto-declare-and-initialize-array-of-pointers-to-structure-20250623.txt
+c-initializing-struct-with-string-array-5pp-20230524.txt
+c-pointers-and-structs-basics-to-advanced-multif-20260109.txt
+c-pointers-as-structure-member-multif-20220513.txt
+c-structs-building-up-to-full-dynamic-example-multif-20230828.txt
+c-structures-Vs-structure-pointers-how-which-why-20211201.txt
+
