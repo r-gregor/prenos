@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
 	size_t arr_size = sizeof(array_of_structs) / sizeof(array_of_structs[0]);
 
 	/* print-1: print an array of structs */
+	/* array_of_structs == &array_of_structs[0] */
 	print_array(array_of_structs, arr_size);
 
 	/* --- */
@@ -60,11 +61,25 @@ void print_array(Object_t *arr, size_t size) {
 
 /* printing pointer to array of structs */
 void print_array_ptr(Object_t (*arr)[], size_t size) {
-	printf("Printing a pointer to an array of structs Object_t:\n");
+	printf("Printing a pointer to an array of structs Object_t (for loop):\n");
 	printf("%-10s ::  %4s  :: %5s\n",  "line", "size","flag");
 	printf("------------------------------\n");
+
+	/* with for loop ... */
 	for (int i=0; i < size; ++i) {
 		printf("%-10s ::  %4ld  :: %4.1f\n",  (*arr + i)->line, (*arr + i)->size, (*arr + i)->flag);
+	}
+	printf("\n");
+
+	printf("Printing a pointer to an array of structs Object_t (while loop):\n");
+	printf("%-10s ::  %4s  :: %5s\n",  "line", "size","flag");
+	printf("------------------------------\n");
+	/* with while loop ... */
+	int i=0;
+	while(i < size) {
+		Object_t *arrv = (*arr) + i;
+		printf("%-10s ::  %4ld  :: %4.1f\n",  arrv->line, arrv->size, arrv->flag);
+		i++;
 	}
 	printf("\n");
 }
