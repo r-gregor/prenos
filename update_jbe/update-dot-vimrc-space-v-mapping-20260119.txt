@@ -1,4 +1,0 @@
-" 20260114 --> 20260119
-" nnoremap <space>v :so ~/.vimrc <BAR> set syntax=c<CR>
-nnoremap <space>v :so ~/.vimrc <BAR> set syntax=c <BAR> :noh<CR>
-
