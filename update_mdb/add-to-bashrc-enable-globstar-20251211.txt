@@ -1,4 +1,0 @@
-# ADD at the very top of .bashrc:
-# 20251211
-shopt -s globstar
-
