@@ -1,0 +1,6 @@
+__MOJI-RACUNI.txt (20260206)
+---
+https://mojracun.energetika-lj.si/login		ogrevanje: Valvasorjeva ulica 5 in Kunaverjeva ulica 8
+https://me.elektro-energija.si/Prijava		elektrika: Kunaverjeva ulica 8
+https://www.petrol.si/moj-petrol/			elektrika: Valvasorjeva ulica 5
+---
