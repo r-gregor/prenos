@@ -1,0 +1,5 @@
+
+" 20260209
+" put selected text into []
+vnoremap ,bp xi[]<ESC>h""p<ESC>
+
