@@ -1,4 +1,15 @@
-firefox-keyboard-only-commands-list-20260209.txt
+filename: firefox-keyboard-only-commands-list.txt-20260208.txt
+https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly
+
+Keyboard shortcuts - Perform common Firefox tasks quickly
+20206-02-08
+
+This article lists keyboard shortcuts in Mozilla Firefox. The shortcuts only work if they are not used by the
+desktop environment or window manager. If you have enabled Emacs-style text editing shortcuts in GNOME, they
+will also work in Firefox. When an Emacs text editing shortcut conflicts with the default shortcuts (as occurs
+with Ctrl+K), the Emacs shortcut will take precedence if focus is inside a text box (which would include the
+address bar and search bar). In such cases you should use the alternate keyboard shortcut if one is listed
+below.
 
 *** Navigation ***
 -------------------------------------------------------------------------------------------------------------
