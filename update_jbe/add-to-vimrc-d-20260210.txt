@@ -1,7 +1,0 @@
-" 20260210
-" move line under the cursor inside []
-" move selected text into []
-nnoremap ,sb 0vg_xi[<c-r>"]<esc>j<cr>
-vnoremap ,sb xi[]<ESC>h""p<ESC>
-
-" REMOVE PREVOUS DECLARATION OF ',sb' !!
