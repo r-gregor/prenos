@@ -1,8 +1,0 @@
-20260210 en:
-for NAME in bare color nerd; do cpi $MRCS/bashrc-prompt-${NAME}* $EGMRCS/; done
-
-- in bare add '\n' infront of prompt
-- in nerd and color remove '\n' infront of prompt
-
-...
-
