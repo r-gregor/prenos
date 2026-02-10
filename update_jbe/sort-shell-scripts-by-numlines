@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+# filename: /c/Users/gregor.redelonghi/majstaf_en/BRISI/sort-files-by-numlines.sh
+# 20260210 en v1
+# last change: 20260210
+# ---
+
+# for FFF in $(find * -type f); do echo "$(wc -l $FFF)"; done |sort -nr | column -t | less
+# for FFF in $(find * -type f);do (echo $(file -ib $FFF) | grep 'shellscript') > /dev/null; if [ $? == 0 ]; then echo "shellscript: $FFF"; fi; done
+
+for FFF in $(find * -type f); do
+	(echo $(file -ib $FFF) | grep 'shellscript') > /dev/null
+	if [ $? -eq 0 ]; then
+		echo "$(wc -l $FFF)"
+	fi
+done | sort -nr | column -t | less
+
