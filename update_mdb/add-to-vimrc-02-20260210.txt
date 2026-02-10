@@ -1,3 +1,5 @@
+" 20260210 add to the end of set xxx= section:
+set viminfo='100,f1                 "20260210: remember local and global marks for 100 files
 
 " 20260210
 " move line under the cursor inside []
