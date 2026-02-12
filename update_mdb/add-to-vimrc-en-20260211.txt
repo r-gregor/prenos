@@ -1,6 +1,0 @@
-
-" 20260211
-" search in vim's file edit histroy and open it for edit/view
-" must enter colon ':' and add a line number
-nnoremap <leader>oo :oldfiles<CR>e #<
-
