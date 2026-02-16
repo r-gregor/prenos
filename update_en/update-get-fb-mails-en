@@ -1,0 +1,22 @@
+# ...
+
+# selection=$(for EL in "${!fb_files[@]}"; do
+#    echo "${EL}"
+# done | ${FZFCMD_EN})
+# cygstart ${FFCMD_EN} ${fb_files[${selection}]}
+
+# add 20260217
+fb_launch() {
+	selection=$(for EL in "${!fb_files[@]}"; do echo "${EL}"; done | ${FZFCMD_EN})
+
+	if [ "x${selection}" == "x" ]; then
+		echo -e "[INFO] nothing selected\n"
+		exit 0
+	fi
+
+	echo "[INFO] selected: ${selection} <${fb_files[${selection}]}>"
+	cygstart ${FFCMD_EN} ${fb_files[${selection}]}
+}
+
+fb_launch
+
