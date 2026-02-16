@@ -6,7 +6,7 @@
 # cygstart ${FFCMD_EN} ${fb_files[${selection}]}
 
 # add 20260217
-fb_launch() {
+fb_launch_en() {
 	selection=$(for EL in "${!fb_files[@]}"; do echo "${EL}"; done | ${FZFCMD_EN})
 
 	if [ "x${selection}" == "x" ]; then
@@ -18,5 +18,5 @@ fb_launch() {
 	cygstart ${FFCMD_EN} ${fb_files[${selection}]}
 }
 
-fb_launch
+fb_launch_en
 
