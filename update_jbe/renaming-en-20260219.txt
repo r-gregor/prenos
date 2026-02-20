@@ -1,7 +1,0 @@
-export gitnm=jbe
-mv ${gitnm}gt-check-reports ${gitnm}gt-reports-check
-softlink1-fname-to-ulb ${gitnm}gt-reports-check
-mv ${gitnm}gt-empty-reports ${gitnm}gt-reports-empty
-softlink1-fname-to-ulb ${gitnm}gt-reports-empty
-mv ${gitnm}gt-run-all ${gitnm}gt-all
-softlink1-fname-to-ulb ${gitnm}gt-all
