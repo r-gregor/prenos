@@ -46,9 +46,9 @@ declare -A URLS=(
 ### 		exit
 ### 	fi
 ### 
-### 	if [ "${selection}" == "Quit" ]; then
-### 		exit 0
-### 	fi
+	if [ "${selection}" == "13 - Quit" ]; then
+		exit 0
+	fi
 ### 
 ### 	nohup ${FFCMD} "${URLS["${selection}"]}" >&/dev/null &
 ### }
