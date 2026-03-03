@@ -5,7 +5,8 @@
 ### # 20260229 jbe v2: add info what was selected
 ### #                  change the fzf display to full height
 ### #                  inside infinite while loop --> Quit to quit
-# 20260229 jbe v3: keys in separate array for arranged order with 'Quit' as last option
+# 20260303 jbe v3: keys in separate array for arranged order with 'Quit' as last option
+# 20260303 mdb v4: added $delline
 # last: 20260303
 ### #---
 
@@ -17,6 +18,7 @@ unset KEYS
 ### FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
 ### SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
 ### FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
+delline="---------------------------------------------------"
 
 declare -A URLS=(
 	["Moj račun Energetika Ljubljana"]="https://mojracun.energetika-lj.si/login"
@@ -31,10 +33,10 @@ declare -A URLS=(
 	["T-2 tv2go: login"]="https://tv2go.t-2.net"
 	["URBANA JHL: login"]="https://urbana.jhl.si"
 	["eInženir IZS.si: login"]="https://einzenir.izs.si/m_login.cfm"
+	["${delline}"]=""
 	["Quit"]="Quit"
 )
 
-# v3
 declare KEYS=(
 	"Moj račun Energetika Ljubljana"
 	"ELEKTRO-LJUBLJANA -- Prijava v portal Moja energija"
@@ -48,11 +50,13 @@ declare KEYS=(
 	"T-2 tv2go: login"
 	"URBANA JHL: login"
 	"eInženir IZS.si: login"
+	"${delline}"
 	"Quit"
 )
 
-### ff_personallaunch() {
+### ff_personallaunch() {                                                           vvvvvvvvvvv
 	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD_EN})" # added 'local'
+	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD})" # added 'local'
 
 ### 	if [ "x${selection}" == "x" ]; then
 ### 		echo -e "[INFO] nothing selected\n"
@@ -64,8 +68,10 @@ declare KEYS=(
 		exit 0
 	fi
 
-	echo "[INFO] selected: ${selection}"
-### 	nohup ${FFCMD_EN} ${URLS["${selection}"]} >&/dev/null &
+	if [ "${selection}" != "${delline}" ]; then
+		echo "[INFO] selected: ${selection}"
+		nohup ${FFCMD} "${URLS["${selection}"]}" >&/dev/null &
+	fi
 ### }
 
 
