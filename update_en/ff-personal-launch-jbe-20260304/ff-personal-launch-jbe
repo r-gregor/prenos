@@ -7,7 +7,9 @@
 #                  inside infinite while loop --> Quit to quit
 # 20260229 jbe v3: keys in separate array for arranged order with 'Quit' as last option
 # 20260303 mdb v4: added $delline
-# last: 20260303
+# 20260304 jbe v5: $delline calculated from longest KEY line with get_longest function
+#                  sorted output to fzf command
+# last: 20260304
 #---
 
 clear
@@ -15,10 +17,26 @@ unset URLS
 unset KEYS
 
 # globals
-FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
+FFCMD='/usr/bin/firefox'
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
-delline="---------------------------------------------------"
+# FZFCMD="fzf -e --reverse --height 50% --border rounded"
+FZFCMD='fzf -e --reverse --border rounded'
+
+# arrays
+declare KEYS=(
+	"Moj račun Energetika Ljubljana"
+	"ELEKTRO-LJUBLJANA -- Prijava v portal Moja energija"
+	"Moj Petrol - elektrika (Valvasorjeva 5)"
+	"ZD za študente: dr. Darja Marija ŽNIDARŠIČ"
+	"Prijava | doZdravnika.si"
+	"eAsistent - Špela"
+	"T-2: login"
+	"TRIGLAV Zavarovalnica: login"
+	"moja POŠTA.si: login"
+	"T-2 tv2go: login"
+	"URBANA JHL: login"
+	"eInženir IZS.si: login"
+)
 
 declare -A URLS=(
 	["Moj račun Energetika Ljubljana"]="https://mojracun.energetika-lj.si/login"
@@ -33,30 +51,34 @@ declare -A URLS=(
 	["T-2 tv2go: login"]="https://tv2go.t-2.net"
 	["URBANA JHL: login"]="https://urbana.jhl.si"
 	["eInženir IZS.si: login"]="https://einzenir.izs.si/m_login.cfm"
-	["${delline}"]=""
-	["Quit"]="Quit"
 )
 
+# functions
+get_longest() {
+	if [ ! $# -eq 1 ]; then
+		echo "[ERROR1] must supply array of sentences as parameter"
+		exit 1
+	fi
 
-declare KEYS=(
-	"Moj račun Energetika Ljubljana"
-	"ELEKTRO-LJUBLJANA -- Prijava v portal Moja energija"
-	"Moj Petrol - elektrika (Valvasorjeva 5)"
-	"ZD za študente: dr. Darja Marija ŽNIDARŠIČ"
-	"Prijava | doZdravnika.si"
-	"eAsistent - Špela"
-	"T-2: login"
-	"TRIGLAV Zavarovalnica: login"
-	"moja POŠTA.si: login"
-	"T-2 tv2go: login"
-	"URBANA JHL: login"
-	"eInženir IZS.si: login"
-	"${delline}"
-	"Quit"
-)
+	local len=0
+	local longest
+	local -n lines2=$1 # new way: must call array as < array_name >
+
+	for line in "${lines2[@]}"; do
+		llen="${#line}"
+		if [ "${llen}" -gt "${len}" ]; then
+			len="${llen}"
+			longest="${line}"
+		else
+			continue
+		fi
+	done
+
+	echo "${longest}"
+}
 
 ff_personallaunch() {
-	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD_EN})"
+	local selection="$((for KEY in "${KEYS[@]}"; do echo "$KEY"; done | sort; echo "${delline}" ; echo "Quit") | fzf --reverse)"
 
 	if [ "x${selection}" == "x" ]; then
 		echo -e "[INFO] nothing selected\n"
@@ -70,10 +92,13 @@ ff_personallaunch() {
 
 	if [ "${selection}" != "${delline}" ]; then
 		echo "[INFO] selected: ${selection}"
-		nohup ${FFCMD_EN} "${URLS["${selection}"]}" >&/dev/null &
+		nohup ${FFCMD} "${URLS["${selection}"]}" >&/dev/null &
 	fi
 }
 
+# MAIN
+longest_l=$(get_longest KEYS)
+delline=$(for((i = 0; i < ${#longest_l}; i++)); do printf "-"; done)
 
 while true; do
 	ff_personallaunch
