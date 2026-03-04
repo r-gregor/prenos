@@ -1,23 +1,23 @@
-### #! /usr/bin/env bash
-### # filrname: ff-personal-launch-en
-### # from ff-launch-en
-### # 20260216 en
-### # 20260229 jbe v2: add info what was selected
-### #                  change the fzf display to full height
-### #                  inside infinite while loop --> Quit to quit
-# 20260303 jbe v3: keys in separate array for arranged order with 'Quit' as last option
+#! /usr/bin/env bash
+# filrname: ff-personal-launch-en
+# from ff-launch-en
+# 20260216 en
+# 20260229 jbe v2: add info what was selected
+#                  change the fzf display to full height
+#                  inside infinite while loop --> Quit to quit
+# 20260229 jbe v3: keys in separate array for arranged order with 'Quit' as last option
 # 20260303 mdb v4: added $delline
 # last: 20260303
-### #---
+#---
 
-### clear
-### unset URLS
+clear
+unset URLS
 unset KEYS
 
-### # globals
-### FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
-### SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-### FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
+# globals
+FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
+SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
+FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
 delline="---------------------------------------------------"
 
 declare -A URLS=(
@@ -37,6 +37,7 @@ declare -A URLS=(
 	["Quit"]="Quit"
 )
 
+
 declare KEYS=(
 	"Moj račun Energetika Ljubljana"
 	"ELEKTRO-LJUBLJANA -- Prijava v portal Moja energija"
@@ -54,14 +55,13 @@ declare KEYS=(
 	"Quit"
 )
 
-### ff_personallaunch() {                                                           vvvvvvvvvvv
-	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD_EN})" # added 'local'
-	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD})" # added 'local'
+ff_personallaunch() {
+	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD_EN})"
 
-### 	if [ "x${selection}" == "x" ]; then
-### 		echo -e "[INFO] nothing selected\n"
-### 		exit 0
-### 	fi
+	if [ "x${selection}" == "x" ]; then
+		echo -e "[INFO] nothing selected\n"
+		exit 0
+	fi
 
 	if [ "${selection}" == "Quit" ]; then
 		echo -e "[INFO] leaving\n"
@@ -70,12 +70,12 @@ declare KEYS=(
 
 	if [ "${selection}" != "${delline}" ]; then
 		echo "[INFO] selected: ${selection}"
-		nohup ${FFCMD} "${URLS["${selection}"]}" >&/dev/null &
+		nohup ${FFCMD_EN} "${URLS["${selection}"]}" >&/dev/null &
 	fi
-### }
+}
 
 
-### while true; do
-### 	ff_personallaunch
-### done
+while true; do
+	ff_personallaunch
+done
 
