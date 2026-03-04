@@ -7,7 +7,7 @@
 #                  inside infinite while loop --> Quit to quit
 # 20260229 jbe v3: keys in separate array for arranged order with 'Quit' as last option
 # 20260303 mdb v4: added $delline
-# 20260304  en v5: $delline calculated from longest KEY line with get_longest function
+# 20260304 jbe v5: $delline calculated from longest KEY line with get_longest function
 # last: 20260304
 #---
 
@@ -16,9 +16,10 @@ unset URLS
 unset KEYS
 
 # globals
-FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
+FFCMD='/usr/bin/firefox'
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
+# FZFCMD="fzf -e --reverse --height 50% --border rounded"
+FZFCMD='fzf -e --reverse --border rounded'
 
 # arrays
 declare KEYS=(
@@ -76,7 +77,7 @@ get_longest() {
 }
 
 ff_personallaunch() {
-	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD_EN})"
+	local selection="$(for KEY in "${KEYS[@]}"; do echo "$KEY"; done 2>/dev/null | ${FZFCMD})"
 
 	if [ "x${selection}" == "x" ]; then
 		echo -e "[INFO] nothing selected\n"
@@ -90,7 +91,7 @@ ff_personallaunch() {
 
 	if [ "${selection}" != "${delline}" ]; then
 		echo "[INFO] selected: ${selection}"
-		nohup ${FFCMD_EN} "${URLS["${selection}"]}" >&/dev/null &
+		nohup ${FFCMD} "${URLS["${selection}"]}" >&/dev/null &
 	fi
 }
 
