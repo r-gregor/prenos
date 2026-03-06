@@ -1,5 +1,0 @@
-1 - move check-git-diffs-mdb from $MBJN/ to $MJBN/git-commands
-2 - update $MJBN/git-commands/check-git-diffs-mdb
-3 - remove existing check-git-difs-mdb from ~/.local/bin/
-4 - softlink (new) $MJBN/git-commands/check-git-diffs-mdb to ~/.local/bin/
-
