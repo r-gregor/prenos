@@ -1,2 +1,0 @@
-1 - rename directory and filename from get-fb-mails-en to: ff-fb-mails-launch-en
-2 - update ff-fb-mails-launch-{jbe,mdb} as in ff-fb-mails-launch-en
