@@ -1,0 +1,9 @@
+# --> add to set syntax commands:
+nnoremap <space>9 :%s/\([[:alpha:]]\)'\([[:alpha:]]\)/\1´\2/g<CR><BAR>:noh<CR>
+
+
+# --> add at the end:
+" 20260311:
+" replace single quote inside words with apostrophe command:
+nnoremap <space>9 :%s/\([[:alpha:]]\)'\([[:alpha:]]\)/\1´\2/g<CR><BAR>:noh<CR>
+
