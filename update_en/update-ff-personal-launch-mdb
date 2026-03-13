@@ -30,7 +30,7 @@ declare -A URLS=(
 	["Moj Petrol - elektrika (Valvasorjeva 5)"]="https://www.petrol.si/moj-petrol/"
 	["ZD za študente: dr. Darja Marija ŽNIDARŠIČ"]="https://zdstudenti.si/doctor/darja-marija-znidarsic/"
 	["Prijava | doZdravnika.si"]="https://dozdravnika.si/#!/auth/login"
-	["Špela - eAsistenta"]="https://www.easistent.com/stran/"
+	["Špela - eAsistent"]="https://www.easistent.com/stran/"
 	["Špela - MATURANC"]="https://cmt-travel.my.salesforce-sites.com/matura?maturantska=a3UQx000000EWhZ&code=xWxVN6V0"
 	["T-2: login"]="https://login.t-2.net/"
 	["TRIGLAV Zavarovalnica: login"]="https://login.triglav.si"
