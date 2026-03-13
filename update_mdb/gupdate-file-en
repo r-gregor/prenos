@@ -23,7 +23,7 @@ else
 	fname="$1"
 fi
 
-if [[ ! -f "${fname}" ]]; then
+if [[ ! -f ./"${fname}" ]]; then
 	echo "[ERROR] no such file"
 	exit
 fi
@@ -32,12 +32,10 @@ SRCF="${SRCDIR}/${fname}"
 DSTF=$(echo $SRCDIR/${fname} | sed "s/\(.*majstaf\)\/\([[:alpha:]]\+\)\/\(.*\)/\1\/engit\/\2_en\/\3/")
 
 update_file_to_git() {
-	# printf "%s\n%s\n%s\n%s\n" \
-	# 	"[INFO] trying to copy" \
-	# 	"[INFO] ${SRCF}" \
-	# 	"[INFO] to" \
-	# 	"[INFO] ${DSTF}"
-	# read -p "[INFO] OK?"
+	printf "%s\n%s\n%s\n" \
+		"from: ${SRCF}" \
+		"to:   ${DSTF}" \
+		"---"
 	cp -iv "${SRCF}" "${DSTF}"
 }
 
