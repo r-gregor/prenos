@@ -1,0 +1,12 @@
+# UNDER ...
+
+###########################
+### list/view  commands ###
+###########################
+
+# ADD:
+# ...
+# alias tree='tree -C --charset ASCII --noreport --dirsfirst'
+alias tru='tree update_*'
+# ...
+

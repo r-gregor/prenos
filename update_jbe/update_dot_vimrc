@@ -1,5 +1,0 @@
-
-" 20260317
-" retab visual sellection
-vnoremap ,rt :retab!<CR>
-
