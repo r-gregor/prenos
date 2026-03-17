@@ -61,7 +61,7 @@ longest_l=$(get_longest keys)                                         # v3
 delline=$(for((i = 0; i < ${#longest_l}; i++)); do printf "-"; done)  # v3
 
 while true; do
-	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \ # v3
+	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
 		fzf \
 		-e \
 		--reverse \
@@ -71,6 +71,10 @@ while true; do
 	if [ "x${selection}" == "x" ]; then
 		echo -e "[INFO] no selection\n"
 		exit
+	fi
+
+	if [ "${selection}" == "${delline}" ]; then #v3
+		continue
 	fi
 
 # RUN
