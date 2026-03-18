@@ -1,0 +1,6 @@
+# 20260318 v7 en: - update putFnameIntoArray() function to add '/' at the end of
+#                   filenames[fcount]->fname if it is a directory ...
+# ---
+1 - copy rsort-by-accdate-c.c to toolbox, and build executable
+2 - copy new executable to majbin ...
+
