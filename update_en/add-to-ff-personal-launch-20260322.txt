@@ -1,3 +1,0 @@
-add to ff-personal-launch-...:
-	["Evinjeta (DARS)"]="https://evinjeta.dars.si/selfcare/sl"
-
