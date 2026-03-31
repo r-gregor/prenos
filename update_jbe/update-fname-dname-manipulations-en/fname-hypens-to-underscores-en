@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 # fname: fname-hypens-to-underscores-en
 # 20226031
 # last: 20260331
