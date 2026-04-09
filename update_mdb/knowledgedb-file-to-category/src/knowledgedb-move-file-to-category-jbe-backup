@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
-# filename: knowledgedb-copy-file-to-category
+# filename: knowledgedb-move-file-to-category
 
 # globals
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-DEST="/home/gregor.redelonghi/majstaf/engit/knowledgedb"
+DEST="/home/rgregor/majstaf/jbegit/knowledgedb"
 
 if [ $# -ne 1 ]; then
 	echo -e "usage: $0 <filename>\n"
@@ -19,16 +19,15 @@ fi
 
 CATEGORY=$(ls -1 ${DEST} | fzf -e --reverse)
 
-echo -n "Copy \"${fname}\" to .../${CATEGORY}? [y/n]:  "
+echo -n "Move \"${fname}\" to .../${CATEGORY}? [y/n]:  "
 read -r ans
 
 if [ "${ans}" == "y" ] || [ "${ans}" == "Y" ]; then
-	cp -iv ./"${fname}" "${DEST}/${CATEGORY}/"
+	mv -iv ./"${fname}" "${DEST}/${CATEGORY}/"
 else
 	echo -e "[INFO] No files moved\n"
 	exit
 fi
 
 echo ""
-
 

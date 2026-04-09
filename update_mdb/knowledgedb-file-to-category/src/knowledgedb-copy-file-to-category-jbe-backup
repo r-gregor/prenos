@@ -3,8 +3,7 @@
 
 # globals
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-DEST="/home/gregor.redelonghi/majstaf/engit/knowledgedb"
-
+DEST="/home/rgregor/majstaf/jbegit/knowledgedb"
 if [ $# -ne 1 ]; then
 	echo -e "usage: $0 <filename>\n"
 	exit
@@ -30,5 +29,4 @@ else
 fi
 
 echo ""
-
 

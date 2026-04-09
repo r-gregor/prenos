@@ -1,12 +1,12 @@
 #! /usr/bin/env bash
 # filename: knowledgedb-move-file-to-category
-# 20260409  en: multiple files, with checks ...
+# 20260409 jbe: multiple files, with checks ...
 # last: 20260409
 # ---
 
 # globals
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-DEST="/home/gregor.redelonghi/majstaf/engit/knowledgedb"
+DEST="/home/rgregor/majstaf/jbegit/knowledgedb"
 
 if [ $# -lt 1 ]; then
 	echo -e "usage: $0 <filename>\n"
