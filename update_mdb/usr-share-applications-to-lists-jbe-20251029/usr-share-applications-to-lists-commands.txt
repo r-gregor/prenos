@@ -1,4 +1,0 @@
-  for APP in /usr/share/applications/*.desktop; do APPNM="${APP%.*}"; printf "%-45s%s%s\n" "${APPNM##**/}" "--> " "$(grep -iw 'exec' $APP)"; done > usr-share-applications-list-columns.txt
-  for APP in /usr/share/applications/*.desktop; do APPNM="${APP%.*}"; printf "%s|%s\n" "${APPNM##**/}" "$(grep -iw 'exec' $APP)"; done > usr-share-applications-list-bardelimited.txt
-  for APP in /usr/share/applications/*.desktop; do APPNM="${APP%.*}"; printf "%s,%s\n" "${APPNM##**/}" "$(grep -iw 'exec' $APP)"; done > usr-share-applications-list-commadelimited.csv
-
