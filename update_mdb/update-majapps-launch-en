@@ -11,6 +11,7 @@
 # 20260408 en v5 added continue in if block for OneCommander, so thai it does not print "selected ..." twice
 #                as rule inside case statement
 # 20260423 en v6 put all RUN statemnets into majaps_run() function and add option to select input as parameter
+# 20260423 en v7 selected input as parameter ino array, if multiple option to refine parameter
 # last: 20260423
 # ---
 
@@ -70,7 +71,7 @@ get_longest() {
 }
 
 selection_info() {
-	printf "[INFO] selected: $1\n"
+	printf "[INFO] selected: $1\n\n"
 }
 
 # v6
@@ -123,17 +124,34 @@ majaps_run() {
 
 # v6
 if [ $# -eq 1 ]; then
+	declare -a options
 	# ${varname,,} -- convert string to all lowercase ...
-	selection=$((for key in "${keys[@]}"; do if [[ "${key,,}" =~ "${1,,}" ]]; then echo ${key}; fi; done) | \
-		fzf \
-		-e \
-		--reverse \
-		-i \
-		--prompt="launch: ")
-	
+	for key in "${keys[@]}"; do
+		if [[ "${key,,}" =~ "${1,,}" ]]; then
+			options+=("${key}")
+		fi
+	done
+
+	if [ "${#options[@]}" -gt 1 ]; then
+		printf "[ERROR] multiple selections:\n"
+		for OPT in "${options[@]}"; do
+			printf "${OPT}\n"
+		done
+		printf "[INFO] redefine parameter\n\n"
+		exit
+	elif [ "${#options[@]}" -eq 0 ]; then
+		printf "[ERROR] no selection\n\n"
+		exit
+	else
+		selection="${options[0]}"
+	fi
+
+	read -p "[INFO] launch: ${selection} ... OK?"
+
 	if [[ "${selection}" =~ "OneCommander" ]]; then #v4
 		cygstart "c:\Users\gregor.redelonghi\majstaf_en\majprogs_en\OneCommander\OneCommander.exe" -openwin "${apps[${selection}]}"
 		selection_info "${selection}"
+		exit
 		# continue # v6 -- (this instance not inside loop)
 	fi
 	majaps_run
