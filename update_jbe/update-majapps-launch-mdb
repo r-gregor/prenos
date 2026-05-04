@@ -9,7 +9,8 @@
 #                 extract KEYS from URLS
 # 20260423 mdb v3 put all RUN statemnets into majaps_run() function and add option to select input as parameter
 # 20260423 mdb v4 selected input as parameter into array, if multiple option to redefine parameter
-# last: 20260423
+# 20260424 mdb v5 move selection var with fzf into get_selection_mdb() function
+# last: 20260424
 # ---
 
 # clear the screen:
@@ -123,23 +124,31 @@ if [ $# -eq 1 ]; then
 	exit
 fi
 
-# JUST FOR TEST IN CYGWIN
-fzfcmd_mdb='fzf -e  --reverse --border=rounded --info=hidden --prompt="launch (q to quit): "'
-fzfcmd_en="fzf -e  --reverse --prompt='launch>'"
+# v5
+get_selection_mdb() {
+# add +c option to reverse highlight
+	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
+		fzf -e \
+		--reverse \
+		--border=rounded \
+		--info=hidden \
+		--prompt="launch (q to quit): ")
+}
+
+# for testing in Cygwin:
+get_selection_en() {
+	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
+		fzf \
+		-e \
+		--reverse \
+		-i \
+		--prompt="launch: ")
+}
+# for testing in Cygwin:
 
 while true; do
-	# JUST FOR TEST IN CYGWIN
-	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | ${fzfcmd_en})
-
-# 	ORIGINAL:
-# add +c option to reverse highlight
-# 	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo# "Quit") | \
-# 				fzf -e \
-# 				--reverse \
-# 				--border=rounded \
-# 				--info=hidden \
-# 				--prompt="launch (q to quit): ")
-
+	# get_selection_mdb # v5
+	get_selection_en
 	majaps_run
 done
 
