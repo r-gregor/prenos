@@ -91,6 +91,28 @@ majaps_run() {
 	selection_info "${selection}"
 }
 
+# v5
+get_selection_mdb() {
+# add +c option to reverse highlight
+	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
+		fzf -e \
+		--reverse \
+		--border=rounded \
+		--info=hidden \
+		--prompt="launch (q to quit): ")
+}
+
+# v5
+# for testing in Cygwin:
+get_selection_en() {
+	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
+		fzf \
+		-e \
+		--reverse \
+		-i \
+		--prompt="launch: ")
+}
+
 # MAIN (v3)
 longest_l=$(get_longest keys)                                         # v3
 delline=$(for((i = 0; i < ${#longest_l}; i++)); do printf "-"; done)  # v3
@@ -125,30 +147,10 @@ if [ $# -eq 1 ]; then
 fi
 
 # v5
-get_selection_mdb() {
-# add +c option to reverse highlight
-	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
-		fzf -e \
-		--reverse \
-		--border=rounded \
-		--info=hidden \
-		--prompt="launch (q to quit): ")
-}
-
-# for testing in Cygwin:
-get_selection_en() {
-	selection=$((for key in "${!keys[@]}"; do echo "${keys[$key]}"; done | sort; echo "${delline}"; echo "Quit") | \
-		fzf \
-		-e \
-		--reverse \
-		-i \
-		--prompt="launch: ")
-}
-# for testing in Cygwin:
-
 while true; do
-	# get_selection_mdb # v5
-	get_selection_en
+	# for testing in Cygwin:
+	# get_selection_en
+	get_selection_mdb # v5
 	majaps_run
 done
 
