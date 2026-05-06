@@ -1,8 +1,12 @@
 #! /usr/bin/env bash
-# fname: copy-files-to-multiple-dirs
+# filename: copy-files-to-multiple-dirs
 # 20260506 v1
-# copy selected files to multiple directories. Add each file with optinon -f and each direcory with option -d
+# copy selected files to multiple directories. Add each file with optinon -f
+# and each direcory with option -d
+# last: 20260506
 # ---
+
+set -e
 
 fjls=()
 dsts=()
@@ -53,8 +57,8 @@ if [ "${darg}" != "true" ]; then
 	usage
 	exit
 fi
-
 IFS=$OIFS
+
 for DDD in "${dsts[@]}"; do
 	if [ ! -d "${DDD}" ]; then
 		printf "[ERROR] no such directory: ${DDD}\n\n"
@@ -67,10 +71,10 @@ for FFF in "${fjls[@]}"; do
 		printf "[ERROR] no such file: ${FFF}\n\n"
 		exit
 	fi
-
 done
+
 for DST in "${dsts[@]}"; do
 	# printf "cp -vi ${fjls[*]} ${DST}\n"
-	cp -vi "${fjls[@]}" "${DST}"
+	/usr/bin/cp -vi "${fjls[@]}" "${DST}"
 done
 
