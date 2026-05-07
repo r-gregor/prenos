@@ -4,6 +4,7 @@
 #                and each direcory with option -d
 # 20260507 v2 -- added until loop to cycle trough multiple parameters for single -f and -d option
 #                function usage() updated acordingly
+#                IFS='' --> important: otherwise filenames and path strings do not get copied correctly
 # last: 20260507
 # ---
 
@@ -24,7 +25,7 @@ USAGE
 }
 
 OIFS=$IFS
-IFS=''
+IFS='' # important: otherwise filenames and path strings do not get copied correctly
 while getopts "f:d:h" opt; do
 	case $opt in
 		f)
