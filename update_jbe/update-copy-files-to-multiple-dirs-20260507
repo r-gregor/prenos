@@ -1,9 +1,10 @@
 #! /usr/bin/env bash
 # filename: copy-files-to-multiple-dirs
-# 20260506 v1
-# copy selected files to multiple directories. Add each file with optinon -f
-# and each direcory with option -d
-# last: 20260506
+# 20260506 v1 -- copy selected files to multiple directories. Add each file with optinon -f
+#                and each direcory with option -d
+# 20260507 v2 -- added until loop to cycle trough multiple parameters for single -f and -d option
+#                function usage() updated acordingly
+# last: 20260507
 # ---
 
 set -e
@@ -16,22 +17,30 @@ farg=false
 usage() {
 cat <<USAGE
 
-usage: copy-files-to-multiple-dirs -f <fname1> -f <fname2> -d <dirname1> -d <dirname2> ...
-                              -h ... print this message
+usage: copy-files-to-multiple-dirs -f <fnm1> <fnm2> <"fnm3 with spaces"> -d <dirnm1> -d <dirnm2> ...
+                                   -h ... print this message
 
 USAGE
 }
 
 OIFS=$IFS
-IFS='\n'
+IFS=''
 while getopts "f:d:h" opt; do
 	case $opt in
 		f)
 			fjls+=("$OPTARG")
+			until [[ $(eval "echo \${$OPTIND}") =~ ^-.* ]] || [ -z $(eval "echo \${$OPTIND}") ]; do
+				fjls+=($(eval "echo \${$OPTIND}"))
+				OPTIND=$((OPTIND + 1))
+			done
 			farg=true
 			;;
 		d)
 			dsts+=("$OPTARG")
+			until [[ $(eval "echo \${$OPTIND}") =~ ^-.* ]] || [ -z $(eval "echo \${$OPTIND}") ]; do
+				dsts+=($(eval "echo \${$OPTIND}"))
+				OPTIND=$((OPTIND + 1))
+			done
 			darg=true
 			;;
 		h)
@@ -74,7 +83,6 @@ for FFF in "${fjls[@]}"; do
 done
 
 for DST in "${dsts[@]}"; do
-	# printf "cp -vi ${fjls[*]} ${DST}\n"
 	/usr/bin/cp -vi "${fjls[@]}" "${DST}"
 done
 
