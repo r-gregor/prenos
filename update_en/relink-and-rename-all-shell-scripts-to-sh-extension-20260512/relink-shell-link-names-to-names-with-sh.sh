@@ -1,18 +1,18 @@
 #! /usr/bin/env bash
 
-# while IFS=';' read link path; do printf "%-30s --> %s\n" "${link}" "${path}"; done < sflinks.txt
+# while IFS=';' read link spath; do printf "%-30s --> %s\n" "${link}" "${spath}"; done < sflinks.txt
 
 ULB="${HOME}/.local/bin"
 
-while IFS=';' read link path; do
-
-	if [ -f ${path}.sh ]; then
+while IFS=';' read slink spath; do
+	# printf "spath: %s\n" "${spath}.sh"
+	if [ -f "${spath}.sh" ]; then
 		# TEST
-		printf "ln -snf ${path}.sh ${ULB}/${link}\n"
-		printf "mv -v ${ULB}/${link} ${ULB}/${link}.sh\n"
+		printf "ln -snf ${spath}.sh ${ULB}/${slink}\n"
+		printf "mv -v ${ULB}/${slink} ${ULB}/${slink}.sh\n"
 		#REAL DEAL
-		# ln -snf "${path}.sh" "${ULB}/${link}"
-		# mv -v "${ULB}/${link}" "${ULB}/${link}.sh"
+		# ln -snf "${spath}.sh" "${ULB}/${slink}"
+		# mv -v "${ULB}/${slink}" "${ULB}/${slink}.sh"
 	fi
 done < sflinks.txt
 
