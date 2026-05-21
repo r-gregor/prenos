@@ -1,6 +1,0 @@
-" 20260518
-set textwidth=110                   " so gq works on splitting long lines at 110-th position -- 20240826
-set formatoptions-=t                " so it does NOT wrap lines in input mode
-set formatoptions+=l                " so it DOES wrap if 'gq' command
-
-
