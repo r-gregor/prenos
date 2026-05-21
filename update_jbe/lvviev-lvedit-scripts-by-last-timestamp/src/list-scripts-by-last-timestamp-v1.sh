@@ -10,7 +10,7 @@ unset selection
 
 declare -a selections
 
-dest="/home/gregor.redelonghi/majstaf/majbin"
+dest="/home/rgregor/majstaf/majbin"
 
 usage() {
 cat << "EOF"

@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: lvview-scripts-by-last-timestamp.sh
+# fname: lvview-scripts-by-last-timestamp_jbe.sh
 # v1_20260520
 # v2_20260520 add fzf single selection
 # v3_20260220 fzf to multiple selections to open in vim
@@ -16,8 +16,8 @@ declare -a selections
 
 currdtstmp=$(date +"%Y%m%d")
 
-dest_en="/home/gregor.redelonghi/majstaf/majbin"
-FZFCMD_EN="fzf -e -m --reverse"   # cygwin version does not support --width option
+dest_jbe="/home/rgregor/majstaf/majbin"
+FZFCMD='fzf -e -m --reverse --border rounded'
 VIM_CMD="/usr/bin/vim -M"
 
 usage() {
@@ -31,7 +31,7 @@ EOF
 
 
 load_files_into_list() {
-	for FFF in $(find ${dest_en}/* -name "*\.sh" | grep -v 'src/'); do
+	for FFF in $(find ${dest_jbe}/* -name "*\.sh" | grep -v 'src/'); do
 		dtstmp=$(grep last "$FFF" | grep -Eo "[0-9]{8}")
 		if [ $? -eq 0 ]; then
 			if [[ ${dtstmp} =~ ${djt} ]]; then
@@ -70,7 +70,7 @@ main() {
 		while IFS=';' read fname dtstmp; do
 			echo "${fname}"
 		done < <(echo ${FJL})
-	done) | ${FZFCMD_EN})
+	done) | ${FZFCMD})
 
 	if [ "${#selections[@]}" -eq 0 ]; then
 		printf "[INFO] nothing selected\n\n"

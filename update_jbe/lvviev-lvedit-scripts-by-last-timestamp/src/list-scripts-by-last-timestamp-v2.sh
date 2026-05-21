@@ -12,7 +12,7 @@ unset selection
 declare -a fjls_lst
 declare -a selections
 
-dest="/home/gregor.redelonghi/majstaf/majbin"
+dest="/home/rgregor/majstaf/majbin"
 FZFCMD_EN="fzf -e --reverse"   # cygwin version does not support --width option
 
 usage() {

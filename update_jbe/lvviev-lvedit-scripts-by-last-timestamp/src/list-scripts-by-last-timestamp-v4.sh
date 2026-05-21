@@ -16,7 +16,7 @@ declare -a selections
 
 currdtstmp=$(date +"%Y%m%d")
 
-dest="/home/gregor.redelonghi/majstaf/majbin"
+dest="/home/rgregor/majstaf/majbin"
 FZFCMD_EN="fzf -e -m --reverse"   # cygwin version does not support --width option
 
 usage() {
