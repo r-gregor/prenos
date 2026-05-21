@@ -1,7 +1,0 @@
-" ADD AT THE END ...
-
-" 20260519
-" remove '[...]' in current line
-nnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
-vnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
-
