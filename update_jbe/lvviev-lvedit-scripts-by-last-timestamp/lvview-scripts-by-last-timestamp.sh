@@ -10,14 +10,13 @@
 
 unset fjls_lst
 unset selections
-unset selection
 
 declare -a fjls_lst
 declare -a selections
 
 currdtstmp=$(date +"%Y%m%d")
 
-dest="/home/gregor.redelonghi/majstaf/majbin"
+dest_en="/home/gregor.redelonghi/majstaf/majbin"
 FZFCMD_EN="fzf -e -m --reverse"   # cygwin version does not support --width option
 VIM_CMD="/usr/bin/vim -M"
 
@@ -32,7 +31,7 @@ EOF
 
 
 load_files_into_list() {
-	for FFF in $(find ${dest}/* -name "*\.sh" | grep -v 'src/'); do
+	for FFF in $(find ${dest_en}/* -name "*\.sh" | grep -v 'src/'); do
 		dtstmp=$(grep last "$FFF" | grep -Eo "[0-9]{8}")
 		if [ $? -eq 0 ]; then
 			if [[ ${dtstmp} =~ ${djt} ]]; then
