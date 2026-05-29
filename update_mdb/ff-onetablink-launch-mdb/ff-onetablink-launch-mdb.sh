@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: ff-onetablink-launch-en.sh
+# fname: ff-onetablink-launch-mdb.sh
 # v1_20260529 converts a line:
 #             https://www.youtube.com/results?search_query=salsa+hand+toss+flip | (7) salsa hand toss flip - YouTube
 #             ... to ...
@@ -10,9 +10,9 @@
 # ---
 
 # globals
-FFCMD_EN=/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe
 SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
+FFCMD='/usr/bin/firefox'
+FZFCMD="fzf -e --reverse --border rounded"
 
 unset llist
 declare -A llist
@@ -54,12 +54,12 @@ done < "${fjl}"
 # selection - fzf
 selection="$(for descrp in "${llist[@]}"; do
 	echo "${descrp}"
-done | ${FZFCMD_EN})"
+done | ${FZFCMD})"
 
 # run
 for URL in ${!llist[@]}; do
 	if [[ "${llist["${URL}"]}" =~ "${selection}" ]]; then
-	cygstart ${FFCMD_EN} "${URL}"
+	nohup ${FFCMD} "${URL}" >&/dev/null &
 	exit
 	fi
 done

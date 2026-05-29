@@ -32,6 +32,8 @@ int main(int argc, char **argv) {
 
 	printf("Command: %s\n", cmd);
 
+	getchar();
+
 
 	// x = system("/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe https://www.google.com");
 	x = system(cmd);
