@@ -6,7 +6,7 @@ so:
 
 should be:
 
-	nohup [command] > /dev/null 2>&1
+	(nohup [command] &) > /dev/null 2>&1
 
 ---
 

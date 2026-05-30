@@ -1,3 +1,6 @@
+/*
+ * fname: start-ff.c
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +9,8 @@ char *url;
 
 int main(int argc, char **argv) {
 
-	int x;
+	// int x;
+	/* check if shell is available */
 	if (!system(NULL)) {
 		return -1;
 	}
@@ -14,8 +18,6 @@ int main(int argc, char **argv) {
 
 	char cmd[1024];
 	char *ff_cmd = "/usr/bin/firefox";
-	// char *url    = "https://stackoverflow.com/questions/308695/how-do-i-concatenate-const-literal-strings-in-c";
-
 
 	if(argc != 2) {
 		/*
@@ -29,19 +31,22 @@ int main(int argc, char **argv) {
 		url = argv[1];
 	}
 
-	strcpy(cmd, "nohup ");
+	/*
+	 * construct command string:
+	 * (nohup [command] &) > /dev/null 2>&1
+	 */
+	strcpy(cmd, "(nohup ");
 	strcat(cmd, ff_cmd);
 	strcat(cmd, " ");
 	strcat(cmd, url);
-	// strcat(cmd, " >& /dev/null &");
-	strcat(cmd, " > /dev/null 2>&1");
+	strcat(cmd, " &) > /dev/null 2>&1");
 
 	/* TEST */
 	printf("Command: %s\n", cmd);
 	getchar();
 
-	x = system(cmd);
-
+	system(cmd);
 
 	return 0;
 }
+
