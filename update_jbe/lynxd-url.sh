@@ -5,14 +5,6 @@
 # last 20260608
 # ---
 
-###  EN-proxy ...
-# prx_ip=172.17.3.64
-prx_ip=10.91.8.21
-export http_proxy=http://${prx_ip}:80/
-export ftp_proxy=ftp://${prx_ip}:8021/
-export https_proxy=http://${prx_ip}:80/
-
-
 danes=$(date +"%Y%m%d")
 
 usage() {
