@@ -34,6 +34,7 @@ dump_command() {
 }
 
 #MAIN
+clear
 
 if [ $# -lt 2 ]; then
 	usage
