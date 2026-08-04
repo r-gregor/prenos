@@ -1,4 +1,4 @@
-fname: bash-proccesing-strings-with-null-characters-20260804.txt
+fname: bash-processing-strings-with-null-characters-20260804.txt
 from: Can you write `md5` in Pure Bash? (100% bash, no external tools)
       https://www.youtube.com/watch?v=VDQmu6KzDvU
       14:44 - 18:53 / 01:28:73
@@ -54,7 +54,7 @@ read_chunks_good() {
 
 		printf "[ ${CHUNK} ]\n" # if 'read' fails this last still prints
 
-		# 'read' failed - so we are done proccessing
+		# 'read' failed - so we are done processing
 		if ((code != 0)); then
 			break
 		fi
@@ -130,7 +130,7 @@ read_chunks_good_updated() {
 
 		printf "read $n bytes: [ ${CHUNK} ]\n" # if 'read' fails this last still prints
 
-		# 'read' failed - so we are done proccessing
+		# 'read' failed - so we are done processing
 		if ((code != 0)); then
 			break
 		fi
