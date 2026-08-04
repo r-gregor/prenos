@@ -1,18 +1,11 @@
 #! /usr/bin/env bash
-# filename: lynx-multi-dump-fromlist-en.sh
-# v1_20250925 remove option to use dumplist
-# v2 20260731 implement fname_string_adjustment() function
+# fname: w3m-multi-dump-fromlist-jbe.sh
+# 20260106 v1
+# 20260731 v2 implement fname_string_adjustment() function
 #             add prefix option
-# 20260804 v3 move 'lynx dump' command into dump_command() function
+# 20260804 v3 move 'w3m dump' command into dump_command() function
 # last: 20260804
 # ---
-
-# EN-proxy ...
-# prx_ip=172.17.3.64
-prx_ip=10.91.8.21
-export http_proxy=http://${prx_ip}:80/
-export ftp_proxy=ftp://${prx_ip}:8021/
-export https_proxy=http://${prx_ip}:80/
 
 fname_string_adjustment() {
 	today=$(date +"%Y%m%d")
@@ -37,14 +30,15 @@ usage() {
 }
 
 dump_command() {
-	lynx -dump -width=110 "$@"
+	w3m -dump -cols 110 "$@"
 }
 
 #MAIN
+clear
 
 if [ $# -lt 2 ]; then
-usage
-exit 1
+	usage
+	exit 1
 fi
 
 if [ $# -eq 2 ]; then
