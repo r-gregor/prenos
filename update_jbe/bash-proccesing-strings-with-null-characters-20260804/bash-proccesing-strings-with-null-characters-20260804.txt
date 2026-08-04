@@ -149,6 +149,33 @@ Another possible issue: if there are multibyte characters, depending on the 'loc
 single byte characters (emojys, utf-8, ...) which is wrong. To avoid this, we can set LC_ALL=C at the top of
 our script as global variable, which fixes the issue.
 
+Bash syntactic sugar: main() and debug() functions:
+
+debug() {
+# check if DEBUG is set
+	if [[ -n $DEBUG ]]; then
+		# echo '[DEBUG]' "$@" >&2
+		printf "[DEBUG] %s\n" "$@" >&2
+	fi
+	return 0 # success
+}
+
+main() {
+	local input_file="${1}"
+	if [[ -n "${input_file}" ]]; then
+		# printf "[INFO] reading from file: ${input_file}\n"
+		debug "[INFO] reading from file: ${input_file}"
+		read_chunks_good_updated < "${input_file}"
+
+	else
+		# printf "[INFO] reading from stdin\n"
+		debug "[INFO] reading from stdin"
+		read_chunks_good_updated
+	fi
+}
+
+main "$@"
+
 
 ---
 
