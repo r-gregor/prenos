@@ -145,6 +145,10 @@ read_chunks_good_updated() {
 # read 4 bytes: [ four ]
 # read 4 bytes: [ five ]
 
+Another possible issue: if there are multibyte characters, depending on the 'locale', bash could treat them as
+single byte characters (emojys, utf-8, ...) which is wrong. To avoid this, we can set LC_ALL=C at the top of
+our script as global variable, which fixes the issue.
+
 
 ---
 
