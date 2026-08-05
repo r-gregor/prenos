@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: bash-task-runner-example-20260805.sh
+# fname: task-runner.sh
 # from: bash-task-runners-20260805.txt
 #       https://hamvocke.com/blog/task-runners/
 # 20260805 v1: OK to use 'set -e'
@@ -15,20 +15,33 @@ FZFCMD_EN="fzf -e --reverse" # cygwin version does not support --width option
 declare -a actions=("usage" "build" "run" "install" "clean" "testing")
 selection=$(for action in "${actions[@]}"; do echo "${action}"; done | ${FZFCMD_EN})
 
-if [ "${selection}" == "" ]; then
-	printf "[INFO] no action selected\n\n"
-	exit 0
-fi
 
 usage() {
-	printf "Usage: <scriptname> <function name>\n"
-	printf "    function names: - usage\n"
+	printf "\n"
+	printf "Usage: <scriptname> <action>\n"
+	printf "       actions: - ${actions[0]}\n"
 
-	for funcn in build run install clean testing; do
-		printf "                    - ${funcn}\n"
+	for ((i=1; i < "${#actions[@]}"; i++ )); do
+		printf "                - ${actions[$i]}\n"
 	done
 	printf "\n"
 }
+
+# usage2() {
+# 	printf "Usage: <scriptname> <function name>\n"
+# 	printf "    function names: - usage\n"
+# 
+# 	for funcn in build run install clean testing; do
+# 		printf "                    - ${funcn}\n"
+# 	done
+# 	printf "\n"
+# }
+
+if [ "${selection}" == "" ]; then
+	printf "[INFO] no action selected\n"
+	usage
+	exit 0
+fi
 
 build() {
 	printf "[INFO] building ...\n"

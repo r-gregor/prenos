@@ -9,11 +9,11 @@
 set -e
 
 usage() {
-	printf "Usage: <scriptname> <function name>\n"
-	printf "    function names: - usage\n"
+	printf "Usage: <scriptname> <action>\n"
+	printf "       actions: - usage\n"
 
 	for funcn in build run instal clean testing; do
-		printf "                    - ${funcn}\n"
+		printf "                - ${funcn}\n"
 	done
 	printf "\n"
 }
