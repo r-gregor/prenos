@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: bash-task-runner-example-20260805.sh
+# fname: task-runner-simple.sh
 # from: bash-task-runners-20260805.txt
 #       https://hamvocke.com/blog/task-runners/
 # 20260805 v1: OK to use 'set -e'
@@ -53,7 +53,7 @@ testing() {
 	printf "[INFO] running tests ...\n"
 }
 
-get_action() {
+run_action() {
 	local scount=0
 	local selection
 	selection=$1
@@ -76,11 +76,10 @@ get_action() {
 	NUM="${#selections[@]}"
 	if [ "${NUM}" -gt 1 ]; then
 		printf "[ERROR] too many possible actions: "
-		# for SEL in "${selections[@]}"; do
 		for (( i=0; i < ${NUM} - 1; i++ )); do
 			printf "${selections[$i]}, "
 		done
-		printf "${selections[(( ${NUM} - 1 )) ]}\n"
+		printf "${selections[(( ${NUM} - 1 ))]}\n"
 		printf "\n"
 		exit 1
 	elif [ "${NUM}" -eq 0 ]; then
@@ -100,6 +99,6 @@ if [ $# -ne 1 ]; then
 	exit 1
 fi
 
-get_action $1
+run_action $1
 printf "\n"
 
