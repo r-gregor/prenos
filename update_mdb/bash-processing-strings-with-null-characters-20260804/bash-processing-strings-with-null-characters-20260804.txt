@@ -1,0 +1,183 @@
+fname: bash-processing-strings-with-null-characters-20260804.txt
+from: Can you write `md5` in Pure Bash? (100% bash, no external tools)
+      https://www.youtube.com/watch?v=VDQmu6KzDvU
+      14:44 - 18:53 / 01:28:73
+
+
+[read-lines.sh]
+<code>
+#! /usr/bin/env bash
+# fname: read-lines.sh
+# 20260804 v1
+# last 20260814
+# ---
+
+read_lines() {
+	while IFS= read -r LINE; do
+		printf "[ ${LINE} ]\n"
+	done
+}
+
+read_lines "$@"
+</code>
+
+# test command:
+# choaks on null '\0' character
+$> printf "one\ntwo\nthree\0four\0five\0" | ./read-lines.sh
+[ one ]
+[ two ]
+
+[read-chunks.sh]
+<code>
+#! /usr/bin/env bash
+# fname: read-chunks.sh
+# 20260804 v1
+# last 20260814
+# ---
+
+# choaks on string with no trailing '\0'
+read_chunks_bad() {
+	while IFS= read -r -d '' CHUNK; do
+		printf "[ ${CHUNK} ]\n"
+	done
+
+	# if there is no trailing '\0'
+	echo "(loop has ended)"
+	echo "this is left over: $CHUNK"
+}
+
+# FIX
+read_chunks_good() {
+	while true; do
+		IFS= read -r -d '' CHUNK
+		code=$?
+
+		printf "[ ${CHUNK} ]\n" # if 'read' fails this last still prints
+
+		# 'read' failed - so we are done processing
+		if ((code != 0)); then
+			break
+		fi
+	done
+}
+
+# read_chunks_bad "$@"
+read_chunks_good "$@"
+</code>
+
+# WITH read_chunks_bad()
+# test command with trailing '\0':
+$> printf "one\ntwo\nthree\0four\0five\0" | ./read-chunks.sh
+[ one
+two
+three ]
+[ four ]
+[ five ]
+(loop has ended)
+this is left over:
+
+# test command WITHOUT trailing '\0'
+$> printf "one\ntwo\nthree\0four\0five" | ./read-chunks.sh
+[ one
+two
+three ]
+[ four ]
+(loop has ended)
+this is left over: five # !!!
+
+# -------------------------------------------------------------------
+
+# WITH read_chunks_good()
+# test command with trailing '\0':
+$> printf "one\ntwo\nthree\0four\0five\0" | ./read-chunks.sh
+[ one
+two
+three ]
+[ four ]
+[ five ]
+[  ] # !!! -- but is not problem (usually)
+
+# test command WITHOUT trailing '\0'
+$> printf "one\ntwo\nthree\0four\0five" | ./read-chunks.sh
+[ one
+two
+three ]
+[ four ]
+[ five ]
+
+
+One proble can still arise! If the input is one big file with lots of records and no '\0' null character, all
+the text would be contained inside single CHUNK. We can avoid this with aditional use of '-n nchars' option to
+read.
+
+# from man read:
+...
+-n nchars read returns after reading nchars characters rather than waiting for a complete line of input,
+          but honors a delimiter if fewer than nchars characters are read before the delimiter.
+-N nchars read returns after reading exactly nchars characters rather than waiting for a complete line of
+          input, unless EOF is encountered or read times out. De‐ limiter characters encountered in the
+          input are not treated specially and do not cause read to return until nchars characters are read.
+          The result is not split on the characters in IFS; the intent is that the variable is assigned
+          exactly the characters read (with the exception of backslash; see the -r op‐ tion below).
+...
+
+So if the fuction is updated (to read max of 4k of data):
+read_chunks_good_updated() {
+	while true; do
+		IFS= read -r -d '' -n 4096 CHUNK
+		code=$?
+		n=${#CHUNK} # get the length of CHUNK
+
+		printf "read $n bytes: [ ${CHUNK} ]\n" # if 'read' fails this last still prints
+
+		# 'read' failed - so we are done processing
+		if ((code != 0)); then
+			break
+		fi
+	done
+}
+
+
+# $> printf "one\ntwo\nthree\0four\0five" | ./read-chunks-updated.sh
+# read 13 bytes: [ one
+# two
+# three ]
+# read 4 bytes: [ four ]
+# read 4 bytes: [ five ]
+
+Another possible issue: if there are multibyte characters, depending on the 'locale', bash could treat them as
+single byte characters (emojys, utf-8, ...) which is wrong. To avoid this, we can set LC_ALL=C at the top of
+our script as global variable, which fixes the issue.
+
+Bash syntactic sugar: main() and debug() functions:
+
+debug() {
+# check if DEBUG is set
+	if [[ -n $DEBUG ]]; then
+		# echo '[DEBUG]' "$@" >&2
+		printf "[DEBUG] %s\n" "$@" >&2
+	fi
+	return 0 # success
+}
+
+main() {
+	local input_file="${1}"
+	if [[ -n "${input_file}" ]]; then
+		# printf "[INFO] reading from file: ${input_file}\n"
+		debug "[INFO] reading from file: ${input_file}"
+		read_chunks_good_updated < "${input_file}"
+
+	else
+		# printf "[INFO] reading from stdin\n"
+		debug "[INFO] reading from stdin"
+		read_chunks_good_updated
+	fi
+}
+
+main "$@"
+
+
+---
+
+
+
