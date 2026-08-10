@@ -3,7 +3,6 @@
 # 20260731 v1
 # 20260809 v2 refine find command to prune (not desend into unwanted drectories
 # 20260810 v3 add options to select path and days difference
-# 20260810 v4 put find command into function
 # last 20260810
 # ---
 
@@ -26,6 +25,7 @@ YR=$(date "+%Y")
 MN=$(date "+%m")
 DY=$(date "+%d")
 
+
 if [ $# -eq 2 ]; then
 	PTH="${1}"
 	ddiff=${2}
@@ -46,6 +46,10 @@ fi
 new_DY=$(( DY - ddiff ))
 new_MN=${MN//0/}
 
+# test
+# echo "new_DY: ${new_DY}"
+# read -p "OK?"
+
 if [ $new_DY -le 0 ]; then
 	printf "[ERROR] The days difference is to big\n"
 	exit 1
@@ -53,6 +57,7 @@ fi
 
 newdate=$(printf "%4d%02d%02d\n" "${YR}" "${new_MN}" "${new_DY}")
 
-# MAIN
+# test
+# echo "newdate: ${newdate}"
+# read -p "OK?"
 list_new_files
-
