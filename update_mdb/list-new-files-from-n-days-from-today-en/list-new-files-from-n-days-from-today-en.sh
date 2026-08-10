@@ -17,11 +17,11 @@ DY=$(date "+%d")
 
 
 if [ $# -eq 2 ]; then
-	PTH="${1}"
-	ddiff=${2}
+	PTH="$1"
+	ddiff=$2
 elif [ $# -eq 1 ]; then
 	PTH='.'
-	ddiff=${1}
+	ddiff=$1
 else
 	usage
 	printf "\n"
@@ -52,10 +52,11 @@ newdate=$(printf "%4d%02d%02d\n" "${YR}" "${new_MN}" "${new_DY}")
 # read -p "OK?"
 
 # NOT working if inside function??
-find "${HOME}" \( \
+find "${PTH}"/* \( \
 	-path '**/.config*' \
 	-o -path '**/engit' \
 	-o -path '**/.*' \
 	-o -path '**/snap' \
 	-o -path '**/_NERAZPOREJENO' \) \
 -prune -o -newerct "${newdate}" -type f -print
+
