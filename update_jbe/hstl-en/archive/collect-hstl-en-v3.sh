@@ -4,7 +4,6 @@
 # 20260605 v2 fname (base, temp, dest) variables
 # 20260811 v3 cat command output into array, and read lines to be parsed from array
 #             cleand by 'grep -v' from 'excludes-hstl-en.txt'
-# 20260811 v4 external commands to process output outside of for loop --> MUTCH FASTER !!!
 # last: 20260811
 # ---
 
@@ -23,11 +22,12 @@ printf "[INFO] collecting hstl files into ${fname_temp} ...\n"
 readarray -t CMMNDS < <(cat ${SEZNAMI_DIR}/hstl-en-${CURRYR}* | cut -b 28- | sort | uniq -c)
 
 # 02-REMOVE-count-nums-infront-of-commands-in-single-file.onl.txt
-# v4
+# VERY SLOW BECAUSE EXTERNAL CMMANDS RUN ON EVERY LINE IN FOR LOOP!!!
 printf "[INFO] cleaning final ${dest_fname} ...\n"
 for LINE in "${CMMNDS[@]}"; do
-	echo "${LINE}"
-done | cut -b 9- | grep -v -f "${SRCDIR}/excludes-hstl-en.txt" > ${SEZNAMI_DIR}/${dest_fname}
-
+	echo "${LINE}" | \
+	cut -b 9- | \
+	grep -v -f "${SRCDIR}/excludes-hstl-en.txt"
+done > ${SEZNAMI_DIR}/${dest_fname}
 printf "[INFO] done\n"
 
