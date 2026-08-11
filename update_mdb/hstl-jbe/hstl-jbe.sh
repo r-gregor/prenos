@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# filename: hstl-en.sh
+# filename: hstl-jbe.sh
 # 20251120 v1 create history commands snapshot
 # last: 20251120
 # ---
@@ -13,7 +13,7 @@ HISTSIZE=100000
 HISTFILESIZE=5000
 export HISTTIMEFORMAT='%F %T '
 
-HSTL_PATH="$HOME/majstaf/seznami/hstl-en-$(date +'%Y%m%d-%H%M%S').txt"
+HSTL_PATH="$HOME/majstaf/seznami/hstl-jbez0rg-$(date +'%Y%m%d-%H%M%S').txt"
 set -o history
 history -r
 history -a
