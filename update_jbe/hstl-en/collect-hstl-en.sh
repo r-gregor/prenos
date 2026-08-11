@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
-# filename: collect_hstl.sh
+# filename: collect-hstl-en.sh
 # 20251120 v1 collect and filter out all history snapshots till today
 # 20260605 v2 fname (base, temp, dest) variables
 # 20260811 v3 cat command output into array, and read lines to be parsed from array
+#             cleand by 'grep -v' from 'excludes-hstl-en.txt'
 # last: 20260811
 # ---
 

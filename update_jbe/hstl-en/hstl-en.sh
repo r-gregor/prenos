@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
-# filename: hstl_en.sh
-# v1_20251120 create history commands snapshot
+# filename: hstl-en.sh
+# 20251120 v1 create history commands snapshot
 # last: 20251120
 # ---
 
@@ -13,12 +13,12 @@ HISTSIZE=100000
 HISTFILESIZE=5000
 export HISTTIMEFORMAT='%F %T '
 
-gPth="$HOME/majstaf/seznami/hstl-en-$(date +'%Y%m%d-%H%M%S').txt"
+HSTL_PATH="$HOME/majstaf/seznami/hstl-en-$(date +'%Y%m%d-%H%M%S').txt"
 set -o history
 history -r
 history -a
 history -w
-history >> ${gPth}
+history >> ${HSTL_PATH}
 set +o history
-echo "Sccesfully added commands from HISTORY to ${gPth}"
+echo "Sccesfully added commands from HISTORY to ${HSTL_PATH}"
 
