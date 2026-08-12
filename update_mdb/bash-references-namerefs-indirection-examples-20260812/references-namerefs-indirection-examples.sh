@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: increment.sh
+# fname: references-namerefs-indirection-examples.sh
 # examples from: bash-references-namerefs-indirection-declare-20260811.txt
 #                https://blogsh.github.io/2018/06/29/references-in-bash.html
 # 20260812 v1
@@ -58,7 +58,7 @@ sep
 
 # -----------------------------
 # Great! This will work. We have passed a variable by reference! This is awesome. But, let´s try
-# another example. A function which will capitalize3 all letters. This can be easily done with tr
+# another example. A function which will capitalize all letters. This can be easily done with tr
 #
 # 	$> tr '[[:lower:]]' '[[:upper:]]'
 #
@@ -153,8 +153,8 @@ append6() {
 main6() {
 	local -a numbers=(1 2 3)
 	echo "original array: ${numbers[@]}"
-	append6  numbers 4
-	append6  numbers 5
+	append6 numbers 4
+	append6 numbers 5
 	echo "updated: array: ${numbers[@]}"
 }
 
