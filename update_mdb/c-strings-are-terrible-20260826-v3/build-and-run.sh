@@ -7,6 +7,14 @@ if [ ! -d './bin/' ]; then
 	mkdir -v ./bin
 fi
 
-gcc -o ./bin/c-string-to-string-view-testing c-string-to-string-view-testing.c && ./bin/c-string-to-string-view-testing
+if [ $# -ne 1 ]; then
+	printf "[ERROR] no *.c file selected\n"
+	exit
+else
+	APP="${1}"
+	APPNAME="${APP%.*}"
+fi
+
+gcc -o ./bin/${APPNAME} ${APP} && ./bin/${APPNAME}
 
 

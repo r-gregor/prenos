@@ -1,5 +1,5 @@
 /*
- * fname: c-string-to-string-view-testing.c
+ * fname: c-string-to-string-view-testing-printout.c
  * from:  C Strings are Terrible! (Tsoding)
  *        https://www.youtube.com/watch?v=y8PLpDgZc0E
  * 20260826 v1
@@ -8,6 +8,9 @@
  * 20260827 v3: some typos corrections
  *              combined function 'sv_trim()' to trim from right AND left (13:28 / 28:45)
  *              function 'sv_chop_by_delim()'
+ *              define 'SV_fmt' and 'SV_args(sv)' for propper string-view formating for chopping from right
+ *              define 'NL' for printing newline, end 'GO_ON' to stop & continue
+ *              for printout define 'GO_ON' as '{}' (do nothing) and add 'printf("!!THIS IS A PRINTOUT!!\n\n");' at the beginning of 'main()'
  * last: 20260827
  */
 
@@ -26,6 +29,17 @@
 #define SV_args(sv) (sv)->count, (sv)->data
 #define NL printf("\n");
 
+/* for PRINTOUT:
+#define GO_ON {              \
+	NL                       \
+	printf("[next ->]");     \
+	getchar();               \
+	clr();                   \
+}
+*/
+
+/* does NOTHING */
+#define GO_ON {}
 
 /* === function and structs initializations === */
 void begin();
@@ -33,7 +47,6 @@ void end();
 void sep();
 void sep_long();
 // void draw_line_across();
-void go_on();
 void clr();
 
 /* for E2 */
@@ -63,6 +76,7 @@ int main(int argc, char **argv) {
 
 #if 1
 	clr();
+	printf("!!THIS IS A PRINTOUT!!\n\n");
 	/* E1 */
 	/* classic c-string */
 	printf("#########################\n");
@@ -82,7 +96,7 @@ int main(int argc, char **argv) {
 	printf("dereferenced '*s' as '%%c':  '%c'\n", *s);
 	printf("('%c' is '%d' in ASCII table)\n", *s, *s);
 	printf("sizeof(*s) = %zu (dereferenced 'char *' is just a pointer to the first char)\n", sizeof(*s));
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("'s' represents just a view of bytes stored somewhere in memory\n");
@@ -96,7 +110,7 @@ int main(int argc, char **argv) {
 	printf("because we try to touch memory that we are not supposed to touch\n");
 	printf("chopping off from right is possible if we duplicae the string, but \n");
 	printf("that means allocating new memory that need to be freed after use\n");
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("duplicating string litteral with: char *sc = strdup(\"Hello, World\");\n");
@@ -109,7 +123,7 @@ int main(int argc, char **argv) {
 	free(sc);
 	sep_long(); // ------------------
 	// draw_line_across();
-	go_on();
+	GO_ON
 #endif
 
 #if 1
@@ -127,7 +141,7 @@ int main(int argc, char **argv) {
 
 	// printf("sv2 = '%s'\n", sv2.data); /* same as following ... */
 	sv_print(&sv2, "sv2 = ", '\'');
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("if we want to chop off from right, we need to use special printf format string count:\n");
@@ -142,28 +156,26 @@ int main(int argc, char **argv) {
 	printf("this works because you can combine several parts of string literal into single one:\n");
 	printf("printf(\"'First \" \"part\" \" and \" \"second \" \"part'\") ==> ");
 	printf("'First " "part" " and " "second " "part'\n");
-	go_on();
+	GO_ON
 
-
+	sep(); // ---
+	printf("new functions 'sv_chop_(left/right)' to chop off single char:\n");
+	sv_print(&sv2, "sv2 = ", '\'');
 
 	NL
-	printf("new functions 'sv_chop_(left/right)' to chop off single char:\n");
 	printf("after chopping off from right 2 times:\n");
 	sv_chop_right(&sv2);
 	sv_chop_right(&sv2);
-	// // printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
-	// // printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
+	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
 
-	
 	NL
 	printf("and after chopping off from left 2 times:\n");
 	sv_chop_left(&sv2);
 	sv_chop_left(&sv2);
-	// // printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
-	// // printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
+	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("new functions 'sv_chop_n_(left/right)' to accept number of characters to chop off\n");
@@ -176,7 +188,7 @@ int main(int argc, char **argv) {
 	sv_chop_n_right(&sv3, 3);
 	sv_chop_n_left(&sv3, 2);
 	sv_print(&sv3, "sv3 = ", '\'');
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("new functions 'sv_trim_(left/right)' to trim off leading or trailing spaces from string-view:\n");
@@ -192,7 +204,7 @@ int main(int argc, char **argv) {
 	printf("and after trimming from right:\n");
 	sv_trim_right(&sv4);
 	sv_print(&sv4, "sv4 = ", '|');
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("new function 'sv_trim()' to trim off leading AND trailing spaces from string-view:\n");
@@ -203,7 +215,7 @@ int main(int argc, char **argv) {
 	printf("after trimming:\n");
 	sv_trim(&sv5);
 	sv_print(&sv5, "sv5 = ", '|');
-	go_on();
+	GO_ON
 
 	sep(); // ---
 	printf("new function 'sv_chop_by_delim()' to split string-view into two parts by delim:\n");
@@ -357,13 +369,6 @@ String_View sv_chop_by_delim(String_View *sv, char delim) {
 	String_View result = *sv;
 	sv_chop_n_left(sv, sv->count);
 	return result;
-}
-
-void go_on() {
-	NL
-	printf("[next ->]");
-	getchar();
-	NL
 }
 
 void clr() {

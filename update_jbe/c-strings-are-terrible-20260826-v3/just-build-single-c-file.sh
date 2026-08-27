@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
-# fname: build-and-run.sh
-# 20260826 v1
+# fname: just-build-single-c-file.sh
+# 20260827 v1
 # ---
 
 if [ ! -d './bin/' ]; then
@@ -15,6 +15,6 @@ else
 	APPNAME="${APP%.*}"
 fi
 
-gcc -o ./bin/${APPNAME} ${APP} && ./bin/${APPNAME}
-
+gcc -o ./bin/${APPNAME} ${APP}
+tree ./bin
 

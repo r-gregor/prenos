@@ -4,9 +4,8 @@
 # ---
 
 if [ ! -d './bin/' ]; then
-	mkdir -v ./bin
+	exit
 fi
 
-gcc -o ./bin/c-string-to-string-view-testing c-string-to-string-view-testing.c
-
+rm -rv ./bin/*
 

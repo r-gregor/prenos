@@ -7,16 +7,14 @@ if [ ! -d './bin/' ]; then
 	mkdir -v ./bin
 fi
 
-readarray -t APPS < <(ls *.c)
-
-for APP in "${APPS[@]}"; do
+if [ $# -ne 1 ]; then
+	printf "[ERROR] no *.c file selected\n"
+	exit
+else
+	APP="${1}"
 	APPNAME="${APP%.*}"
-	printf "gcc -o ./bin/%s %s && ./bin/%s\n" "${APPNAME}" "${APP}" "${APPNAME}"
-done
+fi
 
-exit
+gcc -o ./bin/${APPNAME} ${APP} && ./bin/${APPNAME}
 
-gcc -o ./bin/c-string-to-string-view-testing c-string-to-string-view-testing.c && ./bin/c-string-to-string-view-testing
-
-for APP in *.c; do gcc -o ${APP%.*} ${APP}; done
 
