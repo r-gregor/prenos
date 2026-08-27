@@ -15,6 +15,11 @@ else
 	APPNAME="${APP%.*}"
 fi
 
+if [ ! -f "${APP}" ]; then
+	printf "[ERROR] no such file: %s\n" "${APP}"
+	exit
+fi
+
 gcc -o ./bin/${APPNAME} ${APP}
 tree ./bin
 

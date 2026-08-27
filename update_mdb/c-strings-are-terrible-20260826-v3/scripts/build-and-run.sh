@@ -15,6 +15,10 @@ else
 	APPNAME="${APP%.*}"
 fi
 
-gcc -o ./bin/${APPNAME} ${APP} && ./bin/${APPNAME}
+if [ ! -f "${APP}" ]; then
+	printf "[ERROR] no such file: %s\n" "${APP}"
+	exit
+fi
 
+gcc -o ./bin/${APPNAME} ${APP} && ./bin/${APPNAME}
 

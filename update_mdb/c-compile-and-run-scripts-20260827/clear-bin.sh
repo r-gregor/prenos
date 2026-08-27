@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: build-and-run.sh
+# fname: clear-bin.sh
 # 20260826 v1
 # ---
 
