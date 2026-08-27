@@ -5,7 +5,8 @@
  * 20260826 v1
  * 20260826 v2: '.count' type changed to unsigned int from size_t to avoid compiler warnings
  *              displaying 'char *sv' as '%ld' removed to avoid compiler warnings
- * last: 20260826
+ * 20260827 v3: some typos corrections
+ * last: 20260827
  */
 
 #include <stdio.h>
@@ -77,9 +78,9 @@ int main(int argc, char **argv) {
 	printf("but chopping off from right is not possible with string literals\n");
 	printf("as we need to 'change' last char of read-only string litteral to '\\0'\n");
 	printf("if we try to set s[strlen(s) - 1] = '\\0', the program will segfault\n");
-	printf("as we try to touch memory that we are not supposed to touch\n");
-	printf("that is possible if we duplicae the string, but that means allocating new memory\n");
-	printf("that need to be freed after use\n");
+	printf("because we try to touch memory that we are not supposed to touch\n");
+	printf("chopping off from right is possible if we duplicae the string, but \n");
+	printf("that means allocating new memory that need to be freed after use\n");
 
 	sep(); // ---
 	printf("duplicating string litteral with: char *sc = strdup(\"Hello, World\");\n");
@@ -112,27 +113,27 @@ int main(int argc, char **argv) {
 	sep(); // ---
 	printf("if we want to sv_chop_right, we need to use special printf format string count:\n");
 	printf("printf(\".*%%s\"), sv2.count, sv2.data);\n");
-	printf("expression included inside sv_print() function\n\n");
+	printf("expression which is included inside sv_print() function\n\n");
 
-	printf("after chopping from right 2 times:\n");
+	printf("after chopping off from right 2 times:\n");
 	sv_chop_right(&sv2);
 	sv_chop_right(&sv2);
 	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
 
 	
-	printf("and after chopping from left 2 times:\n");
+	printf("and after chopping off from left 2 times:\n");
 	sv_chop_left(&sv2);
 	sv_chop_left(&sv2);
 	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
 
 	sep(); // ---
-	printf("updated chopp functions to accept number of characters to chopp off\n");
+	printf("updated sv_chop* functions to accept number of characters to chopp off\n");
 	String_View sv3 = sv("Hello, World");
 	// printf("string.view sv3 = '%s'\n", sv3.data);
 	sv_print(&sv3, "sv3 = ", '\'');
-	printf("and after chopping from right 3 times and from left 2 times:\n");
+	printf("and after chopping off from right 3 times and from left 2 times:\n");
 	sv_chop_n_right(&sv3, 3);
 	sv_chop_n_left(&sv3, 2);
 	sv_print(&sv3, "sv3 = ", '\'');
