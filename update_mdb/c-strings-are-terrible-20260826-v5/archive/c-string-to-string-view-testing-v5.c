@@ -1,5 +1,5 @@
 /*
- * fname: c-string-to-string-view-testing-printout.c
+ * fname: c-string-to-string-view-testing.c
  * from:  C Strings are Terrible! (Tsoding)
  *        https://www.youtube.com/watch?v=y8PLpDgZc0E
  * 20260826 v1
@@ -11,6 +11,9 @@
  *              define 'SV_fmt' and 'SV_args(sv)' for propper string-view formating for chopping from right
  *              define 'NL' for printing newline, end 'GO_ON' to stop & continue
  *              for printout define 'GO_ON' as '{}' (do nothing) and add 'printf("!!THIS IS A PRINTOUT!!\n\n");' at the beginning of 'main()'
+ * 20260827 v4: remove 'begin()' function
+ *              convert 'crl()' function from system() function to printf with escape codes
+ * 20260828 v5: 'printout' version compied if PRINTOUT is defined
  * last: 20260827
  */
 
@@ -28,26 +31,23 @@
 #define SV_fmt "%.*s"
 #define SV_args(sv) (sv)->count, (sv)->data
 #define NL printf("\n");
+#define clr() printf("\033[H\033[J")
 
-/* for PRINTOUT:
-#define GO_ON {              \
-	NL                       \
-	printf("[next ->]");     \
-	getchar();               \
-	clr();                   \
-}
-*/
-
-/* does NOTHING */
-#define GO_ON {}
+#if defined(PRINTOUT)
+	#define GO_ON {}
+#else
+	#define GO_ON {              \
+		NL                       \
+		printf("[next ->]");     \
+		getchar();               \
+		clr();                   \
+	}
+#endif
 
 /* === function and structs initializations === */
-void begin();
 void end();
 void sep();
 void sep_long();
-// void draw_line_across();
-void clr();
 
 /* for E2 */
 typedef struct {
@@ -76,7 +76,9 @@ int main(int argc, char **argv) {
 
 #if 1
 	clr();
+#if defined(PRINTOUT)
 	printf("!!THIS IS A PRINTOUT!!\n\n");
+#endif
 	/* E1 */
 	/* classic c-string */
 	printf("#########################\n");
@@ -122,11 +124,14 @@ int main(int argc, char **argv) {
 	printf("sizeof(*sc) = %zu\n", sizeof(*sc));
 	free(sc);
 	sep_long(); // ------------------
-	// draw_line_across();
 	GO_ON
 #endif
 
 #if 1
+	clr();
+#ifdef PRINTOUT
+	printf("!!THIS IS A PRINTOUT!!\n\n");
+#endif
 	/* E2 */
 	/* string-view */
 	printf("####################\n");
@@ -139,7 +144,6 @@ int main(int argc, char **argv) {
 	
 	String_View sv2 = sv("Hello, World");
 
-	// printf("sv2 = '%s'\n", sv2.data); /* same as following ... */
 	sv_print(&sv2, "sv2 = ", '\'');
 	GO_ON
 
@@ -166,21 +170,18 @@ int main(int argc, char **argv) {
 	printf("after chopping off from right 2 times:\n");
 	sv_chop_right(&sv2);
 	sv_chop_right(&sv2);
-	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
 
 	NL
 	printf("and after chopping off from left 2 times:\n");
 	sv_chop_left(&sv2);
 	sv_chop_left(&sv2);
-	// printf("sv2 = '%.*s'\n\n", sv2.count, sv2.data);
 	sv_print(&sv2, "sv2 = ", '\'');
 	GO_ON
 
 	sep(); // ---
 	printf("new functions 'sv_chop_n_(left/right)' to accept number of characters to chop off\n");
 	String_View sv3 = sv("Hello, World");
-	// printf("string.view sv3 = '%s'\n", sv3.data);
 	sv_print(&sv3, "sv3 = ", '\'');
 
 	NL
@@ -255,15 +256,12 @@ void sep_long() {
 		putchar('-');
 	}
 	NL
-	// printf("------------------\n\n");
 }
 
 void draw_line_across() {
 	struct winsize w;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
-	// printf ("lines %d\n", w.ws_row);
-	// printf ("columns %d\n", w.ws_col);
 	for (int i = 0; i < w.ws_col; i++) {
 		putchar('-');
 	}
@@ -280,17 +278,16 @@ String_View sv(const char *cstr) {
 	};
 }
 
+/* simple printf of sv  */
 void sv_print_simple(String_View *sv) {
-	// printf("%.*s\n", sv->count, sv->data);
 	printf(SV_fmt, SV_args(sv));
 }
 
+/* printf of sv with 'prefix' and 'border' */
 void sv_print(String_View *sv, char *prefix, char border) {
 	if (border == 0) {
-		// printf("%s%.*s\n", prefix, sv->count, sv->data);
 		printf("%s" SV_fmt "\n", prefix, SV_args(sv));
 	} else {
-		// printf("%s%c%.*s%c\n", prefix, border, sv->count, sv->data, border);
 		printf("%s%c" SV_fmt "%c\n", prefix, border, SV_args(sv), border);
 	}
 }
@@ -369,9 +366,5 @@ String_View sv_chop_by_delim(String_View *sv, char delim) {
 	String_View result = *sv;
 	sv_chop_n_left(sv, sv->count);
 	return result;
-}
-
-void clr() {
-	system("@cls||clear");
 }
 
