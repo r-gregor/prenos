@@ -5,20 +5,55 @@
 # 20260810 v3 add options to select path and days difference
 # 20260810 v4 put find command into function
 # 20260902 v5 new get_start_date_from_daysdiff() function
-# 20260902 v6 fixed value of start_date if days_diff is  lower tham or equal to zero
+# 20260902 v6 fixed value of start_date if days_diff is  lower than or equal to zero
 #             with retruning from function
+# 20260903 v7 put everithing into list_new_files() function and check if ddiff is a anumber
 # last 20260810
 # ---
 
 usage() {
 	printf "\n\tUsage: <scriptname> <path (optional)> <days difference to go back from today>\n"
-	printf "\n\t                    if <path> nor given --> path is current directory (\".\")\n\n"
+	printf "\n\t                    if <path> nor given --> path is curr_ent directory (\".\")\n\n"
 }
 
+# v7
 list_new_files() {
+	if [ $# -eq 2 ]; then
+		PTH="${1}"
+		ddiff=${2}
+	elif [ $# -eq 1 ]; then
+		PTH='.'
+		ddiff=${1}
+	else
+		usage
+		printf "\n"
+		exit 1
+	fi
+
+	if [ ! -d "${PTH}" ]; then
+		printf "[ERROR] no such directory: '%s'\n\n" "${PTH}"
+		exit 1
+	fi
+	
+	# v7
+	if ! [[ "${ddiff}" =~ ^[0-9]+$ ]]; then
+		printf "[ERROR] ddiff is not a nubmer\n"
+		exit 1
+	fi
+
+	newdate="$(get_start_date_from_daysdiff ${ddiff})"
+	# if [[ ! ${newdate} =~ '^[0-9]+$' ]]; then
+	# 	printf "[ERROR] new date is not a nuber\n"
+	# 	exit 1
+	# fi
+
+	printf "[INFO] looking for files from %s\n---\n" "${newdate}"
 	find "${PTH}" \( \
 		-path '**/.config*' \
+		-o -path '**/.cache' \
 		-o -path '**/mdbgit' \
+		-o -path '**/jbegit' \
+		-o -path '**/engit' \
 		-o -path '**/.*' \
 		-o -path '**/snap' \
 		-o -path '**/_NERAZPOREJENO' \) \
@@ -30,23 +65,23 @@ get_start_date_from_daysdiff() {
 
 	if [ $# -ne 1 ]; then
 		printf "\tUsage: get_start_date_from_daysdiff <daysdiff [int]>\n\n"
-		exit
+		exit 1
 	else
 		days_diff="$1"
 	fi
 
-	curryr_str=$(date +"%Y")
-	currmn_str=$(date +"%m")
-	currdy_str=$(date +"%d")
-	currdt=$(date +"%Y%m%d")
+	curr_yr_str=$(date +"%Y")
+	curr_mn_str=$(date +"%m")
+	curr_dy_str=$(date +"%d")
+	curr_dt=$(date +"%Y%m%d")
 
-	currmn="${currmn_str#0}"
-	currdy="${currdy_str#0}"
-	curryr="${curryr_str}"
+	curr_mn="${curr_mn_str#0}"
+	curr_dy="${curr_dy_str#0}"
+	curr_yr="${curr_yr_str}"
 
-	startmn="${currmn}"
-	startdy="${currdy}"
-	startyr="${curryr}"
+	start_mn="${curr_mn}"
+	start_dy="${curr_dy}"
+	start_yr="${curr_yr}"
 
 	year_days=365
 
@@ -60,61 +95,39 @@ get_start_date_from_daysdiff() {
 
 	# v6
 	if [ "${days_diff}" -le 0 ]; then
-		start_date="${currdt}"
+		start_date="${curr_dt}"
 		printf "${start_date}"
 		return
 	fi
 
 	if [ "${days_diff}" -ge ${year_days} ]; then
 		printf "[ERROR] to many days back (over a whole year)\n\n"
-		exit
+		exit 1
 	fi
 
-	if [ ${startdy} -le ${days_diff} ]; then
-		(( startmn-- ))
-		(( days_diff -= ${startdy} ))
-		startdy=${month_days["${startmn}"]}
-		while [ "${month_days["${startmn}"]}" -lt "${days_diff}" ]; do
-			(( startmn-- ))
-			(( days_diff -= "${month_days["${startmn}"]}" ))
+	if [ ${start_dy} -le ${days_diff} ]; then
+		(( start_mn-- ))
+		(( days_diff -= ${start_dy} ))
+		start_dy=${month_days["${start_mn}"]}
+		while [ "${month_days["${start_mn}"]}" -lt "${days_diff}" ]; do
+			(( start_mn-- ))
+			(( days_diff -= "${month_days["${start_mn}"]}" ))
 		done
-		startdy=$(( "${month_days["${startmn}"]}" - "${days_diff}" ))
+		start_dy=$(( "${month_days["${start_mn}"]}" - "${days_diff}" ))
 	else
-		startdy=$(( ${currdy} - ${days_diff} ))
+		start_dy=$(( ${curr_dy} - ${days_diff} ))
 	fi
 
-	if [ ${startdy} -eq 0 ]; then
-		(( startmn-- ))
-		startdy="${month_days["${startmn}"]}"
+	if [ ${start_dy} -eq 0 ]; then
+		(( start_mn-- ))
+		start_dy="${month_days["${start_mn}"]}"
 	fi
 
-	start_date=$(printf "%04d%02d%02d" "${startyr}" "${startmn}" "${startdy}")
+	start_date=$(printf "%04d%02d%02d" "${start_yr}" "${start_mn}" "${start_dy}")
 	printf "${start_date}"
 }
 
-if [ $# -eq 2 ]; then
-	PTH="${1}"
-	ddiff=${2}
-elif [ $# -eq 1 ]; then
-	PTH='.'
-	ddiff=${1}
-else
-	usage
-	printf "\n"
-	exit 1
-fi
-
-if [ ! -d "${PTH}" ]; then
-	printf "[ERROR] no such directory: '%s'\n\n" "${PTH}"
-	exit 1
-fi
-
-newdate="$(get_start_date_from_daysdiff ${ddiff})"
-
-# TEST
-# printf "newdate: %s\n" "${newdate}"
-# read -p "OK?"
 
 # MAIN
-list_new_files
+list_new_files "$@"
 
