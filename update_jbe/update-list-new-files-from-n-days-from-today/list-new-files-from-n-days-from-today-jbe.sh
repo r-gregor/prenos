@@ -7,7 +7,7 @@
 # 20260902 v5 new get_start_date_from_daysdiff() function
 # 20260902 v6 fixed value of start_date if days_diff is  lower than or equal to zero
 #             with retruning from function
-# 20260903 v7 put everithing into list_new_files() function and check if ddiff is a anumber
+# 20260903 v7 put everything into list_new_files() function and check if ddiff is a anumber
 # last 20260810
 # ---
 
@@ -37,7 +37,7 @@ list_new_files() {
 	
 	# v7
 	if ! [[ "${ddiff}" =~ ^[0-9]+$ ]]; then
-		printf "[ERROR] ddiff is not a nubmer\n"
+		printf "[ERROR] argument is not a positive nubmer\n\n"
 		exit 1
 	fi
 
