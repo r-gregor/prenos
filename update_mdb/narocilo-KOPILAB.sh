@@ -14,6 +14,12 @@ if [ -z $NN ]; then
 	NN=4
 fi
 
+# test if $NN is number:
+if ! [[ "${NN}" =~ ^[1-9]+$ ]]; then
+	printf "[ERROR] argument is not a positive nubmer\n\n"
+	exit 1
+fi
+
 tmp_stmp=$(date +"%Y%m%d_%H%M")
 
 FJL=$(find * -maxdepth 0 -name "*.pdf")
