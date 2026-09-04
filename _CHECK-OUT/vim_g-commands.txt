@@ -46,7 +46,7 @@ tag         char              note   action in Normal mode    ~
 |gR|            gR            2      enter Virtual Replace mode
 |gT|            gT                   go to the previous tab page
 |gU|            gU{motion}    2      make Nmove text uppercase
-|gV|            gV                   don't reselect the previous Visual area
+|gV|            gV                   don´t reselect the previous Visual area
                                      when executing a mapping or menu in Select mode
 |g]|            g]                   :tselect on the tag under the cursor
 |g^|            g^            1      when 'wrap' off go to leftmost non-white

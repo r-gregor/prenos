@@ -160,10 +160,10 @@ $> cd Debian-Xfce4-Minimal-Install
 $> sudo ./xfce-install.sh
 
 ## Manually install Xfce and required packages
-If you've read this far, and you're getting impatient:
+If you´ve read this far, and you´re getting impatient:
 $> sudo apt install xfce4
 
-This will give you a basic Xfce desktop with lightdm greeter. For additional plugins and ''goodies', add:
+This will give you a basic Xfce desktop with lightdm greeter. For additional plugins and 'goodies', add:
 
 $> sudo apt install xfce4-goodies
 
@@ -320,7 +320,7 @@ echo "
 +-+-+-+-+-+-+ +-+-+-+-+-+-+ 
 "
 
-# Make setup.sh executable (if needed, though it's typically already executable)
+# Make setup.sh executable (if needed, though it´s typically already executable)
 chmod +x setup.sh packages.sh
 
 # Run the setup script
@@ -1863,7 +1863,7 @@ if ! command_exists unzip; then
 	sudo apt install unzip -y
 fi
 
-# Create directory for fonts if it doesn't exist
+# Create directory for fonts if it doesn´t exist
 mkdir -p ${HOME}/.local/share/fonts
 
 # Array of font names
