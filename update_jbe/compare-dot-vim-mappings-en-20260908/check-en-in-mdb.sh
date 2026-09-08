@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: check.sh
+# fname: check-en-in-mdb.sh
 # 20260908 v1
 # ---
 while read MDB; do
@@ -12,9 +12,10 @@ while read MDB; do
 		else
 			continue
 		fi
-	if [ found -eq 0 ]; then
+	done < en_mappings
+	if [ $found -eq 0 ]; then
 		echo "$MDB NOT found!"
 	fi
-	done < en_mappings
-done < dot-vimrc-mdb-mapped-commands-20260907.txt
+#done < dot-vimrc-mdb-mapped-commands-20260907.txt
+done < mdb_mappings
 

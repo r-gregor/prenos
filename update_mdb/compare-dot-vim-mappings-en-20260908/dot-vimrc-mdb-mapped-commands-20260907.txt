@@ -58,7 +58,7 @@ vnoremap        ;;                  put semicolon at the end of the line
 noremap         ,lc                 copy http link into the [number] holder for the link after lyxd-ed document
 map             ,bt                 open all buffers into separate tabs
 noremap         ,tr                 table row dividers
-map             <space>GRGR         NOT EXISTS
+noremap         <space>GRGR         NOT EXISTS
 noremap         <space>f            move '{' after 'func() '
 noremap         <space>ss           :set syntax=<CR>
 noremap         <space>ssh          :set syntax=sh<CR>
