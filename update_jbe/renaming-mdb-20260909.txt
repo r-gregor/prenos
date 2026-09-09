@@ -1,6 +1,0 @@
-mv {,g}check-git-diffs-mdb.sh
-for NM in dwnld-gt*; do mv -v "$NM" "g${NM}"; done
-for NM in testing-*; do mv -v "$NM" "g${NM}"; done
-vim mdbgt-diffs-check-all.sh
-vim gtesting-all-mdb.sh
-history > renaming-mdb-20260909.txt
