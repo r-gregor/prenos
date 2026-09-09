@@ -1,0 +1,5 @@
+cd ~/majstaf/majbin/git-commands/
+mv {,g}check-git-diffs-en.sh
+for NM in dwnld-gt*; do mv -v "$NM" "g${NM}"; done
+for NM in testing-*; do mv -v "$NM" "g${NM}"; done
+history > renaming-en-20260909.txt
