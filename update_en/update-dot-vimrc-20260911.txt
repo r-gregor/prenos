@@ -1,0 +1,15 @@
+...
+
+" set listchars=tab:┊⋅
+" set list
+" set listchars+=trail:⋅
+" nnoremap <SPACE>. :set listchars+=space:⋅ <CR>
+" nnoremap <SPACE>, :set listchars-=space:⋅ <CR>
+
+" 20260911
+" hide/display tab character
+nnoremap <SPACE>0 :set listchars=tab:\ \ ,nbsp:·<CR>
+nnoremap <SPACE>t :set listchars=tab:┊⋅<CR>
+
+...
+
