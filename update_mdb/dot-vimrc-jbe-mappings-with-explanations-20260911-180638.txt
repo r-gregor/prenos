@@ -1,0 +1,200 @@
+set listchars+=trail:⋅
+nnoremap <space>. :set listchars+=space:⋅ <CR>
+nnoremap <space>, :set listchars-=space:⋅ <CR>
+--
+" --- HIDE/DISPLAY TAB CHARACTE ---
+nnoremap <SPACE>0 :set listchars=tab:\ \ ,nbsp:·<CR>
+nnoremap <SPACE>t :set listchars=tab:┊⋅<CR>
+--
+" --- TOGGLE NUMBER/RELATIVENUMBER ---
+nnoremap ,n :call NumberToggle()<CR>
+--
+iab psvm <TAB>public static void main(String[<Right><Space>args<Right><Space>{<CR><CR><CR><Right><Space>// end main<ESC>kki<CR>
+inoremap sout System.out.println("");<ESC>hhi
+--
+" --- SYNTAX SETUP MAPPINGS ---
+noremap ,stb :so ~/.vimrc <bar> :set syntax=bash<CR>
+noremap ,stz :so ~/.vimrc <bar> :set syntax=zig<CR>
+noremap ,stp :so ~/.vimrc <bar> :set syntax=python<CR>
+noremap ,stc :so ~/.vimrc <bar> :set syntax=c<CR>
+noremap ,stj :so ~/.vimrc <bar> :set syntax=java<CR>
+noremap ,stv :so ~/.vimrc <BAR> :set syntax=vim<CR>
+--
+" --- ENCLOSING BRACKETS/SQUARE/CURLY ---
+inoremap ${{ ${}<ESC>hli
+inoremap {{ {}<ESC>hli
+inoremap (( ()<ESC>hli
+inoremap [[ []<ESC>hli
+inoremap [[[ [[]]<ESC>hli
+--
+" --- BREAK LINE AT POSITION 110 CHARS ---
+nnoremap ,b 0110lbi<BS><CR><ESC>
+--
+" --- MOVE LINE UNDER THE CURSOR INSIDE [] ---
+noremap ,ss 0vg_xi[<c-r>"]<esc>j<cr>
+--
+" --- MAPPING TO INSERT FILE SEARCH ---
+inoremap <C-f> <C-x><C-f>
+--
+" --- MOVE LINE UNDER THE CURSOR INSIDE [] ---
+noremap ,ss 0vg_xi[<c-r>"]<esc>j<cr>
+--
+" --- ADD/REMOVE QUOTES ARROUND THE WORD ---
+nnoremap <silent> ,dq :call Quote('"')<CR>
+nnoremap <silent> ,sq :call Quote("'")<CR>
+nnoremap <silent> ,uq :call UnQuote()<CR>
+--
+" --- SEARCH AND REPLACE [12] AND [123] WITH CONFIRMATION ---
+nnoremap ,d :%s/\[\d\+]//gc
+--
+" --- COMMENT/UNCOMMENT VISUALLY SELECTED BLOCK ---
+vnoremap ,pt :s@\(^\s*\)\(.*\)@\1# \2@<CR>
+vnoremap ,pu :s@\(^\s*\)# @\1@<CR>
+vnoremap ,jv :s@\(^\s*\)\(.*\)@\1// \2@<CR>
+vnoremap ,ju :s@\(^\s*\)// @\1@<CR>
+--
+" --- HTML COMMENT/UNCOMMENT ---
+vnoremap ,ht :s/\%V\(.*\)\%V/<!-- \1 -->/<CR>
+vnoremap ,hu :s/\%V<!-- \(.*\) -->\%V/\1/<CR>
+--
+" --- REMOVE LEADING CHARS WITH SPACE IN VISUAL MODE ---
+vnoremap ,<space> :s@^.\{1,2\} @@<CR>
+--
+" --- REPLACE MULTIPLE <tab>S WITH TRAILING <space> WITH <tab>S ONLY ---
+vnoremap ,t :s/\(\t\+\) */\1/g<CR>
+--
+" --- c-STYLE COMMENT OUT VISUAL BLOCK  ---
+vnoremap ,cc :s/^/ * /<CR>gv"xdO/*<CR><ESC>0C */<ESC>k"xp<CR>
+vnoremap ,cu :s/^ \* //<CR>gv"0dddkdd"0P<CR>
+--
+" --- ENCLOSE VISUAL SELECTION BETWEEN <code></code> TAGS
+vnoremap ,cd di<code><CR></code><CR><ESC>kP?<code><CR>:s@.*\(<code>\)@\1@<CR>/</code><CR>:s@.*\(</code>\)@\1@<CR>j
+--
+" --- SHIFT TAB AND REMOVE SPACES ---
+vnoremap ,rr >gv:s/\(\t\+\) \+/\1/g<CR>
+--
+" --- CLONE CURRENT LINE OR SELLECTION ---
+noremap <leader>c yyp
+vnoremap <leader>c yPgv
+
+nnoremap <F5> :NERDTreeToggle<CR>
+--
+" --- VIM'S FILE EXPLORER (Netrw) ---
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+--
+let g:ranger_map_keys = 0
+nnoremap <leader>r :Ranger<CR>
+--
+" --- REPLACE SPACES BEFOR ; AT THE END OF THE LINE ---
+nnoremap <leader>s :s/ *;*$/;/<esc>j
+--
+" --- BREAK THE SENTENCE AT WORD BEGINNING AT 110 CHARS ---
+nnoremap <leader>b 0110lbi<BS><CR><ESC>
+--
+" --- MOVE ENTIRE LINES up AND down ---
+nnoremap <Space>j :m.+1<CR>==
+nnoremap <Space>k :m.-2<CR>==
+vnoremap <Space>j :m'>+1<CR>gv=gv
+vnoremap <Space>k :m'<-2<CR>gv=gv
+--
+" --- REPLACE START OF THE LINE WITH '$> ' PROMPT ---
+nnoremap ,4 :s/^/$> /<CR><CR>
+vnoremap ,4 :s/^/$> /<CR><CR>
+nnoremap <Space>4 :s/^\$ /$> /<CR><CR>
+vnoremap <Space>4 :s/^\$ /$> /<CR><CR>
+--
+" --- FILE MANAGERS ---
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ff :FZF<CR>
+nnoremap <leader>fe :FZF -e<CR>
+--
+" --- REPLACES TABS TO 4 SPACES IN VISUAL BLOCK ---
+vnoremap <C-t> :s/\%V\t/    /g<CR>
+--
+set synmaxcol=250
+nnoremap <leader>st :syntax off<CR>:syntax on<CR>
+--
+" --- MOVE LINE UNDER THE CURSOR INSIDE [] ---
+noremap ,ss 0vg_xi[<c-r>"]<esc>j<cr>
+--
+" --- COPY HTTP LINK INTO THE [NUMBER] HOLDER FOR THE LINK AFTER LYXD_ED DOCUMENT ---
+noremap ,lc fhvg_y<C-o>ci[<C-r>0<ESC>
+--
+" --- OPEN ALL BUFFERS INTO SEPARATE TABS ---
+map ,bt :bufdo tab split<CR><CR>
+--
+" --- TABLE ROW DIVIDERS ---
+noremap ,tr 0yyjp}P<ESC>j
+--
+" --- MOVE '{' AFTER 'FUNC() ' ---
+noremap <space>f jddkA {<ESC>
+--
+" --- SET SYNTAX MAPPINGS ---
+noremap <space>ss :set syntax=<CR>
+noremap <space>ssh :set syntax=sh<CR>
+noremap <space>ssc :set syntax=c<CR>
+noremap <space>sst :set syntax=text<CR>
+noremap <space>ssj :set syntax=java<CR>
+noremap <space>ssp :set syntax=python<CR>
+noremap <space>ssg :set syntax=go<CR>
+noremap <SPACE>ssv :set syntax=vim<CR>
+--
+" --- INDENT/FORMAT main{} BLOCK ---
+nnoremap <space>0 0Vf{%=gv:s/\(\t\+\) \+/\1/g<CR>
+--
+" --- INITIAL CONFIG SOURCE AND SYNTAX SETUP ---
+nnoremap <space>v :so ~/.vimrc <BAR> set syntax=c <BAR> :noh<CR>
+--
+" --- MOVE LINE UNDER THE CURSOR INSIDE [] ---
+nnoremap ,sb 0vg_xi[<c-r>"]<esc>j<cr>
+vnoremap ,sb xi[]<ESC>h""p<ESC>
+--
+" --- CHANGE BUFFER TO FILE FROM LIST ---
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+--
+" --- SEARCH IN VIM'S FILE EDIT HISTORY AND OPEN IT FOR EDIT/VIEW ---
+nnoremap <leader>oo :oldfiles<CR>e #<
+--
+" --- REPLACE LEADING 4 SPACES TO TABS ---
+nnoremap <space>4t :%s/\(^\s*\)\@<=    /\t/g<CR><BAR>:noh<CR>
+vnoremap <space>4t :s/\(^\s*\)\@<=    /\t/g<CR><BAR>:noh<CR>
+--
+" --- REPLACE LEADING 2 SPACES TO TABS ---
+nnoremap <space>2t :%s/\(^\s*\)\@<=  /\t/g<CR><BAR>:noh<CR>
+vnoremap <space>2t :s/\(^\s*\)\@<=  /\t/g<CR><BAR>:noh<CR>
+--
+" --- REPLACE SINGLE QUOTE INSIDE WORDS WITH APOSTROPHE COMMAND ---
+nnoremap <space>9 :%s/\([[:alpha:]]\)'\([[:alpha:]]\)/\1´\2/g<CR><BAR>:noh<CR>
+--
+" --- RETAB VISUAL SELLECTION ---
+vnoremap ,rt :retab!<CR>
+--
+" --- MOVE SELECTED TEXT BETWEEN '', OR BETWEEN "" ---
+vnoremap <space>sq xi''<ESC>h""p<ESC>
+vnoremap <space>dq xi""<ESC>h""p<ESC>
+--
+" --- REMOVE ALL '[DIGITS]' IN CURRENT LINE OR IN VISUAL SELLECTIOM ---
+nnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
+vnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
+--
+" --- REMOVE '[...]' (DIGITS) IN CURRENT LINE OR SELECTION ---
+nnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
+vnoremap ,ds :s/\[.\+\]//g<CR>:noh<CR>
+--
+" --- INSERT DATESTAMP 'yyyyMMDD' ---
+nnoremap ,dt "=strftime('%Y%m%d')<cr>P<cr>
+inoremap ,dt <c-r>=strftime('%Y%m%d')<cr>
+vnoremap ,dt <c-r>=strftime('%Y%m%d')<cr>
+--
+" --- WRITE AND CLOSE BUFFE ---
+noremap ,wd :w <bar> :bd<cr>
+--
+" --- CHANGE FROM 'NONMODIFIABLE' TO 'MODIFIABLE' ---
+noremap ,mf :set modifiable<CR>
+--
+" --- CHANGE FROM 'MODIFIABLE' TO 'NONMODIFIABLE' ---
+noremap ,nf :set nomodifiable<CR>
+--
+" --- PUT SELLECTION INSIDE DOUBLE OR SINGLE QUOTE ---
+vnoremap 1q c''<esc>hp
+vnoremap 2q c""<esc>hp
