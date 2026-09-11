@@ -1,1 +1,0 @@
-TMSTMP=$(date +"%Y%m%d-%H%M%S"); cat ~/.vimrc | grep -B1 '^[a-z]*map' >> $DANES/dot-vimrc-jbe-mappings-with-explanations-${TMSTMP}.txt
