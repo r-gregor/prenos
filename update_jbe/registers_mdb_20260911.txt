@@ -1,0 +1,31 @@
+:reg
+Type Name Content
+  l  ""   ^J
+  l  "0   " mapping to replace spaces and semicolon or just spaces^J" at the end of the line:^J" effect: single ; at the end of text remains^J
+  l  "1   ^J
+  l  "2   " effect: single ; at the end of text remains^J
+  l  "3   " at the end of the line:^J
+  l  "4   ^J
+  l  "5   ^J
+  l  "6   " ---^J
+  l  "7   "^J
+  l  "8   "^J
+  l  "9   " ---^J
+  c  "a   ll^M^[<80><fd>a^[<80><fd>aŽ:q^M:q^M:q^M
+  l  "d   date-stamp() {^J^Iecho -e "\e[38;5;244m[$(date +"%Y-%m-%d")] [$(date +%T)]\e[0m"^J}^J
+
+  c  "e   0vg_:s/ ---<80>kb<80>kb\+/ ---/g^M^[<80><fd>a
+
+  c  "q   0f vc^I^[<80><fd>af vc^I^[<80><fd>a
+  c  "r   vlllx^[<80><fd>au
+
+  c  "u   0wvg_~gvxi --- p<80>kb^[<80><fd>apA<80>kb ---^[<80><fd>a
+
+  c  "x   ´
+  c  "-   REPLACE SPACES AND SEMICOLON OR JUST SPACES
+  c  "*   REPLACE SPACES AND SEMICOLON OR JUST SPACES
+  c  "+   REPLACE SPACES AND SEMICOLON OR JUST SPACES
+  c  ":   r registers
+  c  "#   registers
+  c  "/   -
+Press ENTER o
