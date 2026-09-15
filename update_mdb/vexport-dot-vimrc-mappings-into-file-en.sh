@@ -15,6 +15,8 @@ if [ ! -d "${PREFIX}" ]; then
 	exit 1
 fi
 
+
+
 HST=en
 TMSTMP=$(date +"%Y%m%d-%H%M%S")
 DESTF="${PREFIX}/dot-vimrc-${HST}-mappings-with-explanations-${TMSTMP}.txt"
@@ -25,3 +27,4 @@ touch "${DESTF}"
 cat ~/.vimrc | grep -B1 '^[a-z]*map' >> "${DESTF}"
 (printf -- "\" ---\n\n") >> "${DESTF}"
 
+printf "[INFO] ~/.vimrc mappings succesfully exported to ${DESTF}\n\n"
