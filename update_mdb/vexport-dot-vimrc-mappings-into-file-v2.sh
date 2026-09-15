@@ -1,9 +1,21 @@
 #! /usr/bin/env bash
-# fname: # 20260911 v1
+# fname: export-dot-vimrc-mappings-into-file.sh
+# 20260915 v2 added check for program parameters and check for PREFIX existance
+# last: 20260915
 # ---
 
-PREFIX="."
-HST=jbe
+if [ $# -ne 1 ]; then
+	PREFIX="."
+else
+	PREFIX="${1}"
+fi
+
+if [ ! -d "${PREFIX}" ]; then
+	printf "[ERROR] no such directory/dest: '%s'\n\n" "${PREFIX}"
+	exit 1
+fi
+
+HST=en
 TMSTMP=$(date +"%Y%m%d-%H%M%S")
 DESTF="${PREFIX}/dot-vimrc-${HST}-mappings-with-explanations-${TMSTMP}.txt"
 
