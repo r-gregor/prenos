@@ -778,7 +778,6 @@ Hercules (2014)
 The Odyssey (2026)
 --- 20260904 ---
 Downsizing (2017)
-Fuze (2025)
 Galaxy Quest (1999)
 Kalashnikov (2020)
 Max Payne (2008)
@@ -794,5 +793,9 @@ The Reluctant Fundamentalist (2012)
 The Man From U.N.C.L.E. (2015)
 Moana (2026)
 Mayday (2026)
+--- 20260916 ---
+Kinds Of Kindness (2024)
+The Bikeriders (2023)
+The End Of Oak Street (2026)
 --- ---
 
