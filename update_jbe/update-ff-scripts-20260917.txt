@@ -1,0 +1,23 @@
+# While in $MJBN, do:
+grep -irl FZFCMD |grep -v arch
+grep -irl FZFCMD |grep -v arch | xargs -ro vim
+for FFF in $(grep -irl FZFCMD |grep -v arch); do gupdate-file-en "$FFF"; done
+---
+
+...
+
+# 20260917
+# new function instead of variable - prevents error if in double quotes as variable
+FZFCMD_EN() {
+	fzf -e --reverse # cygwin version does not support --width option
+}
+
+...
+
+some_func_name() {
+	...
+#   selection=$(for EL in "${!fb_files[@]}"; do echo "${EL}"; done | sort -nr | ${FZFCMD_EN})
+	selection=$(for EL in "${!fb_files[@]}"; do echo "${EL}"; done | sort -nr |   FZFCMD_EN)
+	...                                                                           ^^^^^^^^^
+}
+
