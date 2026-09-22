@@ -1,0 +1,212 @@
+
+/home/rgregor/majstaf
+├── 0a_povezave
+│   ├── bin
+│   └── CountriesCapitals
+│       └── lib
+├── apps_setups
+├── bckps_all
+│   └── majbin_en
+...
+├── BRISI
+...
+├── coding2
+│   └── testing
+│       ├── c_testing
+│       ├── go_testing
+│       ├── java_testing
+│       ├── ncurses_testing
+│       ├── python_testing
+│       ├── rust_testing
+│       └── zig_testing
+├── dev
+│   ├── clean-ff-gc-bookmarks
+...
+│   └── common
+├── java
+├── majbin
+...
+├── majconfig
+├── majdata
+├── majdocumentation
+...
+├── majdoks
+...
+├── maj_drpbx
+...
+├── majfajls
+...
+├── majmedia
+│   ├── fmeo
+...
+│   ├── Movies
+...
+│   ├── _podnapisi
+│   │   ├── check-out-subs
+│   │   └── _NOVO
+│   ├── scrpts-and-commands
+│   ├── Seivom
+...
+│   │   ├── APPROVED
+│   │   └── _NOVO
+...
+│   ├── Videos
+│   │   └── SALSA
+│   └── _yts_torrents
+...
+│       └── _NOVO
+├── majmuska
+│   └── salsa_muska
+├── majprogs
+│   ├── alacritty
+...
+│   ├── external
+│   │   └── gotbletu
+│   ├── go -> go-1.23.0/
+│   ├── go-1.21.5
+...
+│   ├── go-1.23.0
+...
+│   ├── javafx-sdk-11.0.2
+...
+│   ├── processing-4.2
+...
+│   ├── rclone-v1.70.1-linux-amd64
+│   ├── st-0.8.4_Dracula
+│   ├── st-0.8.4_Nord
+│   └── zig-linux-x86_64-0.14.0-dev.2628+5b5c60f43
+...
+├── majrcs
+├── majscripts
+├── majtoolbox
+│   ├── cpp_toolbox
+│   ├── c_toolbox
+│   ├── go_toolbox
+│   ├── java_toolbox
+│   ├── ncurses_toolbox
+│   ├── python_toolbox
+│   ├── rust_toolbox
+│   └── zig_toolbox
+├── majvolpejpers
+├── majwww
+├── mdbgit
+│   ├── dotfiles_mdb
+│   ├── knowledgedb
+│   │   ├── _APPS
+│   │   ├── _AWK_SED_GREP_XARGS_CUT_TR
+│   │   ├── _BASH
+│   │   ├── _C_and_Cpp
+│   │   ├── _CODING
+│   │   ├── _CS_and_other_PL
+│   │   ├── _Cygwin
+│   │   ├── _DEBIAN
+│   │   ├── _DOCKER
+│   │   ├── _from_energetika_20240426
+│   │   ├── _FZF
+│   │   ├── _GIT
+│   │   ├── _GO
+│   │   ├── _HTML_CSS_JS
+│   │   ├── _JAVA
+│   │   ├── _LINUX_SYSTEM
+│   │   ├── _PDF
+│   │   ├── _PYTHON
+│   │   ├── _QEMU_KVM
+│   │   ├── _RCLONE
+│   │   ├── _RPi
+│   │   ├── _RSYNC
+│   │   ├── _RUST
+│   │   ├── _TERM_CLI
+│   │   ├── _TMUX_and_SCREEN
+│   │   ├── _TWMs
+│   │   ├── _TXT
+│   │   ├── _VIM
+│   │   ├── _WINDOWS
+│   │   └── _ZIG
+│   ├── majbin_mdb
+│   ├── majrcs_mdb
+│   ├── metsys_mdb
+│   │   ├── c-compile-and-run-scripts-20260828
+│   │   ├── cheatsheets_mdb
+│   │   ├── coding-scripts-mdb-20250904
+│   │   ├── dwm_setup
+│   │   ├── git
+│   │   ├── i3_setup
+│   │   ├── i3_setup_2024
+│   │   ├── METSYS_rsyncs
+│   │   ├── __metsys_STARO__
+│   │   ├── METSYS_xubuntu_18-04
+│   │   ├── tmux
+│   │   ├── urxvt-setup-20251113
+│   │   ├── _usr_share_xsessions_mdb
+│   │   └── vim_metsys
+│   ├── prenos
+│   │   ├── _CHECK-OUT
+│   │   ├── seznami_potovalni
+│   │   ├── update_en
+│   │   ├── update_jbe
+│   │   └── update_mdb
+│   ├── seznami_mdb
+│   └── vlpprs_mdb
+├── metsys
+│   ├── c-compile-and-run-scripts-20260828
+│   ├── cheatsheets_mdb
+│   ├── coding-scripts-mdb-20250904
+│   ├── dwm_setup
+│   ├── git
+│   ├── i3_setup
+│   ├── i3_setup_2024
+│   ├── METSYS_rsyncs
+│   ├── __metsys_STARO__
+│   ├── METSYS_xubuntu_18-04
+│   ├── tmux
+│   ├── urxvt-setup-20251113
+│   ├── _usr_share_xsessions_mdb
+│   └── vim_metsys
+├── _NERAZPOREJENO
+│   ├── __DANES__
+...
+├── PREBERI
+├── seznami
+├── SLIKE
+...
+├── sorsi
+...
+└── support
+...
+
+
+---
+
+/home/rgregor/majstaf/0a_povezave
+/home/rgregor/majstaf/apps_setups
+/home/rgregor/majstaf/bckps_all
+/home/rgregor/majstaf/BRISI
+/home/rgregor/majstaf/coding2
+/home/rgregor/majstaf/dev
+/home/rgregor/majstaf/java
+/home/rgregor/majstaf/majbin
+/home/rgregor/majstaf/majconfig
+/home/rgregor/majstaf/majdata
+/home/rgregor/majstaf/majdocumentation
+/home/rgregor/majstaf/majdoks
+/home/rgregor/majstaf/maj_drpbx
+/home/rgregor/majstaf/majfajls
+/home/rgregor/majstaf/majmedia
+/home/rgregor/majstaf/majmuska
+/home/rgregor/majstaf/majprogs
+/home/rgregor/majstaf/majrcs
+/home/rgregor/majstaf/majscripts
+/home/rgregor/majstaf/majtoolbox
+/home/rgregor/majstaf/majvolpejpers
+/home/rgregor/majstaf/majwww
+/home/rgregor/majstaf/mdbgit
+/home/rgregor/majstaf/metsys
+/home/rgregor/majstaf/_NERAZPOREJENO
+/home/rgregor/majstaf/PREBERI
+/home/rgregor/majstaf/seznami
+/home/rgregor/majstaf/SLIKE
+/home/rgregor/majstaf/sorsi
+/home/rgregor/majstaf/support
+
+---
+
