@@ -20,7 +20,6 @@ FZFCMD() {
 
 
 # MAIN
-# load lines from file into array
 
 if [ $# -eq 1 ]; then
 	checkout_files_list="$1"
@@ -35,8 +34,8 @@ while IFS= read -r LINE; do
 		continue
 	fi
 
-	url=${LINE%%;*}
-	dscr=${LINE#*;}
+	url="${LINE%%;*}"
+	dscr="${LINE#*;}"
 	checkout_files["${url}"]="${dscr}"
 
 done < "${checkout_files_list}"
@@ -60,9 +59,9 @@ ff_checkout_launch() {
 
 	# run
 	for URL in "${!checkout_files[@]}"; do
-		if [[ "${checkout_files["${URL}"]}" =~ "${selection}" ]]; then
-		printf "[INFO] selected: %s\n" "${selection}" #v4
-		(nohup "${FFCMD}" "${fb_files["${selection}"]}" &) >/dev/null 2>&1
+		if [[ "${checkout_files["${URL}"]}" == "${selection}" ]]; then
+		printf "[INFO] selected: %s\n" "${selection}"
+		(nohup "${FFCMD}" "${URL}" &) >/dev/null 2>&1
 		fi
 	done
 }
