@@ -1,0 +1,33 @@
+cd $DANES
+vim unmdballscripts.sh
+chmod +x unmdballscripts.sh
+softlink1-fname-to-ulb unmdballscripts.sh
+cd ff-fb-mails-lunch/
+cd ff-launch/
+cd ff-onetablink-launch/
+vim 20260924-renamed-dirs
+cd ff-personal-launch/
+cd hstl/
+cd kndb-files-from-tmst/
+cd list-new-files-from-n-days-from-today/
+cd majapps-launch/
+unmdballscripts
+cd .local/bin/
+ll dname-rename-*
+ll ff-fb-*
+for FFF in $(broken-symlinks-list | cut -d ':' -f1); do rm -v ./$FFF; done
+broken-symlinks-list
+cd ~/majstaf/majbin/
+cd fname-dname-manipulations/
+for FFF in *; do softlink1-fname-to-ulb $FFF; done
+cd
+cd majstaf/majbin/
+find -type d -iname "*ff*"
+cd $MGMJBN
+find -type d -iname "*mdb*"
+find -type d -iname "*-mdb*"
+find * -type d -iname "*-mdb*"
+for DDD in $(find * -type d -iname "*-mdb*"); do echo rm -r $DDD; echo cp -rv ~/majstaf/majbin/${DDD//-mdb/} .; done
+for DDD in $(find * -type d -iname "*-mdb*"); do rm -r $DDD; cp -rv ~/majstaf/majbin/${DDD//-mdb/} .; done
+gst
+gyes-gadd-push
