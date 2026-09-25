@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 # filename: kndb-files-from-yr-tmst-in-mnth-mdb
+# descpt: List files in KNOWLEDGEDB from day in month to the end of the month in year
 # 20260331 v1: display from newest to oldst: $(seq start end) --> $(seq end -1 start)
 # 20260415 v2: final printout to stdout and into xargs in one line with 'tee /dev/tty' comand
 # 20260831 v3: fzf files list sorted by cathegory
-# last: 20260831
+# 20260925
+# last: 20260925
 # ---
 
 curryr=$(date +"%Y")
