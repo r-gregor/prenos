@@ -1,9 +1,0 @@
-###########################
-# ===  PERSONAL GLOBALS ===
-#######################"###
-
-# ...
-export CLPBRDMNGR='/usr/bin/putclip'
-# export CLPBRDMNGR='/usr/bin/xclip' # on linux!
-# ...
-
