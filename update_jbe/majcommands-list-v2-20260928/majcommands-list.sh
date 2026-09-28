@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: majcommands-list-v2.sh
+# fname: majcommands-list.sh
 # descpt: make list of majcommands with decription
 # 20260921 v1
 # 20260928 v2: Check ALL *.sh files nad add them to found_bash_commands only if they
@@ -33,7 +33,7 @@ fi
 
 
 for CMD in "${found_bash_commands[@]}"; do
-	printf "%-60s %s\n" "${CMD}" "$(grep 'descpt' "${PTH}/${CMD}" | sed 's/# descpt: //')"
+	printf "%-60s %s\n" "${CMD}" "$(grep '^# descpt: ' "${PTH}/${CMD}" | sed 's/# descpt: //')"
 done
 
 printf "\n"
