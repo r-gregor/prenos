@@ -1,0 +1,18 @@
+jjjjjjjjj "${somevarname}" kkkkkkkkkkkkkkk
+jjjjjjjjj "${somevarname}" kkkkkkkkkkkkkkk
+var2=${somevarname}
+
+jjjjjjjjj ${somevarname} kkkkkkkkkkkkkkk
+jjjjjjjjj ${somevarname} kkkkkkkkkkkkkkk
+var2="${somevarname}"
+
+jjjjjjjjj ${somevarname} kkkkkkkkkkkkkkk
+jjjjjjjjj ${somevarname} kkkkkkkkkkkkkkk
+var2=${somevarname}
+
+jjjjjjjjj "${somevarname}" kkkkkkkkkkkkkkk
+jjjjjjjjj ${somevarname} kkkkkkkkkkkkkkk
+var2="${somevarname}"
+
+var3="${varname["${varname[@]}"]}"
+
