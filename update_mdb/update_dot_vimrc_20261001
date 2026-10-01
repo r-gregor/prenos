@@ -1,0 +1,6 @@
+" --- CONVERT ALL '$varname' to '${varname}' ---
+nnoremap ,bb :%s/\$\([[:alpha:]]\+\)/${\1}/g<CR>
+
+" --- CONVERT SINGLE '$varname' to '${varname}' ---
+nnoremap ,cb a{<ESC>ea}<ESC><CR>
+
