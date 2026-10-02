@@ -13,7 +13,7 @@
 # ---
 
 if [ $# -ne 1 ]; then
-	printf "\tUsage: gt-update-file <src_fname>\n\n"
+	printf "\tUsage: gupdate-file <src_fname>\n\n"
 	exit 1
 else
 	src_fname=$(realpath "$1")
@@ -65,15 +65,15 @@ update_log() {
 		exit 1
 	fi
 
-	printf "%s updated: %s\n" "${ltmpstmp}" "$(realpath "${SRCF}")" >> "${ldest}"
+	printf "%s updated file: %s\n" "${ltmpstmp}" "$(realpath "${SRCF}")" >> "${ldest}"
 }
 
 update_file_to_git() {
 	printf -- "%s\n%s\n%s\n" \
 		"[i] from: ${SRCF}" \
 		"[i] to:   ${DSTF}" \
-		"[i] ---"
-	read -p "[?] OK?"
+		"---"
+	read -r -p "[?] OK?"
 	cp -iv "${SRCF}" "${DSTF}"
 
 	# new 20260930
