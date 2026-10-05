@@ -20,14 +20,14 @@ usage() {
 cat <<USAGE
 
 usage: add-file-to-prenos -[e,j,m,a,h] -f <file name>
-		-e	add file to update_en  and/or
-		-j	add file to update_jbe and/or
-		-m	add file to update_mdb or
-		-a	add file to update_jbe and update_mdb and update_en
+		-e    add file to update_en  and/or
+		-j    add file to update_jbe and/or
+		-m    add file to update_mdb or
+		-a    add file to update_jbe and update_mdb and update_en
 
 		-f <file name> is mandatory!
 
-		-h	print this message
+		-h    print this message
 USAGE
 }
 
