@@ -1,0 +1,10 @@
+https://www.google.com/search?client=firefox-b-d&q=add+custom+locations+to+bash+completition | add custom locations to bash completion - Google Search
+https://unix.stackexchange.com/questions/148497/how-to-customize-bash-command-completion | autocomplete - How to customize Bash command completion? - Unix & Linux Stack Exchange
+https://serverfault.com/questions/506612/standard-place-for-user-defined-bash-completion-d-scripts | bash - Standard place for user defined bash_completion.d scripts? - Server Fault
+https://askubuntu.com/questions/1188244/how-should-i-install-my-own-bash-completion-script | 18.04 - How should I install my own bash completion script? - Ask Ubuntu
+https://www.google.com/search?client=firefox-b-d&q=bash+completition+custom+howto | bash completion custom howto - Google Search
+https://stackoverflow.com/questions/427472/line-completion-with-custom-commands | bash - Line completion with custom commands - Stack Overflow
+https://superuser.com/questions/289539/custom-bash-tab-completion | Custom bash tab completion - Super User
+https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash | github.com/git/git/raw/master/contrib/completion/git-completion.bash
+https://askubuntu.com/questions/68175/how-to-create-script-with-auto-complete | bash - How to create script with auto-complete? - Ask Ubuntu
+https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial | Creating a bash completion script
