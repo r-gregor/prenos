@@ -1,4 +1,0 @@
-1 - create/touch: ~/majstaf/majlogs/gt-update-file.log
-2 - update gt-update-file.sh to v5
-3 - run ...
-

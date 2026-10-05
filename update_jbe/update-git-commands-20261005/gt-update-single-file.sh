@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# fname: gt-update-file.sh
+# fname: gt-update-single-file.sh
 # descpt: Update file from src-dir to git-repository
 # 20260301 v1
 # 20260401 v2: added 'OK?' check into update_file_to_git() function
@@ -7,13 +7,12 @@
 #              checks for SRC and DEST directories/files
 # 20260924 v4: unified scripts for linux
 #              HST and system info from exported global variable
-# 20260930 v5: added update_log() function to log updates into 'gt-update_file_to_git.log'
-#              '*.log must exist, or script terminates
-# last: 20260924
+# 20261005:    renamed to -single-
+# last: 20261005
 # ---
 
 if [ $# -ne 1 ]; then
-	printf "\tUsage: gupdate-file <src_fname>\n\n"
+	printf "\tUsage: gupdate-single-file <src_fname>\n\n"
 	exit 1
 else
 	src_fname=$(realpath "$1")
@@ -49,39 +48,19 @@ if [ ! -f "${DSTF}" ]; then
 	read -r -p "[?] Continue?"
 fi
 
-update_log() {
-	SRCF="${1}"
+# === MAIN ===
+printf -- "%s\n%s\n%s\n" \
+	"---" \
+	"[i] from: ${SRCF}" \
+	"[i] to:   ${DSTF}"
+read -r -p "[?] Continue? (y/n) " ans1
 
-	local ldest
-	local ltmpstmp
-	local lsrcf
-
-	ltmpstmp="[$(date +"%Y%m%d-%H%M%S")] --"
-	ldest="${HOME}/majstaf/majlogs/gt-update-file.log"
-	lsrcf=$(realpath "${SRCF}")
-
-	if [ ! -f "${ldest}" ]; then
-		printf "[E] no log file: '%s'\n\n" "${ldest}"
-		exit 1
-	fi
-
-	printf "%s updated file: %s\n" "${ltmpstmp}" "$(realpath "${SRCF}")" >> "${ldest}"
-}
-
-update_file_to_git() {
-	printf -- "%s\n%s\n%s\n" \
-		"[i] from: ${SRCF}" \
-		"[i] to:   ${DSTF}" \
-		"---"
-	read -r -p "[?] OK?"
+if [[ "${ans1}"  == "y" || "${ans1}"  == "Y" ]]; then
+	printf "[+] "
 	cp -iv "${SRCF}" "${DSTF}"
+else
+		printf "file '%s' NOT updated\n\n" "${SRCF}"
+fi
 
-	# new 20260930
-	update_log "${SRCF}"
-}
-
-
-# MAIN
-update_file_to_git
 printf "\n"
 
