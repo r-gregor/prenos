@@ -1,3 +1,0 @@
-https://poolp.org/posts/2019-12-15/decentralised-smtp-is-for-the-greater-good/ | Decentralised SMTP is for the greater good · poolp.org
-https://www.howtogeek.com/5-ancient-linux-command-line-tools-that-outperform-popular-apps-today/ | These 50-year-old Linux commands still beat modern alternatives
-https://itsfoss.com/flyline/ | I Tried This Rust Tool, and It Immediately Made Bash Modern

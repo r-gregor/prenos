@@ -1,6 +1,0 @@
-https://www.google.com/search?client=firefox-b-d&q=ripgrep+tutorial | ripgrep tutorial - Google Search
-https://mariusschulz.com/blog/fast-searching-with-ripgrep | Fast Searching with ripgrep — Marius Schulz
-https://github.com/BurntSushi/ripgrep | GitHub - BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore
-https://earthly.dev/blog/ripgrep-for-efficient-search/ | How to Use `ripgrep` to Improve Your Search Efficiency - Earthly Blog
-https://dev.to/shrsv/ripgrep-your-journey-from-novice-to-power-user-2jb8 | Ripgrep: Your Journey from Novice to Power User - DEV Community
-https://gcore.com/learning/use-ripgrep-command-line-tool | Step-by-step Guide To Use the ripgrep Command-Line Tool | Gcore
