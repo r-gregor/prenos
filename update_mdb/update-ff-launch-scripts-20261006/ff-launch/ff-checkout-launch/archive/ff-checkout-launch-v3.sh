@@ -1,8 +1,7 @@
 #! /usr/bin/env bash
-# filename: ff-checkout-en.sh
+# filename: ff-checkout-launch.sh
 # descpt: Launch www-sites from external file in format: 'http-link;decription'
 # from: ff-fb-mails-from-mbox-launch-en.sh
-# 20260923 v1
 # 20261006 v2: add sellection counter 'num_selected'
 # last: 20261006
 # ---
@@ -18,12 +17,12 @@ unset checkout_files
 declare -A checkout_files
 
 # === FUNCTIONS ===
-FZFCMD_EN() {
-	fzf -e --reverse # cygwin version does not support --width option
+FZFCMD() {
+	fzf -e --reverse
 }
 
 ff_checkout_launch() {
-	selection=$( (for descrp in "${checkout_files[@]}"; do echo "${descrp}"; done | sort; echo "----"; echo "Quit") | FZFCMD_EN)
+	selection=$( (for descrp in "${checkout_files[@]}"; do echo "${descrp}"; done | sort; echo "----"; echo "Quit") | FZFCMD)
 
 	if [ "${selection}" == "" ]; then
 		printf "[i] nothing selected\n\n"

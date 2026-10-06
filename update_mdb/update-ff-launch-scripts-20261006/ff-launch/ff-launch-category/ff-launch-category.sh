@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# filename: ff-launch--en
+# filename: ff-launch-category.sh
 # descpt: open url-links in Firefox with fzf list from external file
 # 20261006 v8: add sellection counter 'num_selected'
 # last: 20261006

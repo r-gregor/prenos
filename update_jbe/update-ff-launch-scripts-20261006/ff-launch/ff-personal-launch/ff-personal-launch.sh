@@ -12,9 +12,9 @@ clear
 unset URLS
 unset KEYS
 
-SRCDIR="$(dirname $(realpath ${BASH_SOURCE[0]}))"
-FNAME="personal_links_list_mdb"
-FPTH=${SRCDIR}/${FNAME}
+SRCDIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+FNAME="personal_links_list"
+FPTH="${SRCDIR}/${FNAME}"
 
 unset num_selected
 num_selected=0
@@ -56,14 +56,14 @@ get_longest() {
 }
 
 ff_personallaunch() {
-	local selection=$((for KEY in "${KEYS[@]}"; do echo "$KEY"; done | sort; echo "${delline}" ; echo "Quit") | fzf --reverse)
+	local selection=$( (for KEY in "${KEYS[@]}"; do echo "${KEY}"; done | sort; echo "${delline}" ; echo "Quit") | FZFCMD )
 
 	if [ "${selection}" == "" ]; then
-		printf "[i] nothing selected\n"
+		printf "[i] nothing selected\n\n"
 		exit 0
 	fi
 
-	if [ "${telection}" == "Quit" ]; then
+	if [ "${selection}" == "Quit" ]; then
 		if [ "${num_selected}" -eq 0 ]; then
 			printf "[i] nothing selected\n"
 		fi
