@@ -1,2 +1,0 @@
-# 20260923 v1
-# 20261006 v2: add sellection counter 'num_selected'

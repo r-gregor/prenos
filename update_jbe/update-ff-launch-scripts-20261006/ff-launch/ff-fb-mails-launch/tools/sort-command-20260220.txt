@@ -1,4 +1,0 @@
-cat fb_files_list.txt | tr ';' ' ' | sort -n -k2
-cat fb_files_list.txt | sort -t';' -k2
-
-
