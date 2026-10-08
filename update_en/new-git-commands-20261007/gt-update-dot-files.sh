@@ -19,11 +19,13 @@ run_update_file() {
 
 	if [ ! -f "${dst_f}" ]; then
 		printf "[W] no such file on destination: %s" "${dst_f##*/}"
-		read -r -p "[?] continue (y/n)?" ans
+		printf "[i] file '%s' must be copied over directly\n\n" "${src_f}"
+		return
 
-		if [[ "${ans}"  != "y" && "${ans}"  != "Y" ]]; then
-			return
-		fi
+		# read -r -p "[?] continue (y/n)?" ans
+		# if [[ "${ans}"  != "y" && "${ans}"  != "Y" ]]; then
+		# 	return
+		# fi
 	fi
 
 	printf -- "%s\n%s\n%s\n" \
