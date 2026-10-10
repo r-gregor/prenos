@@ -1,0 +1,18 @@
+# filename: mdb-git-related-commands-20261010.txt
+gt-dest-src-diffs | grep diff: 
+gt-dest-src-diffs | grep diff: | cut -d ': ' -f2
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 'd:majbin:majbin/mdngit/majbin_mdb:'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 'd:majbin:mdggit/majbin_mdb:'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 'd:majbin:mdggit\/majbin_mdb:'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 's:majbin:mdggit/majbin_mdb:'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 's:majbin:mdbgit/majbin_mdb:'
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 's:majbin:mdbgit/majbin_mdb:' | xargs -ro rm -v
+vim remove-files-from-mdbgit-mjbn-no-longer-in-src-onl-20261010.txt 
+fcopy-to-multiple-dirs -f remove-files-from-mdbgit-mjbn-no-longer-in-src-onl-20261010.txt -d /home/rgregor/majstaf/mdbgit/prenos/update_{jbe,en}/
+for GRMT in $(git remote -v | cut -b-7 | sort | uniq); do git push $GRMT main; done
+for GRMT in $(git remote -v | cut -b-7 | sort | uniq); do git push -f $GRMT main; done
+
+---
+
