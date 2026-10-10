@@ -1,0 +1,3 @@
+# filename: remove-files-from-mdbgit-mjbn-no-longer-in-src-onl-20261010.txt
+# descpt: ONELINER: remove files from majbin_mdb git-repo that no longer exist in local majbin directory
+gt-dest-src-diffs | grep diff: | cut -d ':' -f2 | sed 's/ //' | sed 's:majbin:mdbgit/majbin_mdb:' | xargs -ro rm -v
