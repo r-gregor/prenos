@@ -1,0 +1,373 @@
+# fname: funclist
+# descpt: functions to be loaded at shell start
+# 20261016 v1
+# last: 20261016
+# ---
+
+# pipe cmd output to "less -I"
+so() {
+eval "$@" | less -I~
+}
+
+# ???
+cv() {
+	cdargs "$1" && cd "$(cat "$HOME/.cdargsresult")" ;
+}
+
+# clear before fun
+kl() {
+	clear && eval "$@"
+}
+
+
+# history list
+hf() {
+	export HISTCONTROL=erasedups
+	clear
+	if [ $# != 1 ]; then
+		printf "number of argumets to function '%s' must be exactly 1 (one)" "hf"
+	else
+		history | grep "$1"
+	fi
+}
+
+
+mmm() {
+	clear
+	source $HOME/.bashrc-monochrome
+	printf "*************************\n"
+	printf "* Use the source Luke!! *\n"
+	printf "*************************\n"
+	printf "The '%s' has just been sourced\n\n" "$HOME/.bashrc-monochrome"
+}
+
+
+# ???
+aln() {
+	clear
+	eval "$@"
+	printf "\n"
+}
+
+
+crtice() {
+	printf "%$(tput cols)s\n" | tr " "	"-"
+}
+
+
+# displays varius date & time formated info
+zdaj() {
+	clear
+	zdSI=$(date +%A,\ %d.\ %B\ %Y,\ %H:%M:%S)
+	printf "${zdSI}\n"
+}
+
+dejt() {
+	dejt=$(date +%Y%m%d%H%M)
+	printf "${dejt}\n"
+}
+
+db0() {
+	dropbox stop
+}
+
+db1() {
+	dbus-launch dropbox start -i &>/dev/null
+}
+
+
+dbs1() {
+	watch -n1 dropbox status
+}
+
+
+dbs2() {
+	clear
+	while true; do
+		printf "$(dropbox status) \r"
+		sleep 1
+  done
+}
+
+
+# starts new terminal (xfce4-terminal) window with screen
+# session divided into multiple windows ...
+skrn() {
+	gr_FJL="~/.screen-lyt"
+	if [ $1 -eq 0 ] || [ $1 -eq 1 ] || [ $1 -eq 2 ] || [ $1 -eq 3 ]; then
+		gr_PRM=$1
+		xfce4-terminal -e "screen -c ${gr_FJL}-0${gr_PRM}" & 2>/dev/null
+
+	elif [ $1 == "db" ]; then
+		xfce4-terminal -e "screen -c ${gr_FJL}-db" & 2>/dev/null
+
+	else
+		gr_PRM="0"
+		xfce4-terminal -e "screen -c ${gr_FJL}-0${gr_PRM}" & 2>/dev/null
+	fi
+}
+
+cnks() {
+	conky &
+	clear
+}
+
+cnkk() {
+	sudo pkill conky
+}
+
+# ???
+wtmpp () {
+	watch -d -n1 "du $TMPP"
+}
+
+
+256-colors () {
+	for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
+}
+
+# ???
+keybskts () {
+	clear
+	cat /home/rgregor/majstaf/metsys/KEYBOARD-SHORCUTS_20210209.TXT
+}
+
+cless() {
+	if [ $# != 1 ]; then
+		return
+	fi
+	highlight -O  ansi $@ | less
+}
+
+# ???
+BrthReminder-c() {
+	/home/rgregor/majstaf/majbin/BrthReminder-c/BrthReminder-c "$@"
+}
+
+# ???
+BrthReminder-c-color() {
+	/home/rgregor/majstaf/majbin/BrthReminder-c/BrthReminder-c-color "$@"
+}
+
+logout() {
+		sudo loginctl terminate-user ${USER}
+}
+
+sbrn() {
+	nohup alacritty -e bash --init-file ~/.bashrc-nerd >/dev/null 2>&1 &
+}
+
+sbrb() {
+	nohup alacritty -e bash --init-file ~/.bashrc-base >/dev/null 2>&1 &
+}
+
+prompt-switch() {
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | fzf --reverse -e)
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prompt-switch-dmn() {
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | dmenu -l 5 -p "choose prompt:")
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prompt-switch-rofi() {
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | rofi -dmenu -no-fixed-num-lines)
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prs() {
+	prompt-switch
+}
+
+prsd() {
+	prompt-switch-dmn
+}
+
+prsr() {
+	prompt-switch-rofi
+}
+
+psb() {
+	source ~/majstaf/majrcs/bashrc-prompt-bare-muadib
+}
+
+prsb() {
+	source ~/majstaf/majrcs/bashrc-prompt-bare-muadib
+}
+
+psn() {
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-muadib
+}
+
+prsn() {
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-muadib
+}
+
+nifs() {
+	IFS=$'\n'
+}
+
+oifs() {
+	IFS=$' \t\n'
+}
+
+# ???
+ncd() {
+	if [ $# -eq 1 ]; then
+		DEST="$1"
+	else
+		DEST="."
+	fi
+
+	cd $(find "${DEST}" -type d \( -not -name ".git" -o -not -name ".cache" \) | fzf -e)
+}
+
+# vim filename, but create filename-backup first
+vimb() {
+	if [ $# -ne 1 ]; then
+		vim
+	else
+		local fname="$1"
+		if [ ! -f "${fname}" ]; then
+			echo "[ERROR] no such file"
+			exit 1
+		fi
+
+		if [ -f "${fname}-backup" ]; then
+			echo "[INFO] backup file already exists"
+			vim "${fname}"
+		else
+			cp -v "${fname}" "${fname}-backup"
+			vim "${fname}"
+		fi
+	fi
+}
+
+# quick jump (cd) to directory
+mjstf() {
+	cd $MJSTF
+}
+
+mgt() {
+	cd $MGT
+}
+
+tstng() {
+	cd $TSTNG
+}
+
+mjmdj() {
+	cd $MJMDJ
+}
+
+danes() {
+	cd $DANES
+}
+
+mjbn() {
+	cd $MJBN
+}
+
+mtsys() {
+	cd $MTSYS
+}
+
+mrcs() {
+	cd $MRCS
+}
+
+sznm() {
+	cd $SZNM
+}
+
+mscrp() {
+	cd $MSCRP
+}
+
+mjdt() {
+	cd $MJDT
+}
+
+knowledgedb() {
+	cd $KNOWLEDGEDB
+}
+
+mgmjbn() {
+	cd $MGMJBN
+}
+
+mgmrcs() {
+	cd $MGMRCS
+}
+
+mgmtsys() {
+	cd $MGMTSYS
+}
+
+mgsznm() {
+	cd $MGSZNM
+}
+
+mgprns() {
+	cd $MGPRNS
+}
+
+mgdtfjls() {
+	cd $MGDTFJLS
+}
+
+ctst() {
+	cd $CTST
+}
+
+jtst() {
+	cd $JTST
+}
+
+gtst() {
+	cd $GTST
+}
+
+ptst() {
+	cd $PTST
+}
+
+rtst() {
+	cd $RTST
+}
+
+ntst() {
+	cd $NTST
+}
+
+ztst() {
+	cd $ZTST
+}
+
+svm() {
+	cd $SVM
+}
+
+mvs() {
+	cd $MVS
+}
+

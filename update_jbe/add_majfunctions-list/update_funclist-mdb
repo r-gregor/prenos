@@ -107,58 +107,6 @@ skrn() {
 	fi
 }
 
-# # function pim-on() -- sshfs KODI:Videos to /home/rgregor/KRZ_Movies
-# pim-on() {
-# 	sshfs -o idmap=user root@192.168.64.32:/var/media/MEDION_sA/Movies /home/rgregor/KRZ_Movies
-# 	if [ $? -eq 0 ]; then
-# 		echo "KODI sucessfully conected to /home/rgregor/KRZ_Movies"
-# 	else
-# 		echo "Something went wrong ..."
-# 	fi
-# }
-# 
-# 
-# # function pim-of() -- kill sshfs /home/rgregor/KRZ_Movies
-# pim-of() {
-# 	fusermount -u /home/rgregor/KRZ_Movies
-# 	echo "/home/rgregor/KRZ_Movies disconected."
-# }
-
-# # function pit-on() -- sshfs KODI:TV Shows to /home/rgregor/KRZ_TV_shows
-# pit-on() {
-# 	sshfs -o idmap=user root@192.168.64.32:/var/media/MEDION_sA/TV\ Shows /home/rgregor/KRZ_TV_shows
-# 	if [ $? -eq 0 ]; then
-# 		echo "KODI sucessfully conected to /home/rgregor/KRZ_TV_shows"
-# 	else
-# 		echo "Something went wrong ..."
-# 	fi
-# }
-# 
-# 
-# # function pit-of() -- kill sshfs /home/rgregor/KRZ_TV_shows
-# pit-of() {
-# 	fusermount -u /home/rgregor/KRZ_TV_shows
-# 	echo "/home/rgregor/KRZ_TV_shows disconected."
-# }
-
-
-# # function piv-on() -- sshfs KODI:Videos to /home/rgregor/KRZ_Videos
-# piv-on() {
-# 	sshfs -o idmap=user root@192.168.64.32:/var/media/MEDION_sA/Videos /home/rgregor/KRZ_Videos
-# 	if [ $? -eq 0 ]; then
-# 		echo "KODI sucessfully conected to /home/rgregor/KRZ_Videos"
-# 	else
-# 		echo "Something went wrong ..."
-# 	fi
-# }
-# 
-# 
-# # function piv-of() -- kill sshfs /home/rgregor/KRZ_Videos
-# piv-of() {
-# 	fusermount -u /home/rgregor/KRZ_Videos
-# 	echo "/home/rgregor/KRZ_Videos disconected."
-# }
-
 cnks() {
 	conky &
 	clear
