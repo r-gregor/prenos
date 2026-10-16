@@ -1,0 +1,535 @@
+# fname: funclist-en
+# descpt: functions to be loaded at shell starup
+# 20261016 v1
+# last: 20261016
+# ---
+
+# === GLOBALS ===
+gr_MSE=/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe
+CURRYR=$(date +%Y)
+gr_OFPOT="/c/Program Files (x86)/Microsoft Office/Office16"
+gr_GGL='/c/Program Files/Google Chrome Portable/GoogleChromePortable.exe'
+gr_FF="/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe"
+gr_MSE=/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe
+FF_en="/c/Users/gregor.redelonghi/majstaf_en/majprogs_en/FireFox_63.0.1/FirefoxPortable.exe"
+
+
+# === FUNCTIONS ===
+cv() {
+# descpt: qick jump (cd) to ...
+	cdargs "$1" && cd "$(cat "$HOME/.cdargsresult")"
+}
+
+kl() {
+# descpt: clear screen before running the command
+	clear && eval "$@"
+}
+
+hf() {
+# descpt: history list
+	clear
+	if [ $# != 1 ]; then
+		printf "[E] number of argumets must be exactly 1 (one)\n\n"
+		return
+	else
+		history | grep "$1"
+	fi
+}
+
+# ???
+lsl() {
+# descpt: list soft-linked files in curent directory
+	for file in *; do
+		if [ -h $file ]; then
+			ls -got $file
+		fi
+	done
+}
+
+aln() {
+# descpt: run function argument string as command
+	clear
+	eval "$@"
+	printf "\n"
+}
+
+crtice() {
+# descpt: draw line of '-' across the screen, or number of them supplied as function argument
+	screen_wdth=$(tput cols)
+
+	if [ $# -ne 1 ]; then
+		stznk="${screen_wdth}"
+	else
+		stznk="${1}"
+		if ! [[ "${stznk}" =~ ^[0-9]+$ ]]; then
+			printf "[E] supplied parameter is NOT a number\n\n"
+			exit 1
+		fi
+
+		if [ "${stznk}" -gt "${screen_wdth}" ]; then
+			stznk="${screen_wdth}"
+		fi
+	fi
+	printf "%${stznk}s\n" | tr " " "-"
+}
+
+cdh() {
+# descpt: cd to directory relative to ${HOME}
+	if [ $# -ne 1 ]; then
+		printf "[U] usage: cdh <path relative to \$HOME>\n\n"
+		return
+	else
+		RELPTH="$1"
+		cd "${HOME}/${RELPTH}"
+	fi
+}
+
+upup() {
+# descpt: go up to parent directories $DEEP levels
+	DEEP=$1
+
+	[ -z "${DEEP}" ] && { DEEP=1; }
+
+	if ! [[ "${DEEP}" =~ ^[0-9]+$ ]]; then
+		printf "[E] supplied parameter is NOT a number\n\n"
+		exit 1
+	fi
+
+	for i in $(seq 1 ${DEEP}); do
+		cd ../
+	done
+}
+
+sbr() {
+# descpt: clear and source '.bashrc'
+	clear && source ~/.bashrc
+}
+
+tmxs() {
+# descpt: start tmux
+	tmux -f ~/.tmux_7_conf attach
+}
+
+
+nifs() {
+# descpt: set IFS to newline
+	IFS=$'\n'
+}
+
+oifs() {
+# descpt: set IFS to original value
+	IFS=$' \t\n'
+}
+
+gcs() {
+# descpt: start google chrome
+	gr_PTH=file://$(cygpath -w $PWD | sed 's:\\:/:g')
+	gr_FJL=$1
+	cygstart /c/Users/gregor.redelonghi/AppData/Local/Google/Chrome/Application/chrome.exe ${gr_PTH}/${gr_FJL}
+}
+
+ffs() {
+# descpt: start firefox
+	gr_PTH=file://$(cygpath -w $PWD | sed 's:\\:/:g')
+	gr_FJL=$1
+	cygstart ${FF_en} ${gr_PTH}/${gr_FJL}
+}
+
+turl() {
+# descpt: test if URL var is empty
+	if [ -z "$URL" ]; then
+		printf "URL is empty\n\n"
+	else
+		printf "URL='%s'\n\n" "$URL"
+	fi
+}
+
+
+nf() {
+# descpt: start neofetch
+	clear
+	neofetch
+}
+
+sf() {
+# descpt: start screenfetch
+	clear
+	screenfetch-dev
+}
+
+fmy() {
+# descpt: DESCPT
+	cygstart explorer /E, $(cygpath -w /c/users/gregor.redelonghi/${CURRYR})
+}
+
+pwf() {
+# descpt: shutdown system with confirmation
+	printf "[!] shuting down ... \n"
+	read -r -p "[?] OK?"
+	t-gremdomov
+}
+
+cless() {
+# descpt: run 'highlight' command to cobvert to ANSI
+	if [ $# != 1 ]; then
+		return
+	fi
+	highlight -O  ansi $@ | less
+}
+
+cf() {
+# descpt: cd to fzf selected directory
+	cd $(ls -aF --group-directories-first | fzf --reverse)
+}
+
+ure() {
+# descpt: start KADRIS 4 login page in edge
+	jhl_ure="https://ris.jhl.si/"
+	cygstart "$gr_MSE" "${jhl_ure}"
+}
+
+
+prompt_switch() {
+# descpt: prompt switch
+	choice=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done | fzf -e --reverse --prompt="choose prompt: ")
+	source ~/majstaf/majrcs/${choice}
+}
+
+prs() {
+# descpt: prompt switch
+	prompt_switch
+}
+
+prsb() {
+# descpt: prompt switch: bare
+	source ~/majstaf/majrcs/bashrc-prompt-bare-gredelonghi-en
+}
+
+prsn() {
+# descpt: prompt switch: nerd
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-gredelonghi-en
+}
+
+psb() {
+# descpt: prompt switch: bare
+	source ~/majstaf/majrcs/bashrc-prompt-bare-gredelonghi-en
+}
+
+psn() {
+# descpt: prompt switch: nerd
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-gredelonghi-en
+}
+
+xcl() {
+# descpt: run excel
+	cygstart "${gr_OFPOT}/EXCEL.EXE"
+}
+
+wrd() {
+# descpt: run word
+	cygstart "${gr_OFPOT}/WINWORD.EXE"
+}
+
+ppt() {
+# descpt: run powerpoint
+	cygstart "${gr_OFPOT}/POWERPNT.EXE"
+}
+
+clc() {
+# descpt: run calc
+	cygstart /c/Windows/System32/calc.exe
+}
+
+a24() {
+# descpt: run acad 2024
+	cygstart "/c/Program Files/Autodesk/AutoCAD 2024/acad.exe"
+}
+
+
+a26() {
+# descpt: run acad 2026
+	cygstart "/c/Program Files/Autodesk/AutoCAD 2026/acad.exe"
+}
+
+ntp() {
+# descpt: run notepad
+ cygstart /c/Windows/System32/\notepad.exe
+}
+
+npp() {
+# descpt: run notepad++
+	cygstart /c/Users/gregor.redelonghi/majstaf_en/majprogs_en/Notepad++/notepad++.exe
+}
+
+mcm() {
+# descpt: run multicommander
+	cygstart /c/Users/gregor.redelonghi/majstaf_en/majprogs_en/MultiCommander_X64/MultiCommander.exe
+}
+
+r_po() {
+# descpt: start ris: planiranje odsotnosti
+	jhl_ure2="http://ris-jhl01.jhl.si/prodms/dbris/RIS4I_MAIN_4612?p_kateri=ris4i_dopusti"
+	cygstart "$gr_MSE" "${jhl_ure2}"
+}
+
+
+nl() {
+# descpt: run nukleus login page in edge
+	cygstart "$gr_MSE" http://gisportal.luz.si/Nukleus
+}
+
+ne() {
+# descpt: run nukleus login page in firefox
+	cygstart $gr_FF "http://jpe-nukleus.jhl.si/PassAuth/AutoAuth.aspx?ReturnUrl=/nukleus/profile.aspx?id=Energetika@Ljubljana"
+}
+
+gg() {
+# descpt: run google chrome portable
+	cygstart '/c/Program Files/Google Chrome Portable/GoogleChromePortable.exe'
+
+}
+
+my() {
+# descpt: open new mintty window
+	cygstart /c/users/gregor.redelonghi/majstaf_en/majprogs_en/cygwin64/bin/mintty.exe -s 180,40 -
+}
+
+fsm() {
+# descpt: start fish shell from mintty
+	cygstart /c/users/gregor.redelonghi/majstaf_en/majprogs_en/cygwin64/bin/mintty.exe -p 80,50 -s 180,45 -e /bin/fish
+}
+
+fsh() {
+# descpt: start fish shell
+	cygstart /c/users/gregor.redelonghi/majstaf_en/majprogs_en/cygwin64/bin/fish
+}
+
+tgd() {
+# descpt: run t_gremdomov script
+	t_gremdomov
+}
+
+vgd() {
+# descpt: run v_gremdomov script
+	v_gremdomov
+}
+
+# start quickstart
+qtm() {
+# descpt: start qckstrt and zze scripts
+	qckstrt
+	zze
+}
+
+cdpg_to_utf8() {
+# descpt: set system codepage from 852 (latin II) to 65001 (utf-8)
+	cmd /c chcp 65001 &> /dev/null
+}
+
+
+# set system codepage 65001 (utf-8) to 852 (latin II)
+cdpg_to_latin2() {
+# descpt: set system codepage 65001 (utf-8) to 852 (latin II)
+	cmd /c chcp 852 &> /dev/null
+}
+
+envvarset() {
+# descpt: edit system/user env vars
+	 cygstart rundll32.exe sysdm.cpl,EditEnvironmentVariables
+}
+
+# edit system/user env vars
+spremokolj() {
+# descpt: edit system/user env vars
+	 cygstart rundll32.exe sysdm.cpl,EditEnvironmentVariables
+}
+
+
+ncd() {
+# descpt: cd into fzf selected directory
+	if [ $# -eq 1 ]; then
+		DEST="$1"
+	else
+		DEST="."
+	fi
+
+	cd $(find "${DEST}" -type d \( -not -name ".git" -o -not -name ".cache" \) | grep -v "\.git\|\.cache" | fzf -e --reverse)
+}
+
+vimb() {
+# descpt: vim filename, but create filename-backup first
+	if [ $# -ne 1 ]; then
+		vim
+	else
+		local fname
+		fname="$1"
+		if [ ! -f "${fname}" ]; then
+			printf "[E] no such file: '%s'\n\n" "${fname}"
+			exit 1
+		fi
+
+		if [ -f "${fname}-backup" ]; then
+			printf "[i] backup file already exists\n"
+			vim "${fname}"
+		else
+			cp -v "${fname}" "${fname}-backup"
+			vim "${fname}"
+		fi
+	fi
+}
+
+cug() {
+# descpt: qick jump (cd) to cugr
+	cd "/c/Users/gregor.redelonghi"
+}
+
+cugms() {
+# descpt: qick jump (cd) to cugr ... majstaf_en
+	cd "${C_UGR}/majstaf_en"
+}
+
+mjst() {
+# descpt: qick jump (cd) to majstaf
+	cd "/home/gregor.redelonghi/majstaf"
+}
+
+egt() {
+# descpt: qick jump (cd) to engit
+	cd "${MJST}/engit"
+}
+
+downloads() {
+# descpt: qick jump (cd) to Downloads
+	cd "${C_UGR}/Downloads"
+}
+
+danes() {
+# descpt: qick jump (cd) to __DANES__
+	cd "${MJST}/_NERAZPOREJENO/__DANES__"
+}
+
+brisi() {
+# descpt: qick jump (cd) to BRISI
+	cd "${C_UGRMS}/BRISI"
+}
+
+garhiva() {
+# descpt: qick jump (cd) to ARHIVA_PROJEKTI
+	cd "/g/PI/OPROJ/ARHIVA_PROJEKTI"
+}
+
+mjbn() {
+# descpt: qick jump (cd) to majbin
+	cd "${MJST}/majbin"
+}
+
+mjdt() {
+# descpt: qick jump (cd) to majdata
+	cd "${MJST}/majdata"
+}
+
+mtsys() {
+# descpt: qick jump (cd) to metsys
+	cd "${MJST}/metsys"
+}
+
+mrcs() {
+# descpt: qick jump (cd) to majrcs
+	cd "${MJST}/majrcs"
+}
+
+sznm() {
+# descpt: qick jump (cd) to seznami
+	cd "${MJST}/seznami"
+}
+
+mscrp() {
+# descpt: qick jump (cd) to majscripts
+	cd "${MJST}/majscripts"
+}
+
+msppt() {
+# descpt: qick jump (cd) to majsupport
+	cd "${MJST}/majsupport"
+}
+
+mcfg() {
+# descpt: qick jump (cd) to majconfig
+	cd "${MJST}/majconfig"
+}
+
+mprg() {
+# descpt: qick jump (cd) to majprogs
+	cd "${MJST}/majprogs"
+}
+
+egmjbn() {
+# descpt: qick jump (cd) to majbin_en
+	cd "${EGT}/majbin_en"
+}
+
+egmrcs() {
+# descpt: qick jump (cd) to majrcs_en
+	cd "${EGT}/majrcs_en"
+}
+
+egmtsys() {
+# descpt: qick jump (cd) to metsys_en
+	cd "${EGT}/metsys_en"
+}
+
+egsznm() {
+# descpt: qick jump (cd) to seznami_en
+	cd "${EGT}/seznami_en"
+}
+
+egprns() {
+# descpt: qick jump (cd) to prenos
+	cd "${EGT}/prenos"
+}
+
+egdtfjls() {
+# descpt: qick jump (cd) to dotfiles_en
+	cd "${EGT}/dotfiles_en"
+}
+
+knowledgedb() {
+# descpt: qick jump (cd) to knowledgedb
+	cd "${EGT}/knowledgedb"
+}
+
+tstng() {
+# descpt: qick jump (cd) to testing
+	cd "${MJST}/coding2/testing"
+}
+
+ctst() {
+# descpt: qick jump (cd) to c_testing
+	cd "${TSTNG}/c_testing"
+}
+
+gtst() {
+# descpt: qick jump (cd) to go_testing
+	cd "${TSTNG}/go_testing"
+}
+
+jtst() {
+# descpt: qick jump (cd) to java_testing
+	cd "${TSTNG}/java_testing"
+}
+
+ztst() {
+# descpt: qick jump (cd) to zig_testing
+	cd "${TSTNG}/zig_testing"
+}
+
+ntst() {
+# descpt: qick jump (cd) to ncurses_testing
+	cd "${TSTNG}/ncurses_testing"
+}
+
+rtst() {
+# descpt: qick jump (cd) to rust_testing
+	cd "${TSTNG}/rust_testing"
+}
+
