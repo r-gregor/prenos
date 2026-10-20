@@ -1,0 +1,20 @@
+https://kdrozd.pl/how-to-create-a-fat-uber-jar/ | How to Create a Fat/Uber JAR in Three Ways? | Konrad Drozd: Blog
+https://www.quora.com/Can-JAR-files-be-run-without-installing-Java | (2) Can JAR files be run without installing Java? - Quora
+https://github.com/caiorss/build-fat-jar | GitHub - caiorss/build-fat-jar: Unix Shell Script to build java/Scala fat-jars and make the distributions and deployment of Scala applications easier.
+https://www.answeroverflow.com/m/1338192696656793680 | Week 112 — What is a fat JAR, how can a developer create one and what are the alternatives? - Java Community | Help. Code. Learn.
+https://www.quora.com/How-do-you-convert-a-JAR-file-to-an-executable-JAR-file | (2) How do you convert a JAR file to an executable JAR file? - Quora
+https://linuxize.com/post/how-to-install-docker-on-debian-13/ | How to Install Docker on Debian 13 (Trixie) | Linuxize
+https://idroot.us/install-photoprism-debian-13/#google_vignette | How To Install PhotoPrism on Debian 13 - idroot
+https://idroot.us/install-smplayer-debian-13/ | How To Install SMPlayer on Debian 13 - idroot
+https://nesbitt.io/2025/11/26/extending-git-functionality.html | Extending Git Functionality | Andrew Nesbitt
+https://nesbitt.io/2026/02/05/git-magic-files.html | Git’s Magic Files | Andrew Nesbitt
+https://buttondown.com/hillelwayne/archive/logic-for-programmers-new-release-and-next-steps/ | Logic for Programmers New Release and Next Steps • Buttondown
+https://hackaday.com/2026/02/05/a-deep-dive-into-inductors/ | A Deep Dive Into Inductors | Hackaday
+https://www.howtogeek.com/the-fastest-ways-to-find-files-from-the-command-line-on-linux/ | The fastest ways to find files from the command-line on Linux
+https://www.xda-developers.com/these-linux-tools-help-me-find-anything-fast/ | These 7 terminal tools help me find anything fast
+https://purplesyringa.moe/blog/finding-duplicated-code-with-tools-from-your-cs-course/ | Finding duplicated code with tools from your CS course | purplesyringa's blog
+https://linuxhandbook.com/common-networking-issues/ | Common Networking Issues Every DevOps Engineer Encounters
+https://hackaday.com/2025/11/11/waylands-never-ending-opposition-to-multi-window-positioning/ | Wayland’s Never-Ending Opposition To Multi-Window Positioning | Hackaday
+https://sacules.github.io/post/adventures-go-tui-1/ | Adventures in Go: Writing a TUI, Part 1 - tview :: kernelashes — Ramblings and handy guides on oddly-specific stuff
+https://linuxiac.com/ghostty-terminal-emulator-transitions-to-non-profit-status/ | Ghostty Terminal Emulator Transitions to Non-Profit Status
+moz-extension://0f1f8675-4807-4fd0-8e3a-cdf8d0bb540c/html/whats-new.html | What's New
