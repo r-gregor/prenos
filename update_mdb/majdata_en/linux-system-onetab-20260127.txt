@@ -1,8 +1,0 @@
-https://www.howtogeek.com/i-automated-linux-backups-with-a-simple-script-3-lessons-i-learned-the-hard-way/ | I automated Linux backups with a simple bash script and cron (and it’s better than a GUI)
-https://www.howtogeek.com/windows-command-line-networking-equivalents-in-linux-including-wsl/ | Windows networking commands in Linux: 5 equivalents you should know (plus WSL tricks)
-https://michael.kjorling.se/blog/2026/whether-on-specific-network-linux/ | Detecting whether a Linux system is connected to a specific network — Michael Kjörling
-https://blog.ploeh.dk/2018/06/25/visitor-as-a-sum-type/ | Visitor as a sum type
-https://rednafi.com/go/mocking-libraries-bleh/ | Your Go tests probably don't need a mocking library | Redowan's Reflections
-https://blog.sebastianwick.net/posts/glib-ownership-best-practices/ | Best Practices for Ownership in GLib - swick's blog
-https://lorbic.com/go-struct-field-alignment/ | Go Struct Field Alignment | Lorbic
-https://nesbitt.io/2026/01/24/rewriting-git-pkgs-in-go.html | Rewriting git-pkgs in Go | Andrew Nesbitt

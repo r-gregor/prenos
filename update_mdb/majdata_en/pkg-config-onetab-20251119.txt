@@ -1,9 +1,0 @@
-https://www.youtube.com/watch?v=PHP2_5Eucx0 | (24) Line Boil Effect in C - YouTube
-https://www.google.com/search?q=pkg-config&client=firefox-b-d&sca_esv=3d3223ebd0a7bab1&sxsrf=AE3TifN3SOd37Y7wEtfYq4EvkKrW6q5C1g:1763556150033&ei=NrsdacvdAbuL9u8Pw_nZmQw&start=10&sa=N&sstk=Af77f_fgGC3FY7VvJt7-H2Lqjj8n78Zn-aS8cctb6ZtdwbJoJbauCFkkh2ai8FXymkd6dkI1jGzE4BJ7K_Ed9Ll3KH21w4VoMim4vQ&ved=2ahUKEwjL0PTOnv6QAxW7hf0HHcN8NsMQ8NMDegQIDBAW&biw=1418&bih=999&dpr=1.2 | pkg-config - Google Search
-https://en.wikipedia.org/wiki/Pkg-config | pkg-config - Wikipedia
-https://www.freedesktop.org/wiki/Software/pkg-config/ | pkg-config
-https://askubuntu.com/questions/210210/pkg-config-path-environment-variable | pkg config - PKG_CONFIG_PATH environment variable - Ask Ubuntu
-https://superuser.com/questions/47967/where-does-pkg-config-takes-its-information-from | linux - where does 'pkg-config' takes its information from? - Super User
-https://www.google.com/search?client=firefox-b-d&q=pkg-config+man+page | pkg-config man page - Google Search
-https://linuxcommandlibrary.com/man/pkg-config | pkg-config man | Linux Command Library
-https://www.unix.com/man_page/posix/1/pkg-config/ | posix pkg-config man page on unix.com
