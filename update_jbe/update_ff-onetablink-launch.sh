@@ -2,7 +2,8 @@
 # fname: ff-onetablink-launch.sh
 # descpt: open onetablinks in Firefox with fzf list from external file
 # 20261006 v7: add sellection counter 'num_selected'
-# last: 20261006
+# 20261024 v8: substring pattern must be quoted: comparing strings with spaces
+# last: 20261024
 # ---
 
 # === GLOBALS ===
@@ -44,9 +45,9 @@ ff_onetablink_launch() {
 
 	# run
 	for URL in "${!llist[@]}"; do
-		if [[ "${llist["${URL}"]}" =~ ${selection} ]]; then
+		if [[ "${llist["${URL}"]}" =~ "${selection}" ]]; then #v8
 			printf "[i] selected: %s\n" "${selection}" #v4
-			(nohup ${FFCMD} "${URL}" &) > /dev/null 2>&1
+			(nohup ${FFCMD} -- "${URL}" &) > /dev/null 2>&1
 			((num_selected++))
 		fi
 	done
