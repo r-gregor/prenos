@@ -1,0 +1,29 @@
+filename: percent-progress-indicator-test-20251105.txt
+
+1 - withe echo -en:
+for i in $(seq 0 100); do echo -en "\033[200D$i %" && sleep 0.0125; done; echo -e "\n"
+output: 1 - 9, 10 - 100 % (in same place)
+
+2 - with printf:
+for i in $(seq 0 100); do printf "\033[200D%02d %%" "$i" && sleep 0.05; done; echo -e "\n"
+output: 01 - 09, 10 - 100 % (in same place)
+
+
+for i in $(seq 0 100); do printf "\033[200D%03d %%" "$i" && sleep 0.05; done; echo -e "\n"
+output: 001 - 009, 010 - 100 % (in same place)
+
+Explanation:
+"\033[200D" acts like \r
+
+  | from: filename: bash-terminal-escape-codes-are-awesome-20251103.txt
+  |      https://orelfichman.com/blog/terminal-escape-codes-are-awesome
+  |
+  | ...
+  | What this does is loop through a sequence of numbers from 1 to 100, prints a number, waits 0.05
+  | seconds, and repeats, until 100 percent is reached. Give it a try!
+  | This sequence is CSI Ps D which tells the cursor to move Ps lines to the left, in my case I went
+  | overkill and put the value 200 (In my defense, the other guy put 1000).
+  | ...
+
+---
+

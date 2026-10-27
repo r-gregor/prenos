@@ -1,0 +1,3 @@
+*.bak
+_archive
+__pycache__
