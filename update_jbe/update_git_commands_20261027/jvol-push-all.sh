@@ -7,8 +7,8 @@
 # last: 20260925
 # ---
 
-export VOLGITDIR="${HOME}/majstaf/${HST}git/vlpprs_${HST}"
-export VOLWORKDIR="/c/Users/gregor.redelonghi/majstaf_${HST}/${HST}_staf/majvolpejprs"
+export VOLGITDIR="${HOME}/majstaf/${HST}git/vlpprs_${HST}.git"
+export VOLWORKDIR="${HOME}/majstaf/majvolpejpers"
 git_nvol="/usr/bin/git --git-dir=${VOLGITDIR} --work-tree=${VOLWORKDIR}"
 
 ghvol="git@github.com:r-gregor/vlpprs_${HST}.git"
