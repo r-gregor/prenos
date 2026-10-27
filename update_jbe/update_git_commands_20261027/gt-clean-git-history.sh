@@ -91,7 +91,7 @@ git add -A >/dev/null
 printf "done\n"
 
 printf "[i] commiting (staging) all changes to new latest_branch ... "
-git commit -am "Cleanup history $(date +"%Y-%m-%d")" >/dev/null
+git commit -am "Cleanup history $(date +"%Y%m%d_%HH%MM%SS")" >/dev/null
 printf "done\n"
 
 printf "[i] deleting old main and creating new main branch:\n\t"

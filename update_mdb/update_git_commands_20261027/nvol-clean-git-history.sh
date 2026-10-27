@@ -2,7 +2,8 @@
 # filename: nvol-clean-git-history.sh
 # descpt: Clean git-history from git-repository in 'bare' vpprs repository
 # 20261026
-# last: 20261026
+# 20261027
+# last: 20261027
 # ---
 
 # === GLOBALS ===
