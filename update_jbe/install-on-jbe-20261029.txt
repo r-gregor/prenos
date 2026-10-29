@@ -1,0 +1,4 @@
+---
+  909  2026-10-29 07:26:34 sudo apt install trash-cli
+---
+
