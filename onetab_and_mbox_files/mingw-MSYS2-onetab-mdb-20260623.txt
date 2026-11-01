@@ -1,0 +1,18 @@
+https://sourceforge.net/projects/mingw/ | MinGW - Minimalist GNU for Windows download | SourceForge.net
+https://www.mingw-w64.org | mingw-w64
+https://en.wikipedia.org/wiki/MinGW | MinGW - Wikipedia
+https://stackoverflow.com/questions/7790262/a-simple-explanation-of-what-is-mingw | c - A simple explanation of what is MinGW - Stack Overflow
+https://www.reddit.com/r/cpp_questions/comments/17pdyt0/what_is_mingw_why_there_is_a_lot_of_compilers_and/ | What is MinGW, why there is a lot of compilers and why this is so confusing? : r/cpp_questions
+https://code.visualstudio.com/docs/cpp/config-mingw | Using GCC with MinGW
+https://en.wikipedia.org/wiki/Cygwin | Cygwin - Wikipedia
+https://en.wikipedia.org/wiki/MinGW#cite_note-cygwin_faq-1 | MinGW - Wikipedia
+https://en.wikipedia.org/wiki/Mingw-w64#MSYS2 | Mingw-w64 - Wikipedia
+https://www.msys2.org/docs/what-is-msys2/ | What is MSYS2? - MSYS2
+https://www.msys2.org/docs/ci/ | Using MSYS2 in CI - MSYS2
+https://www.msys2.org/docs/mirrors/ | Package Mirrors - MSYS2
+https://www.msys2.org/docs/terminals/ | Terminals - MSYS2
+https://www.msys2.org/docs/package-management/ | Package Management - MSYS2
+https://www.msys2.org/docs/filesystem-paths/ | Filesystem Paths - MSYS2
+https://www.msys2.org/docs/configuration/ | Configuration Locations - MSYS2
+---
+

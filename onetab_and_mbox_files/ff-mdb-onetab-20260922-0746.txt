@@ -1,0 +1,8 @@
+https://www.shellcheck.net/wiki/SC2044 | ShellCheck: SC2044 – For loops over find output are fragile. Use `find -exec` or a `while read` loop.
+https://www.google.com/search?q=%22set+-f%22+bash&client=ubuntu-sn&hs=s6x&sca_esv=5e5febaa67db9c78&channel=fs&biw=2134&bih=1249&sxsrf=APpeQnuptsLiIh4TrlS3w9a349B7HymtEA%3A1790054633690&ei=6RCyavPgKbiri-gP67WUGA&uact=5&oq=%22set+-f%22+bash&gs_lp=Egxnd3Mtd2l6LXNlcnAiDSJzZXQgLWYiIGJhc2hItyVQ3gZYgyJwAXgBkAEAmAFDoAH8AaoBATS4AQPIAQD4AQGYAgGgAgfCAgoQABhHGNYEGLADmAMAiAYBkAYIkgcBMaAHMLIHALgHAMIHAzItMcgHBYAIAQ&sclient=gws-wiz-serp | "set -f" bash - Google Search
+https://linuxize.com/post/bash-set-command/ | Bash set Command: set -e, set -x, and set -u Explained | Linuxize
+https://stackoverflow.com/questions/46901317/difference-between-set-ifs-as-n-and-n | bash - Difference between set IFS as $'\n' and $' \n' - Stack Overflow
+https://unix.stackexchange.com/questions/333867/what-does-set-f-in-korn-shell-do | ksh - What does "set -f" in Korn Shell do? - Unix & Linux Stack Exchange
+https://stackoverflow.com/questions/44544819/set-f-in-bash-not-working | macos - "set -f" in bash not working - Stack Overflow
+https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it | linux - What is the difference between executing a Bash script vs sourcing it? - Super User
+
