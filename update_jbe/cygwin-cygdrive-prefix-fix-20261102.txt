@@ -19,10 +19,11 @@ zero?
 FIX:
 It turns out you can control this in the file /etc/fstab. Just add a line that says:
 
-	none / cygdrive binary 0 0
+	# none / cygdrive binary 0 0
+	none / cygdrive binary,posix=0,user 0 0
+
 
 and the problem should be fixed. No more kludgey fixes in .bashrc, and no messed-up $PATH.
 
 ---
-
 
