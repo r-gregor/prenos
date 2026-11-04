@@ -1,0 +1,6 @@
+https://www.google.com/search?client=firefox-b-d&q=git+howto+check+if+local+repo+is+behind+thr+remote+one | git how to check if local repo is behind the remote one - Google Search
+https://stackoverflow.com/questions/17719829/check-if-local-git-repo-is-ahead-behind-remote | linux - Check if local git repo is ahead/behind remote - Stack Overflow
+https://www.atlassian.com/git/tutorials/syncing/git-fetch | What Does Git Fetch Do? | Atlassian Git Tutorial
+https://www.google.com/search?q=git+how+to+check+if+i+need+to+push+to+or+pull+from+remote&client=firefox-b-d&hs=I0GW&sca_esv=c11c5638e3289bf8&sxsrf=AKL5yDgi57NKgHXaJsRyEwF2vjSrOTABdQ:1793803514740&ei=-kTraunNLLfuwPAP5-KTyA8&start=10&sa=N&sstk=AS6-VmLAwqDVIQQAMsjTOquQzHxn3iqT6YpWos_295jfRL0G2VOYpQ0WFS5ef4BevfB_MySGFIfXrTFXTwEnv-IJ7eN_yLeeMqTs-g&ved=2ahUKEwjpsqvqxu6XAxU3NxAIHWfxBPkQ8NMDegQINxAW&biw=1471&bih=983&dpr=1.2 | git how to check if i need to push to or pull from remote - Google Search
+https://stackoverflow.com/questions/31666641/git-how-can-i-programmatically-determine-if-i-need-a-pull-or-push | version control - git: how can I programmatically determine if I need a pull or push? - Stack Overflow
+https://www.reddit.com/r/git/comments/ehjiyb/what_is_the_best_way_to_detect_if_there_are/ | What is the best way to detect if there are "unpulled changes"? : r/git
