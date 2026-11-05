@@ -1,0 +1,484 @@
+# fname: funclist-mdb
+# descpt: functions to be loaded at shell start
+# 20261016 v1
+# last: 20261016
+# ---
+
+so() {
+# descpt: pipe cmd output to "less -I"
+eval "$@" | less -I~
+}
+
+# ???
+cv() {
+# descpt: cdargs ...
+	cdargs "$1" && cd "$(cat "$HOME/.cdargsresult")" ;
+}
+
+# clear before fun
+kl() {
+# descpt: clear before run a command as parameter
+	clear && eval "$@"
+}
+
+
+hf() {
+# descpt: history list
+	export HISTCONTROL=erasedups
+	clear
+	if [ $# != 1 ]; then
+		printf "number of argumets to function '%s' must be exactly 1 (one)" "hf"
+	else
+		history | grep "$1"
+	fi
+}
+
+
+mmm() {
+# descpt: source .bashrc-Movies
+	clear
+	source $HOME/.bashrc-monochrome
+	printf "*************************\n"
+	printf "* Use the source Luke!! *\n"
+	printf "*************************\n"
+	printf "The '%s' has just been sourced\n\n" "$HOME/.bashrc-monochrome"
+}
+
+
+aln() {
+# descpt: clear befor run command as pramatere
+	clear
+	eval "$@"
+	printf "\n"
+}
+
+
+crtice() {
+# descpt: draw line of '-' across the screen, or number of them supplied as function argument
+	screen_wdth=$(tput cols)
+
+	if [ $# -ne 1 ]; then
+		stznk="${screen_wdth}"
+	else
+		stznk="${1}"
+		if ! [[ "${stznk}" =~ ^[0-9]+$ ]]; then
+			printf "[E] supplied parameter is NOT a number\n\n"
+			exit 1
+		fi
+
+		if [ "${stznk}" -gt "${screen_wdth}" ]; then
+			stznk="${screen_wdth}"
+		fi
+	fi
+	printf "%${stznk}s\n" | tr " " "-"
+}
+
+cdh() {
+# descpt: cd to directory relative to ${HOME}
+	if [ $# -ne 1 ]; then
+		printf "[U] usage: cdh <path relative to \$HOME>\n\n"
+		return
+	else
+		RELPTH="$1"
+		cd "${HOME}/${RELPTH}"
+	fi
+}
+
+upup() {
+# descpt: go up to parent directories $DEEP levels
+	DEEP=$1
+
+	[ -z "${DEEP}" ] && { DEEP=1; }
+
+	if ! [[ "${DEEP}" =~ ^[0-9]+$ ]]; then
+		printf "[E] supplied parameter is NOT a number\n\n"
+		exit 1
+	fi
+
+	for i in $(seq 1 ${DEEP}); do
+		cd ../
+	done
+}
+
+sbr() {
+# descpt: clear and source dot_vimrc file
+	clear && source ~/.bashrc
+}
+
+zdaj() {
+# descpt: displays various date & time formated info
+	clear
+	zdSI=$(date +%A,\ %d.\ %B\ %Y,\ %H:%M:%S)
+	printf "${zdSI}\n"
+}
+
+dejt() {
+# descpt: display date in format: YYYYmmddHHMM
+	dejt=$(date +%Y%m%d%H%M)
+	printf "${dejt}\n"
+}
+
+db0() {
+# descpt: dropbox STOP
+	dropbox stop
+}
+
+db1() {
+# descpt: dropbox START
+	dbus-launch dropbox start -i &>/dev/null
+}
+
+
+dbs1() {
+# descpt: dropbox STATUS
+	watch -n1 dropbox status
+}
+
+
+dbs2() {
+# descpt: dropbox STATUS (2)
+	clear
+	while true; do
+		printf "$(dropbox status) \r"
+		sleep 1
+  done
+}
+
+
+skrn() {
+# descpt: starts new terminal (xfce4-terminal) window with screen session divided into multiple windows ...
+	gr_FJL="~/.screen-lyt"
+	if [ $1 -eq 0 ] || [ $1 -eq 1 ] || [ $1 -eq 2 ] || [ $1 -eq 3 ]; then
+		gr_PRM=$1
+		xfce4-terminal -e "screen -c ${gr_FJL}-0${gr_PRM}" & 2>/dev/null
+
+	elif [ $1 == "db" ]; then
+		xfce4-terminal -e "screen -c ${gr_FJL}-db" & 2>/dev/null
+
+	else
+		gr_PRM="0"
+		xfce4-terminal -e "screen -c ${gr_FJL}-0${gr_PRM}" & 2>/dev/null
+	fi
+}
+
+
+cnks() {
+# descpt: launch conky
+	conky &
+	clear
+}
+
+cnkk() {
+# descpt: kill conky
+	sudo pkill conky
+}
+
+wtmpp () {
+# descpt: ???
+	watch -d -n1 "du $TMPP"
+}
+
+
+display_256_colors () {
+# descpt: display 256 colors
+	for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done
+}
+
+cless() {
+# descpt: ???
+	if [ $# != 1 ]; then
+		return
+	fi
+	highlight -O  ansi $@ | less
+}
+
+BrthReminder_c() {
+# descpt: run BrthReminder-c
+	/home/rgregor/majstaf/majbin/BrthReminder-c/BrthReminder-c "$@"
+}
+
+# ???
+BrthReminder_c_color() {
+# descpt: run BrthReminder-c-colors
+	/home/rgregor/majstaf/majbin/BrthReminder-c/BrthReminder-c-colors "$@"
+}
+
+logout_user() {
+# descpt: logout (user)
+		sudo loginctl terminate-user ${USER}
+}
+
+sbrn() {
+# descpt: start allacritty with 'nerd' prompt
+	nohup alacritty -e bash --init-file ~/.bashrc-nerd >/dev/null 2>&1 &
+}
+
+sbrb() {
+# descpt: start allacritty with 'base' prompt
+	nohup alacritty -e bash --init-file ~/.bashrc-base >/dev/null 2>&1 &
+}
+
+prompt_switch() {
+# descpt: switch prompts from fzf-list
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | fzf --reverse -e)
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prompt_switch_dmn() {
+# descpt: switch prompts from dmenu-list
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | dmenu -l 5 -p "choose prompt:")
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prompt_switch_rofi() {
+# descpt: switch prompts from rofi-list
+	prompts=$(for FFF in ~/majstaf/majrcs/bashrc-prompt-*; do echo $(basename $FFF); done;)
+	quit=$(echo "quit")
+	choice=$(echo -e "${prompts}\n${quit}" | rofi -dmenu -no-fixed-num-lines)
+	if [ "$choice" == "quit" ]; then
+		:
+	else
+		source ~/majstaf/majrcs/${choice}
+	fi
+}
+
+prs() {
+# descpt: prompt switch
+	prompt_switch
+}
+
+prsd() {
+# descpt: prompt switch (dmenu)
+	prompt_switch_dmn
+}
+
+prsr() {
+# descpt: prompt switch (rofi)
+	prompt_switch_rofi
+}
+
+psb() {
+# descpt: source 'bare' prompt
+	source ~/majstaf/majrcs/bashrc-prompt-bare-muadib
+}
+
+prsb() {
+# descpt: source 'bare' prompt
+	source ~/majstaf/majrcs/bashrc-prompt-bare-muadib
+}
+
+psn() {
+# descpt: source 'nerd' prompt
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-muadib
+}
+
+prsn() {
+# descpt: source 'nerd' prompt
+	source ~/majstaf/majrcs/bashrc-prompt-nerd-muadib
+}
+
+nifs() {
+# descpt: set IFS to newline
+	IFS=$'\n'
+}
+
+oifs() {
+# descpt: set IFS to ORIGINAL
+	IFS=$' \t\n'
+}
+
+ncd() {
+# descpt: new cd into directory from fzf-list
+	if [ $# -eq 1 ]; then
+		DEST="$1"
+	else
+		DEST="."
+	fi
+
+	cd $(find "${DEST}" -type d \( -not -name ".git" -o -not -name ".cache" \) | fzf -e)
+}
+
+vimb() {
+# descpt: vim filename, but create filename-backup first
+
+	if [ $# -ne 1 ]; then
+		vim
+	else
+		local fname="$1"
+		if [ ! -f "${fname}" ]; then
+			echo "[ERROR] no such file"
+			exit 1
+		fi
+
+		if [ -f "${fname}-backup" ]; then
+			echo "[INFO] backup file already exists"
+			vim "${fname}"
+		else
+			cp -v "${fname}" "${fname}-backup"
+			vim "${fname}"
+		fi
+	fi
+}
+
+
+mjstf() {
+# descpt: jump (cd) to $MJSTF
+	cd $MJSTF
+}
+
+mgt() {
+# descpt: jump (cd) to $MGT
+	cd $MGT
+}
+
+tstng() {
+# descpt: jump (cd) to $TSTNG
+	cd $TSTNG
+}
+
+mjmdj() {
+# descpt: jump (cd) to $MJMDJ
+	cd $MJMDJ
+}
+
+danes() {
+# descpt: jump (cd) to $DANES
+	cd $DANES
+}
+
+mjbn() {
+# descpt: jump (cd) to $MJBN
+	cd $MJBN
+}
+
+mtsys() {
+# descpt: jump (cd) to $MTSYS
+	cd $MTSYS
+}
+
+mrcs() {
+# descpt: jump (cd) to $MRCS
+	cd $MRCS
+}
+
+sznm() {
+# descpt: jump (cd) to $SZNM
+	cd $SZNM
+}
+
+mscrp() {
+# descpt: jump (cd) to $MSCRP
+	cd $MSCRP
+}
+
+mjdt() {
+# descpt: jump (cd) to $MJDT
+	cd $MJDT
+}
+
+knowledgedb() {
+# descpt: jump (cd) to $KNOWLEDGEDB
+	cd $KNOWLEDGEDB
+}
+
+mgmjbn() {
+# descpt: jump (cd) to $MGMJBN
+	cd $MGMJBN
+}
+
+mgmrcs() {
+# descpt: jump (cd) to $MGMRCS
+	cd $MGMRCS
+}
+
+mgmtsys() {
+# descpt: jump (cd) to $MGMTSYS
+	cd $MGMTSYS
+}
+
+mgsznm() {
+# descpt: jump (cd) to $MGSZNM
+	cd $MGSZNM
+}
+
+mgprns() {
+# descpt: jump (cd) to $MGPRNS
+	cd $MGPRNS
+}
+
+mgdtfjls() {
+# descpt: jump (cd) to $MGDTFJLS
+	cd $MGDTFJLS
+}
+
+ctst() {
+# descpt: jump (cd) to $CTST
+	cd $CTST
+}
+
+jtst() {
+# descpt: jump (cd) to $JTST
+	cd $JTST
+}
+
+gtst() {
+# descpt: jump (cd) to $GTST
+	cd $GTST
+}
+
+ptst() {
+# descpt: jump (cd) to $PTST
+	cd $PTST
+}
+
+rtst() {
+# descpt: jump (cd) to $RTST
+	cd $RTST
+}
+
+ntst() {
+# descpt: jump (cd) to $NTST
+	cd $NTST
+}
+
+ztst() {
+# descpt: jump (cd) to $ZTST
+	cd $ZTST
+}
+
+svm() {
+# descpt: jump (cd) to $SVM
+	cd $SVM
+}
+
+mvs() {
+# descpt: jump (cd) to $MVS
+	cd $MVS
+}
+
+
+gtrmsv() {
+# descpt: show remotes in current git repository
+	git remote -v
+}
+
+
+yrm() {
+	# descpt: yes | remove ... for any directory containing .git
+	printf "[!] about to remove: '%s'\n" "$@"
+	read -r -p "[?] continue?"
+	yes | rm -rv "$@"
+}
+

@@ -1,5 +1,0 @@
-
-gtrmsv() {
-# descpt: show remotes in current git repository
-	git remote -v
-}
