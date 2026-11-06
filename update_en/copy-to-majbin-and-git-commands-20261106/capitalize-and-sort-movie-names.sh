@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
-# fname: capitalize-and-sort-movie_names.sh
-# descpt: capitalize each word in movie names from file
+# capitalize-and-sort-movie-names.sh
+# descpt: capitalize each word in movie-names from file
 # depends: tr, sed, sort, uniq
 # 20261105 v1
 # last: 20261105
@@ -12,7 +12,7 @@ filename="MOVIES_CHECKOUT.txt"
 
 # === FUNCTIONS ===
 usage() {
-	printf "[!] usage: capitalize-and-sort-movie_names <filename with movies names>\n"
+	printf "[!] usage: capitalize-and-sort-movie-names <filename with movie-names>\n"
 }
 
 capitalize_word() {
@@ -32,14 +32,18 @@ capitalize_word() {
 }
 
 capitalize_and_sort() {
+	local FILENAME
+	local WORD
+
 	if [ $# -ne 1 ]; then
 		printf "[e] no filename supplied\n"
 		usage
 		printf "\n"
 		exit 1
+	else
+		FILENAME="${1}"
 	fi
 
-	FILENAME="${1}"
 	while read -r LINE; do
 		for WORD in $LINE; do
 			capitalize_word "${WORD}"
@@ -55,13 +59,13 @@ if [ $# -ne 1 ]; then
 	printf "\n"
 	exit 1
 else
-	filename="${1}"
+	fname_with_movie_names="${1}"
 fi
 
-if [ ! -f "${filename}" ]; then
-	printf "[e] no such filename '%s' in current directory\n\n" "${filename}"
+if [ ! -f "${fname_with_movie_names}" ]; then
+	printf "[e] no such filename '%s' in current directory\n\n" "${fname_with_movie_names}"
 	exit 1
 fi
 
-capitalize_and_sort "${filename}"
+capitalize_and_sort "${fname_with_movie_names}"
 
