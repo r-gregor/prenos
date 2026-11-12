@@ -1,4 +1,0 @@
-
-" --- REMOVE ALL EMOJI CHARS ---
-nnoremap ,rme :%s/[^\x00-\xFF]\+ //g<CR>
-
