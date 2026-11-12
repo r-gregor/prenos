@@ -1,0 +1,60 @@
+filename: checkout-onetab-en-202611121636.txt
+---
+https://www.youtube.com/@ErikYuzwa/videos | Erik Yuzwa - YouTube
+https://www.youtube.com/watch?v=rWZpX0jWw0I | (26) Let´s Build a Todo list application using C - YouTube
+https://www.youtube.com/watch?v=-0CFZI3gRfc | How is 34[arr] legal C? - YouTube
+https://www.youtube.com/watch?v=TB4EllE86Ss | Env vars improvement - nostdlib-C (X86_64) - Part 3 - YouTube
+https://www.youtube.com/shorts/pd1iOQggTnk | Learn to Use Type Command for Easier Shell Navigation - YouTube
+https://www.youtube.com/watch?v=iCurxKMqXgM&pp=wgIGCgQQAhgB | Quickly Convert Images on the Command Line with ImageMagick and Bash - YouTube
+---
+https://benmandrew.com/articles/what-is-malloc-doing-anyway | What is malloc doing, anyway? | Ben M. Andrew
+https://lemire.me/blog/2026/11/10/telling-your-number-parser-what-to-expect/ | Telling your number parser what to expect - Daniel Lemire´s blog
+https://nsaunders.wordpress.com/2026/11/09/using-r-to-make-an-informational-video/ | Using R to make an "informational video" - What You´re Doing Is Rather Desperate
+---
+https://www.youtube.com/watch?v=rl8wxVnJcs8 | (11) I Made My Clickbait Thumbnail Real (C Programming) - YouTube
+https://www.youtube.com/@ErikYuzwa/search?query=sdl2 | (11) Erik Yuzwa - YouTube
+https://www.youtube.com/watch?v=fcqXl1jaoCY | (11) NEW MOVIE TRAILERS | 2026 - 2027 - YouTube
+https://www.youtube.com/shorts/lRLbv6yS934 | (11) Don´t play with dad´s things. #standupcomedy #youtubeshorts - YouTube
+https://www.youtube.com/shorts/IUf-Yd6ohws | (11) Fantastic social from Antonio & Fenia during World Stars Salsa Festival 2026! #salsa - YouTube
+https://www.youtube.com/shorts/gFc9i_pd0s8 | (11) Gary Oldman Being SAVAGE on Slow Horses 🔥 - YouTube
+https://www.youtube.com/shorts/8mr0DgDluxQ | (12) 660 Feet of Rope! Here´s How It Works - YouTube
+https://www.youtube.com/watch?v=3OJNAGmuEEY | (11) Terry SalsAlianza & Bersy Cortez - Salsa social dancing | 4th World Stars Salsa Festival - YouTube
+https://www.google.com/search?client=firefox-b-d&q=fzf+right+margin | fzf right margin - Google Search
+https://www.google.com/search?client=firefox-b-d&q=fzf+how+to+set+only+right+margin+to+10%25 | fzf how to set only right margin to 10% - Google Search
+https://github.com/junegunn/fzf/issues/4147 | A way to set the fzf popup to a specific width · Issue #4147 · junegunn/fzf
+https://www.reddit.com/r/voidlinux/comments/ptt0bd/some_cool_package_management_fzf_functions_i_wrote/ | Some cool package management fzf functions I wrote :) : r/voidlinux
+https://www.google.com/search?client=firefox-b-d&q=bash+delete+non+ascii+characters | bash delete non ascii characters - Google Search
+https://www.google.com/search?client=firefox-b-d&q=vim+remove+wmoji+characters | vim remove emoji characters - Google Search
+https://askubuntu.com/questions/1405585/how-to-remove-all-lines-containing-emojis-from-a-text-file | How to remove all lines containing emojis from a text file? - Ask Ubuntu
+---
+https://www.google.com/search?client=firefox-b-d&hs=nVJW&sca_esv=7bff2a52980bbc7b&sxsrf=AKL5yDisFvuM6dnVyU8nBE_L4KRImymiqQ:1794381981264&q=using+sdl2+c+library+on+cygwin&sa=X&ved=2ahUKEwiz79Xksf-XAxWg0wIHHUnvDGEQ7xYoAHoECCEQAQ&biw=1471&bih=983&dpr=1.2 | using sdl2 c library on cygwin - Google Search
+https://stackoverflow.com/questions/62605760/trying-to-run-sdl-2-on-a-gcc-compiler-with-cygwin | c - Trying to Run SDL 2 on a GCC compiler with Cygwin - Stack Overflow
+https://stackoverflow.com/questions/42881682/linking-sdl-in-a-c-program | Linking SDL in a C program - Stack Overflow
+https://www.youtube.com/watch?v=inF1x0-EYjU&t=35s | (10) Make a Game Window with SDL2 and C - YouTube
+https://www.youtube.com/watch?v=xYsPv3hTpfI | (10) Getting Started with SDL2 on Linux -- Tools and Create Window [Ep1] - YouTube
+https://www.youtube.com/watch?v=9IcIKdjSvfc | (10) How to Install SDL2 on Windows and Linux to Create C/C++ Games and First Steps - YouTube
+https://wiki.libsdl.org/SDL2/Installation | SDL2/Installation - SDL2 Wiki
+https://www.cygwin.com/packages/summary/SDL2-src.html | Cygwin Package Summary for SDL2 (source)
+https://medium.com/@marco.avelar.cabrera/sdl2-c-7b5a89f8c718 | SDL2 - Linux, MacOS & Windows. I often read online than working with... | by Marco Avelar | Medium
+https://www.google.com/search?q=the+simplest+test+for+libSDL2+on+windows&client=firefox-b-d&hs=uVJW&sca_esv=7bff2a52980bbc7b&sxsrf=AKL5yDj0IrX47eLByf_q94TR_GwIPunCVQ:1794382402875&ei=Qhr0asuANfDJwPAPhr7Y6Qk&start=10&sa=N&sstk=AYl2yk8zOczCoz17CHQzaGhijU3a2OomSXCIz1brKCVyaezKhz_V-N7k1WQwB9O0hCVr6Fk33tw_x7RXWGcJIuJNYFcDjePWFV6h1Q&ved=2ahUKEwjLqduts_-XAxXwJBAIHQYfNp0Q8NMDegQILBAW&biw=1471&bih=983&dpr=1.2 | the simplest test for libSDL2 on windows - Google Search
+https://www.youtube.com/watch?v=H08t6gD1Y1E | (10) Simple SDL2 Setup in directory (MinGW, VS Code, Windows) - YouTube
+https://mesonbuild.com/GuiTutorial.html | Building a simple SDL2 app from scratch
+https://olevegard.medium.com/sdl2-part-1-setting-up-sdl2-234de39a83fd | [ SDL2 - Part 1 ] Setting up SDL2 | by Ole Vegard Mythe Moland | Medium
+https://www.youtube.com/watch?v=DQ-NBjBFLJ4 | (10) [Ep. 3] [Setup] SDL Windows Setup with Mingw and Simple OpenGL Application | Introduction to SDL2 - YouTube
+https://thenumb.at/cpp-course/sdl2/01/01.html | Lesson 01 - Setup & Windowing
+https://www.youtube.com/watch?v=QM4WW8hcsPU | (10) [Ep. 1] What is the Simple Directmedia Layer (SDL) and how to get started | Introduction to SDL2 - YouTube
+https://lvgl.io/docs/open/9.1/integration/ide/pc-simulator | Simulator on PC - LVGL documentation
+---
+https://www.youtube.com/watch?v=5R1eKlt2kJs | Coding a Linter - Parsing C and C++ - YouTube
+https://www.youtube.com/watch?v=WwkuAqObplU | (12) Intro to Data Oriented Design for Games - YouTube
+https://www.youtube.com/watch?v=WHdGqPPVzHs | Orphan Processes (C example) - YouTube
+https://www.youtube.com/shorts/8fFlpZP1E34 | (2) YouTube
+https://www.youtube.com/shorts/Iooh-LIJSQs | (2) Finish the Yorkshire saying... 🤣 #comedy #shorts - YouTube
+https://www.youtube.com/shorts/gTOETS0aaqg | Joe Lycett and Miles Jupp ruin famous song lyrics in the best way possible 😂 - BBC - YouTube
+---
+https://www.youtube.com/watch?v=KfODG5REyss | (12) The Closest Thing We Have to Alien Matter - YouTube
+https://stackoverflow.com/questions/12010686/case-statement-fallthrough | bash - Case statement fallthrough? - Stack Overflow
+https://unix.stackexchange.com/questions/446537/case-fallthrough-based-on-if-condition | bash - Case fallthrough based on if condition - Unix & Linux Stack Exchange
+https://linuxize.com/post/bash-case-statement/ | Bash case Statement: Match Patterns in Shell Scripts | Linuxize
+---
+
