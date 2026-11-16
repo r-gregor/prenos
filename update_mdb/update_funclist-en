@@ -1,0 +1,6 @@
+
+dlb() {
+# descpt: cd into '~/.local/bin'
+	cd "${HOME}/.local/bin"
+}
+
