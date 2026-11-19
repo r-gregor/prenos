@@ -29,7 +29,7 @@ create_fb_files_list() {
 	local tmstmp
 	local fname
 	local dname
-	local urls
+	local url
 
 	dos2unix "${src}" &> /dev/null
 

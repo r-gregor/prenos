@@ -42,6 +42,14 @@ backup_data_fbfl() {
 }
 
 create_fb_files_list() {
+	local month
+	local mnth
+	local dy
+	local tmstmp
+	local fname
+	local dname
+	local url
+
 	dos2unix "${src}" &> /dev/null
 
 	if [ ! -f "${dst}" ]; then

@@ -21,6 +21,7 @@ FZFCMD() {
 	# fzf -e --reverse
 	fzf -e --reverse --height=50% --border=rounded
 }
+
 usage() {
 	printf "[!] usage:
     1 - to run on existing fb-links list:
