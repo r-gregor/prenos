@@ -122,7 +122,7 @@ case "${ans}" in
 		fi
 	;;
 	
-	n/N)
+	n|N)
 		backup_data_fbfl
 		create_fb_files_list
 	;;
