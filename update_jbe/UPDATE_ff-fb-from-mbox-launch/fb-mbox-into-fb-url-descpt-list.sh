@@ -37,7 +37,7 @@ create_fb_files_list() {
 		touch "${dst}"
 	fi
 
-	printf "[i] loading info from *.mbox file into '%s' ...\n" "${storage_dir}/${dst##*/}"
+	printf "[i] loading info from *.mbox file into '%s' ...\n" "${dst##*/}"
 	while read -r LINE2; do
 		if [[ $LINE2 =~ "Date" ]]; then
 			yr=$(echo "${LINE2}" | cut -d' ' -f5)
