@@ -1,9 +1,0 @@
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-quickfix-list-multif-20261029.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-ctags-20220610.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-ctags-tutorial-20220610.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/custom_vim_efficiency-commands.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-5p-advanced-20220607.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-commands-5pp-20260227.txt
-/home/gregor.redelonghi/majstaf/engit/knowledgedb/_VIM/vim-vim-command-options-20260910.txt
----
-
